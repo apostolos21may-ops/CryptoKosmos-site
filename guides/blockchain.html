@@ -6,7 +6,7 @@
   <title>Τι είναι Blockchain — CryptoKosmos</title>
   <meta name="description" content="Απλή εξήγηση του blockchain: το κοινόχρηστο ψηφιακό βιβλίο συναλλαγών." />
 
-  <!-- Favicon + CSS -->
+  <!-- favicon + CSS -->
   <link rel="icon" href="../logo.png" type="image/png" />
   <link rel="stylesheet" href="../styles.css" />
 
@@ -32,28 +32,42 @@
       text-decoration:none;
       font-weight:500;
     }
-    .back:hover{
-      text-decoration:underline;
+    .back:hover{ text-decoration:underline; }
+
+    .blockchain-cover{
+      display:block;
+      max-width:240px;
+      width:100%;
+      height:auto;
+      border-radius:16px;
+      margin:20px auto 30px;
     }
+
     .callout{
       background:var(--card);
       border:1px solid var(--border);
       border-radius:12px;
       padding:14px 18px;
       margin:16px 0;
+      font-size:17px;
     }
-    .article img.blockchain-cover{
-      display:block;
-      max-width:240px;
-      width:100%;
-      height:auto;
-      border-radius:16px;
-      margin:16px auto 24px;
+
+    .info-box{
+      background:#151a21;
+      border:1px solid #262f39;
+      padding:18px 20px;
+      border-radius:14px;
+      margin:26px 0;
+    }
+
+    .info-box h3{
+      margin-top:0;
     }
   </style>
+
 </head>
 
-<body>
+ <body>
 
   <!-- HEADER -->
   <header class="site-header">
@@ -65,7 +79,6 @@
           <p class="tagline">Ο παλμός του κόσμου των crypto</p>
         </div>
       </a>
-
       <nav class="nav">
         <a href="../index.html#market">Αγορά</a>
         <a href="../index.html#charts">Τάσεις</a>
@@ -75,18 +88,20 @@
     </div>
   </header>
 
-  <!-- ARTICLE -->
+  <!-- MAIN -->
   <main class="article">
+
     <a class="back" href="../index.html#guides">← Πίσω στους οδηγούς</a>
 
+    <!-- Η εικόνα σου -->
     <img src="../IMG_5050.jpg" alt="Blockchain series of books" class="blockchain-cover" />
 
     <h1>Τι είναι το Blockchain</h1>
 
     <p>
       Με απλά λόγια, το <strong>blockchain</strong> είναι ένα κοινόχρηστο ψηφιακό “βιβλίο συναλλαγών”.
-      Όλοι οι συμμετέχοντες κρατούν το ίδιο αντίγραφο και κάθε νέα συναλλαγή προστίθεται σε ένα
-      <em>block</em> που “δένει” με τα προηγούμενα — γι’ αυτό λέγεται <em>block-chain</em>.
+      Όλοι βλέπουν το ίδιο ιστορικό, και κάθε νέα καταχώρηση προστίθεται σε ένα block που “δένεται”
+      με τα προηγούμενα μέσω κρυπτογραφίας — γι' αυτό λέγεται block-chain.
     </p>
 
     <div class="callout">
@@ -104,13 +119,142 @@
     <h3>Solana με μια ματιά</h3>
     <p>
       Η Solana είναι blockchain γνωστό για τις πολύ γρήγορες και φθηνές συναλλαγές. Το νόμισμά της είναι το
-      <strong>SOL</strong> και χρησιμοποιείται για τα fees και τις dApps στο οικοσύστημά της.
+      <strong>SOL</strong> και χρησιμοποιείται για fees και dApps στο οικοσύστημά της.
     </p>
 
     <div class="callout">
       <strong>Συμπέρασμα:</strong> Το Blockchain είναι η αξιόπιστη υποδομή πίσω από όλες τις σύγχρονες
       ψηφιακές συναλλαγές και εφαρμογές.
     </div>
+
+
+    <!-- ★ ΝΕΑ ΕΝΟΤΗΤΑ: Περισσότερες πληροφορίες ★ -->
+    <div class="info-box">
+      <h3>Περισσότερες πληροφορίες για το Blockchain</h3>
+
+      <p><strong>1. Τι είναι το block;</strong><br>
+      Είναι ένα "κουτί" που περιέχει πολλές συναλλαγές. Κάθε block έχει τη δική του ψηφιακή υπογραφή (hash).</p>
+
+      <p><strong>2. Πώς “δένονται” τα blocks;</strong><br>
+      Το επόμενο block περιέχει τον hash του προηγούμενου — έτσι φτιάχνεται η αλυσίδα.</p>
+
+      <p><strong>3. Τι είναι οι κόμβοι (nodes);</strong><br>
+      Υπολογιστές που κρατούν το blockchain ζωντανό. Έχουν ολόκληρο το ιστορικό.</p>
+
+      <p><strong>4. Τι είναι mining / staking;</strong><br>
+      Τρόποι με τους οποίους το δίκτυο εγκρίνει συναλλαγές.  
+      • Mining → Bitcoin  
+      • Staking → Solana, Ethereum</p>
+
+      <p><strong>5. Γιατί δεν μπορεί να χακαριστεί εύκολα;</strong><br>
+      Γιατί χρειάζεται να αλλοιωθεί ταυτόχρονα σε χιλιάδες κόμβους. Αυτό απαιτεί τεράστια υπολογιστική δύναμη.</p>
+    </div>
+
+<div class="info-box">
+  <h3>Τι θα συνέβαινε αν δεν υπήρχε το Blockchain;</h3>
+
+  <p>
+    Αν αύριο το πρωί εξαφανιζόταν το blockchain, ολόκληρη η ψηφιακή οικονομία θα πάθαινε σοκ.
+    Σχεδόν τα πάντα που βασίζονται σε αποκέντρωση, διαφάνεια και trustless τεχνολογία θα κατέρρεαν.
+  </p>
+
+  <p><strong>1. Τα κρυπτονομίσματα θα εξαφανίζονταν</strong><br>
+    Δεν θα υπήρχε Bitcoin, Ethereum, Solana — ούτε συναλλαγές, ούτε πορτοφόλια, ούτε NFTs.
+    Όλα βασίζονται στο blockchain για να λειτουργήσουν.
+  </p>
+
+  <p><strong>2. Οι ψηφιακές συναλλαγές θα γύριζαν σε τράπεζες – 100% κεντρικές</strong><br>
+    Θα χρειαζόσουν πάντα τρίτο μεσολαβητή για μεταφορές χρημάτων.  
+    Δεν θα υπήρχε δυνατότητα να στείλεις χρήματα χωρίς έγκριση από τράπεζες.
+  </p>
+
+  <p><strong>3. Θα αυξανόταν η λογοκρισία και ο έλεγχος</strong><br>
+    Χωρίς αποκέντρωση, οι κυβερνήσεις και οι εταιρείες θα είχαν πλήρη έλεγχο στο τι επιτρέπεται
+    και τι όχι. Το blockchain αφαιρεί αυτή την εξουσία.
+  </p>
+
+  <p><strong>4. Τα έξυπνα συμβόλαια (smart contracts) δεν θα υπήρχαν</strong><br>
+    Χωρίς smart contracts δεν θα είχαμε DeFi, DEXes, staking, tokenization, NFT marketplaces,
+    αυτοματοποιημένες πληρωμές κ.λπ.
+  </p>
+
+  <p><strong>5. Οι online εφαρμογές θα ήταν πιο αργές και ακριβές</strong><br>
+    Το blockchain παρέχει αυτοματοποίηση και εγγυημένη συνέπεια.
+    Χωρίς αυτό, πολλές διαδικασίες θα είχαν:
+    <br>– μεγαλύτερο κόστος  
+    <br>– καθυστερήσεις  
+    <br>– υψηλή πιθανότητα λάθους
+  </p>
+
+  <p><strong>6. Η ασφάλεια δεδομένων θα μειωνόταν</strong><br>
+    Το blockchain δίνει ανθεκτικότητα σε επιθέσεις και αλλοίωση δεδομένων.
+    Χωρίς αυτό, κάθε σύστημα θα γινόταν πιο ευάλωτο σε:
+    <br>– hacking  
+    <br>– διαρροές  
+    <br>– αλλοίωση αρχείων  
+  </p>
+
+  <p><strong>7. Η τεχνολογία Web3 θα πέθαινε</strong><br>
+    DApps, decentralized storage, DAOs, metaverse projects — όλα θα σταματούσαν να υπάρχουν,
+    γιατί η βάση τους είναι το blockchain.
+  </p>
+
+  <div class="callout" style="margin-top:15px;">
+    <strong>Συμπέρασμα:</strong>  
+    Χωρίς Blockchain, ο ψηφιακός κόσμος θα γυρνούσε 20 χρόνια πίσω — σε έναν κόσμο απόλυτα κεντρικό,
+    αργό, ακριβό και εύκολα ελεγχόμενο.
+  </div>
+</div>
+
+
+<!-- ==== EXTRA ADVANCED Πληροφορίες ==== -->
+<div class="info-box">
+  <h3>Προχωρημένες πληροφορίες για το Blockchain</h3>
+
+  <p><strong>• Hashing & ακεραιότητα:</strong><br>
+    Κάθε block περιέχει έναν μοναδικό hash.  
+    Αν αλλάξει έστω ένα byte μέσα στο block, ο hash αλλάζει τελείως.
+    Αυτό το κάνει εξαιρετικά ασφαλές.
+  </p>
+
+  <p><strong>• Proof-of-Work vs Proof-of-Stake:</strong><br>
+    – Το PoW (Bitcoin) βασίζεται σε υπολογιστική ισχύ.<br>
+    – Το PoS (Ethereum, Solana) βασίζεται στο staking και είναι πολύ πιο γρήγορο και οικονομικό.
+  </p>
+
+  <p><strong>• Δυσκολία (difficulty):</strong><br>
+    Στο Bitcoin, η δυσκολία προσαρμόζεται κάθε ~2 εβδομάδες ώστε πάντα να βγαίνει 1 block / 10 λεπτά.
+  </p>
+
+  <p><strong>• Forks:</strong><br>
+    Όταν το δίκτυο χωρίζεται σε δύο.  
+    Hard fork → δύο ξεχωριστά blockchains (π.χ. BTC / BCH).  
+    Soft fork → μικρή συμβατή αλλαγή.
+  </p>
+
+  <p><strong>• Layer 2 λύσεις:</strong><br>
+    Εκτός από τα βασικά blockchains (Layer 1), υπάρχουν Layer 2 δίκτυα όπως Lightning, Arbitrum, Optimism
+    που κάνουν τις συναλλαγές ακόμα πιο γρήγορες και φθηνές.
+  </p>
+
+  <p><strong>• Χρήσεις εκτός crypto:</strong><br>
+    Blockchain δεν είναι μόνο για χρήματα.  
+    Χρησιμοποιείται σε:
+    <br>– Ψηφιακές ταυτότητες  
+    <br>– Supply chain (αλυσίδα τροφοδοσίας)  
+    <br>– Ψηφοφορίες  
+    <br>– Έλεγχο γνησιότητας  
+    <br>– Ιατρικά αρχεία  
+  </p>
+
+  <div class="callout">
+    <strong>Κλειδί:</strong>  
+    Το Blockchain δεν είναι “μόνο κρυπτο”.  
+    Είναι η βάση για ΟΛΗ την νέα γενιά τεχνολογίας.
+  </div>
+</div>
+
+
   </main>
 
   <!-- FOOTER -->
@@ -122,7 +266,9 @@
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
 </body>
+
 </html>

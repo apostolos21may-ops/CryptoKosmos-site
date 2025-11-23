@@ -1,45 +1,34 @@
- // ======================
-// Βασικές ρυθμίσεις
+// ======================
+// REAL-TIME BINANCE WEBSOCKETS
 // ======================
 
 // Τα νομίσματα που θα δείχνουμε στην ενότητα "Ζωντανές τιμές"
 const COINS = [
-  { id: "bitcoin",  symbol: "BTC", name: "Bitcoin" },
-  { id: "ethereum", symbol: "ETH", name: "Ethereum" },
-  { id: "solana",   symbol: "SOL", name: "Solana" }
+  { id: "BTCUSDT", symbol: "BTC", name: "Bitcoin" },
+  { id: "ETHUSDT", symbol: "ETH", name: "Ethereum" },
+  { id: "SOLUSDT", symbol: "SOL", name: "Solana" }
 ];
 
 // Container για τις κάρτες αγοράς
 const marketWrap = document.getElementById("market-cards");
 
-// ======================
-// Ζωντανές τιμές (CoinGecko)
-// ======================
-
-// Φτιάχνει HTML κάρτες με τις τιμές
-function renderMarket(data) {
-  if (!marketWrap) return;
+// Δημιουργία DOM καρτών ΜΙΑ φορά
+function createCards() {
   marketWrap.innerHTML = "";
 
-  data.forEach((coin) => {
+  COINS.forEach((coin) => {
     const card = document.createElement("article");
     card.className = "card";
-
-    const change = coin.changeUsd;
-    const isUp = typeof change === "number" && change >= 0;
-    const changeText =
-      typeof change === "number"
-        ? `${isUp ? "↑" : "↓"} ${change.toFixed(2)}%`
-        : "-";
+    card.id = `card-${coin.symbol}`;
 
     card.innerHTML = `
       <h4>${coin.name} (${coin.symbol})</h4>
       <div class="row">
-        <span class="price">$${coin.usd?.toLocaleString() ?? "-"}</span>
-        <span class="change ${isUp ? "up" : "down"}">${changeText}</span>
+        <span class="price" id="price-${coin.symbol}">-</span>
+        <span class="change" id="change-${coin.symbol}">-</span>
       </div>
       <div class="muted small">
-        €${coin.eur?.toLocaleString() ?? "-"} | 24h μεταβολή σε USD
+        Ζωντανά από Binance WebSocket
       </div>
     `;
 
@@ -47,87 +36,41 @@ function renderMarket(data) {
   });
 }
 
-// Κάνει fetch από CoinGecko
-async function fetchPrices() {
-  try {
-    const ids = COINS.map((c) => c.id).join(",");
-    const url =
-      `https://api.coingecko.com/api/v3/simple/price` +
-      `?ids=${ids}&vs_currencies=usd,eur&include_24hr_change=true`;
+createCards();
 
-    const res = await fetch(url, { cache: "no-store" });
-    const json = await res.json();
-
-    const mapped = COINS.map((c) => ({
-      id: c.id,
-      name: c.name,
-      symbol: c.symbol,
-      usd: json[c.id]?.usd ?? null,
-      eur: json[c.id]?.eur ?? null,
-      changeUsd: json[c.id]?.usd_24h_change ?? null
-    }));
-
-    renderMarket(mapped);
-  } catch (e) {
-    console.warn("CoinGecko error:", e);
-  }
-}
-
-// Κλήσεις
-fetchPrices();
-setInterval(fetchPrices, 60_000); // κάθε 60 δευτερόλεπτα
 
 // ======================
-// TradingView Chart
+// BINANCE LIVE WebSocket
 // ======================
 
-let tvWidget = null;
+COINS.forEach((coin) => {
+  const ws = new WebSocket(
+    `wss://stream.binance.com:9443/ws/${coin.id.toLowerCase()}@ticker`
+  );
 
-// Φτιάχνει / αλλάζει το γράφημα
-function initTradingView(symbol) {
-  // Αν η βιβλιοθήκη δεν έχει φορτώσει ακόμα, ξαναδοκίμασε σε λίγο
-  if (typeof TradingView === "undefined") {
-    setTimeout(() => initTradingView(symbol), 500);
-    return;
-  }
+  ws.onmessage = (event) => {
+    const data = JSON.parse(event.data);
 
-  // Αν υπάρχει ήδη γράφημα, καθάρισέ το
-  if (tvWidget && typeof tvWidget.remove === "function") {
-    tvWidget.remove();
-  }
+    const price = parseFloat(data.c);     // current price
+    const open  = parseFloat(data.o);     // open price
+    const changePercent = ((price - open) / open) * 100;
 
-  tvWidget = new TradingView.widget({
-    symbol: symbol,                // π.χ. "BINANCE:BTCUSDT"
-    interval: "60",                // 1 hour candles
-    autosize: true,
-    timezone: "Etc/UTC",
-    theme: "dark",
-    style: "1",
-    locale: "en",
-    enable_publishing: false,
-    hide_legend: false,
-    hide_side_toolbar: false,
-    container_id: "tradingview_chart"
-  });
-}
+    const priceEl = document.getElementById(`price-${coin.symbol}`);
+    const changeEl = document.getElementById(`change-${coin.symbol}`);
 
-// Συνδέουμε τα κουμπιά BTC/ETH/SOL
-const pairButtons = document.querySelectorAll(".pair");
+    // Ενημέρωση τιμών
+    priceEl.textContent = "$" + price.toLocaleString();
+    changeEl.textContent = `${changePercent >= 0 ? "↑" : "↓"} ${changePercent.toFixed(2)}%`;
 
-pairButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    pairButtons.forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
+    // Χρώματα
+    if (changePercent >= 0) {
+      changeEl.classList.remove("down");
+      changeEl.classList.add("up");
+    } else {
+      changeEl.classList.remove("up");
+      changeEl.classList.add("down");
+    }
+  };
 
-    const symbol = btn.dataset.symbol; // από το data-symbol στο HTML
-    initTradingView(symbol);
-  });
-});
-
-// Όταν φορτώσει η σελίδα, ξεκίνα με το active κουμπί (BTC/USDT)
-window.addEventListener("load", () => {
-  const activeBtn = document.querySelector(".pair.active");
-  if (activeBtn) {
-    initTradingView(activeBtn.dataset.symbol);
-  }
+  ws.onerror = () => console.warn("Binance WebSocket error:", coin.symbol);
 });
