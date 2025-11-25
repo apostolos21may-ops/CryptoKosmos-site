@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>CryptoKosmos — Ο παλμός των crypto</title>
   <meta name="description" content="CryptoKosmos: Ενημέρωση, ανάλυση και τάσεις στα κρυπτονομίσματα." />
-
+<link rel="preload" as="image" href="./IMG_5308.jpg">
+<link rel="preload" as="image" href="./IMG_5377.jpg">
   <!-- Favicon & logo -->
   <link rel="icon" href="./logo.png" type="image/png" />
 
@@ -1429,6 +1430,16 @@ setupPasswordToggle("login-pass", "login-pass-toggle");
 setupPasswordToggle("signup-pass1", "signup-pass1-toggle");
 setupPasswordToggle("signup-pass2", "signup-pass2-toggle");
 
+
+const preloadImages = [
+  "./IMG_5308.jpg",
+  "./IMG_5377.jpg"
+];
+
+preloadImages.forEach(src => {
+  const img = new Image();
+  img.src = src;
+});
 
 // ========================================
 // HERO RANKING – Top 50 coins (auto scroll)
