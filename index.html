@@ -653,6 +653,105 @@ body.light-theme .pair{
 .modal-card::after {
   z-index: 5;
 }
+
+
+
+
+
+
+.password-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.toggle-pass {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  opacity: .7;
+  user-select: none;
+}
+
+.toggle-pass:hover {
+  opacity: 1;
+}
+
+
+
+
+
+
+.modal-card {
+  background-size: cover;
+  background-position: center;
+  transition: background-image .3s ease;
+}
+
+/* Light theme → IMG_5308 */
+body.light-theme .modal-card {
+  background-image: url("./IMG_5308.jpg");
+}
+
+/* Dark theme → IMG_5377 */
+body:not(.light-theme) .modal-card {
+  background-image: url("./IMG_5377.jpg");
+}
+
+
+
+.password-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.toggle-pass {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  opacity: 0.85;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.toggle-pass:hover {
+  opacity: 1;
+}
+
+
+
+
+.pass-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.pass-wrap input {
+  width: 100%;
+  padding-right: 42px; /* χώρος για το μάτι */
+}
+
+.pass-eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.pass-eye:hover {
+  opacity: 1;
+}
+
+
 </style>
 
 </head>
@@ -804,7 +903,11 @@ body.light-theme .pair{
         <input id="login-email" type="email" required placeholder="you@example.com" />
 
         <label for="login-pass">Password</label>
-        <input id="login-pass" type="password" required placeholder="••••••••" />
+<label for="login-pass">Password</label>
+<div class="pass-wrap">
+  <input id="login-pass" type="password" required placeholder="••••••••" />
+  <img id="login-pass-toggle" class="pass-eye" src="./IMG_5380.png" />
+</div>
       </div>
 
       <button class="modal-submit" type="submit">Σύνδεση</button>
@@ -850,10 +953,18 @@ body.light-theme .pair{
       <input id="signup-email" type="email" placeholder="you@example.com">
 
       <label>Κωδικός</label>
-      <input id="signup-pass1" type="password" placeholder="••••••••">
+   <label>Κωδικός</label>
+<div class="pass-wrap">
+  <input id="signup-pass1" type="password" placeholder="••••••••">
+  <img id="signup-pass1-toggle" class="pass-eye" src="./IMG_5380.png">
+</div>
 
       <label>Επιβεβαίωση κωδικού</label>
-      <input id="signup-pass2" type="password" placeholder="••••••••">
+<label>Επιβεβαίωση κωδικού</label>
+<div class="pass-wrap">
+  <input id="signup-pass2" type="password" placeholder="••••••••">
+  <img id="signup-pass2-toggle" class="pass-eye" src="./IMG_5380.png">
+</div>
 
       <p id="signup-error" style="color:#ff6b6b; display:none;">
         Οι κωδικοί δεν ταιριάζουν.
@@ -1293,6 +1404,68 @@ if (verifySubmit) {
   });
 }
 
+
+
+
+
+// ===== PASSWORD EYE TOGGLE =====
+document.querySelectorAll(".toggle-pass").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const id = btn.dataset.target;
+    const input = document.getElementById(id);
+
+    if (input.type === "password") {
+      input.type = "text";
+      btn.textContent = "🙈";
+    } else {
+      input.type = "password";
+      btn.textContent = "👁️";
+    }
+  });
+});
+
+
+// ===== PASSWORD EYE TOGGLE (with images) =====
+document.querySelectorAll(".toggle-pass").forEach( eye => {
+  eye.addEventListener("click", () => {
+
+    const id = eye.dataset.target;
+    const input = document.getElementById(id);
+
+    if (input.type === "password") {
+      input.type = "text";
+      eye.src = "./IMG_5381.png";  // 👁️ ανοιχτό μάτι
+    } else {
+      input.type = "password";
+      eye.src = "./IMG_5380.png";  // 👁️ κλειστό μάτι
+    }
+
+  });
+});
+
+
+
+
+
+function setupPasswordToggle(inputId, iconId) {
+  const input = document.getElementById(inputId);
+  const icon  = document.getElementById(iconId);
+
+  if (!input || !icon) return;
+
+  icon.addEventListener("click", () => {
+    const isHidden = input.type === "password";
+    input.type = isHidden ? "text" : "password";
+    icon.src = isHidden ? "./IMG_5381.png" : "./IMG_5380.png";
+  });
+}
+
+// LOGIN
+setupPasswordToggle("login-pass", "login-pass-toggle");
+
+// SIGNUP
+setupPasswordToggle("signup-pass1", "signup-pass1-toggle");
+setupPasswordToggle("signup-pass2", "signup-pass2-toggle");
 
 
 // ========================================
