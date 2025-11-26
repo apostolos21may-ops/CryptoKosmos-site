@@ -38,6 +38,8 @@
             margin: 20px auto;
             border-radius: 14px;
         }
+
+
     </style>
 
 </head>
@@ -100,8 +102,130 @@
 
 </section>
 
+
+
+<!-- ========= LOGIN MODAL ========= -->
+<div id="login-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <span class="modal-title">Σύνδεση</span>
+      <button class="modal-close" id="login-close">×</button>
+    </div>
+
+    <form id="login-form">
+      <div class="modal-body">
+
+        <label>Email</label>
+        <input id="login-email" type="email" required placeholder="you@example.com">
+
+        <label>Password</label>
+        <div class="pass-wrap">
+          <input id="login-pass" type="password">
+          <img id="login-pass-toggle" class="pass-eye" src="../IMG_5380.png">
+        </div>
+
+      </div>
+
+      <button class="modal-submit" type="submit">Σύνδεση</button>
+
+      <p id="no-account" class="modal-hint" style="color:#ffb3b3; display:none;">
+        Δεν έχεις λογαριασμό στο CryptoKosmos.
+      </p>
+
+      <button id="signup-btn" type="button" style="
+        display:none;
+        margin-top:10px;
+        width:100%;
+        padding:10px 14px;
+        border:none;
+        border-radius:14px;
+        background:#1e293b;
+        color:white;
+        font-weight:600;
+        cursor:pointer;
+        border:1px solid rgba(255,255,255,0.25);
+      ">
+        Δημιουργία λογαριασμού
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<!-- ========= SIGNUP MODAL ========= -->
+<div id="signup-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 class="modal-title">Δημιούργησε λογαριασμό</h3>
+      <button class="modal-close signup-close">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <label>Email</label>
+      <input id="signup-email" type="email">
+
+      <label>Κωδικός</label>
+      <div class="pass-wrap">
+        <input id="signup-pass1" type="password">
+        <img id="signup-pass1-toggle" class="pass-eye" src="../IMG_5380.png">
+      </div>
+
+      <label>Επιβεβαίωση κωδικού</label>
+      <div class="pass-wrap">
+        <input id="signup-pass2" type="password">
+        <img id="signup-pass2-toggle" class="pass-eye" src="../IMG_5380.png">
+      </div>
+
+      <p id="signup-error" style="color:#ff6b6b; display:none;">Οι κωδικοί δεν ταιριάζουν.</p>
+
+      <button id="signup-create" class="modal-submit">Δημιουργία λογαριασμού</button>
+
+      <p class="modal-hint">
+        Έχεις ήδη λογαριασμό;
+        <span id="back-to-login" style="color:#5bb4ff; cursor:pointer;">Σύνδεση</span>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========= VERIFY MODAL ========= -->
+<div id="verify-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <h3 class="modal-title">Επαλήθευση Email</h3>
+      <button class="modal-close verify-close">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <p class="muted">Σου στείλαμε έναν 6-ψήφιο κωδικό.</p>
+
+      <label>Κωδικός</label>
+      <input id="verify-code" type="text">
+
+      <p id="verify-error" style="color:#ff6b6b; display:none;">
+        Λάθος κωδικός. Προσπάθησε ξανά.
+      </p>
+
+      <button id="verify-submit" class="modal-submit">Επιβεβαίωση</button>
+
+    </div>
+
+  </div>
+</div>
+
 <!-- ⭐ main JS -->
-<script src="/app.js"></script>
+<script src="../app.js?v=2"></script>
 
 <script>
 /* ============================
