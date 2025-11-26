@@ -1,274 +1,173 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Τι είναι Blockchain — CryptoKosmos</title>
-  <meta name="description" content="Απλή εξήγηση του blockchain: το κοινόχρηστο ψηφιακό βιβλίο συναλλαγών." />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- favicon + CSS -->
-  <link rel="icon" href="../logo.png" type="image/png" />
-  <link rel="stylesheet" href="../styles.css" />
+    <title>Τι είναι το Blockchain – CryptoKosmos</title>
 
-  <style>
-    .article{
-      max-width:820px;
-      margin:0 auto;
-      padding:32px 16px;
-    }
-    .article h1{
-      font-size:30px;
-      margin:0 0 8px;
-    }
-    .article p{
-      color:var(--muted);
-      font-size:18px;
-      line-height:1.6;
-    }
-    .back{
-      display:inline-block;
-      margin:12px 0 24px;
-      color:#7dc3ff;
-      text-decoration:none;
-      font-weight:500;
-    }
-    .back:hover{ text-decoration:underline; }
+    <!-- ΚΥΡΙΟ CSS -->
+    <link rel="stylesheet" href="../styles.css">
 
-    .blockchain-cover{
-      display:block;
-      max-width:240px;
-      width:100%;
-      height:auto;
-      border-radius:16px;
-      margin:20px auto 30px;
-    }
+    <style>
+        /* ΜΟΝΟ αυτά χρειάζονται ειδικά για guides */
 
-    .callout{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:14px 18px;
-      margin:16px 0;
-      font-size:17px;
-    }
+        .guide-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+        }
 
-    .info-box{
-      background:#151a21;
-      border:1px solid #262f39;
-      padding:18px 20px;
-      border-radius:14px;
-      margin:26px 0;
-    }
+        .guide-container h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
 
-    .info-box h3{
-      margin-top:0;
-    }
-  </style>
+        .guide-container p {
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        /* SAFARI FIX για εικόνες */
+        .guide-container img {
+            display: block;
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 14px;
+        }
+    </style>
 
 </head>
+<body>
 
- <body>
-
-  <!-- HEADER -->
-  <header class="site-header">
+<!-- ⭐ HEADER -->
+<header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="../index.html">
-        <img src="../logo.png" alt="CryptoKosmos logo" class="logo" />
-        <div class="brand-text">
-          <h1>CryptoKosmos</h1>
-          <p class="tagline">Ο παλμός του κόσμου των crypto</p>
+
+        <a class="brand" href="../index.html">
+            <img id="site-logo" src="../logo.png" alt="logo" class="logo" />
+            <div class="brand-text">
+                <h1>CryptoKosmos</h1>
+                <p class="tagline">Ο παλμός του κόσμου των crypto</p>
+            </div>
+        </a>
+
+        <nav class="nav">
+            <a href="../index.html#market">Αγορά</a>
+            <a href="../index.html#charts">Τάσεις</a>
+            <a href="../index.html#guides">Οδηγοί</a>
+            <a href="../index.html#glossary">Γλωσσάρι</a>
+        </nav>
+
+        <div class="header-actions">
+            <button id="theme-toggle" class="pill-btn">
+                <img id="theme-icon" src="../IMG_5300.png" class="icon-img" />
+                <span id="theme-label">Dark</span>
+            </button>
+
+        <button id="auth-btn" class="pill-btn" type="button">
+    <img id="auth-icon" src="../IMG_5301.png" class="icon-img" />
+    <span id="auth-label">Login</span>
+</button>
         </div>
-      </a>
-      <nav class="nav">
-        <a href="../index.html#market">Αγορά</a>
-        <a href="../index.html#charts">Τάσεις</a>
-        <a href="../index.html#guides">Οδηγοί</a>
-        <a href="../index.html#glossary">Γλωσσάρι</a>
-      </nav>
+
     </div>
-  </header>
+</header>
 
-  <!-- MAIN -->
-  <main class="article">
+<!-- ⭐ ΠΕΡΙΕΧΟΜΕΝΟ BLOCKCHAIN -->
+<section class="guide-container">
 
-    <a class="back" href="../index.html#guides">← Πίσω στους οδηγούς</a>
+    <h1>Τι είναι το Blockchain;</h1>
 
-    <!-- Η εικόνα σου -->
-    <img src="../IMG_5050.jpg" alt="Blockchain series of books" class="blockchain-cover" />
-
-    <h1>Τι είναι το Blockchain</h1>
+    <img src="../IMG_5050.jpg" alt="Blockchain" />
 
     <p>
-      Με απλά λόγια, το <strong>blockchain</strong> είναι ένα κοινόχρηστο ψηφιακό “βιβλίο συναλλαγών”.
-      Όλοι βλέπουν το ίδιο ιστορικό, και κάθε νέα καταχώρηση προστίθεται σε ένα block που “δένεται”
-      με τα προηγούμενα μέσω κρυπτογραφίας — γι' αυτό λέγεται block-chain.
+        Το blockchain είναι ένα κατανεμημένο ψηφιακό βιβλίο (ledger) που επιτρέπει
+        ασφαλή καταγραφή συναλλαγών χωρίς κεντρική αρχή.
     </p>
 
-    <div class="callout">
-      <strong>Γιατί είναι σημαντικό;</strong><br>
-      🔒 Ασφάλεια • 🌍 Αποκέντρωση • 📜 Διαφάνεια • ⚙️ Smart contracts
-    </div>
-
-    <h3>Παράδειγμα</h3>
     <p>
-      Στέλνεις 5 SOL σε φίλο σου. Η συναλλαγή ελέγχεται από το δίκτυο Solana και όταν εγκριθεί,
-      μπαίνει σε νέο block. Αυτό το block “κλειδώνει” με ψηφιακή σφραγίδα και προστίθεται στην αλυσίδα.
-      Για να αλλοιωθεί, θα έπρεπε να αλλάξει σε χιλιάδες κόμβους ταυτόχρονα — πρακτικά αδύνατο.
+        Κάθε block περιέχει δεδομένα και συνδέεται με το επόμενο μέσω hash,
+        δημιουργώντας αδιάβλητη αλυσίδα.
     </p>
 
-    <h3>Solana με μια ματιά</h3>
     <p>
-      Η Solana είναι blockchain γνωστό για τις πολύ γρήγορες και φθηνές συναλλαγές. Το νόμισμά της είναι το
-      <strong>SOL</strong> και χρησιμοποιείται για fees και dApps στο οικοσύστημά της.
+        Τεχνολογία που χρησιμοποιείται σε Bitcoin, Ethereum, Solana και άλλα δίκτυα.
     </p>
 
-    <div class="callout">
-      <strong>Συμπέρασμα:</strong> Το Blockchain είναι η αξιόπιστη υποδομή πίσω από όλες τις σύγχρονες
-      ψηφιακές συναλλαγές και εφαρμογές.
-    </div>
+</section>
 
+<!-- ⭐ main JS -->
+<script src="../app.js"></script>
 
-    <!-- ★ ΝΕΑ ΕΝΟΤΗΤΑ: Περισσότερες πληροφορίες ★ -->
-    <div class="info-box">
-      <h3>Περισσότερες πληροφορίες για το Blockchain</h3>
+<script>
+/* ============================
+   FIX LOGIN BUTTON FOR SUBPAGES
+============================ */
 
-      <p><strong>1. Τι είναι το block;</strong><br>
-      Είναι ένα "κουτί" που περιέχει πολλές συναλλαγές. Κάθε block έχει τη δική του ψηφιακή υπογραφή (hash).</p>
+// Περιμένουμε να φορτώσει το DOM
+document.addEventListener("DOMContentLoaded", () => {
 
-      <p><strong>2. Πώς “δένονται” τα blocks;</strong><br>
-      Το επόμενο block περιέχει τον hash του προηγούμενου — έτσι φτιάχνεται η αλυσίδα.</p>
+    const authBtn      = document.getElementById("auth-btn");
+    const loginModal   = document.getElementById("login-modal");
+    const loginClose   = document.getElementById("login-close");
+    const signupModal  = document.getElementById("signup-modal");
+    const verifyModal  = document.getElementById("verify-modal");
 
-      <p><strong>3. Τι είναι οι κόμβοι (nodes);</strong><br>
-      Υπολογιστές που κρατούν το blockchain ζωντανό. Έχουν ολόκληρο το ιστορικό.</p>
+    /* --- ΑΝΟΙΓΜΑ LOGIN --- */
+    if (authBtn) {
+        authBtn.addEventListener("click", () => {
+            // Αν είσαι logout → άνοιξε login
+            if (authBtn.dataset.state === "login" || !authBtn.dataset.state) {
+                loginModal.classList.remove("hidden");
+                signupModal.classList.add("hidden");
+                verifyModal.classList.add("hidden");
+            } 
+            // Αν είσαι login → κάνε logout
+            else {
+                localStorage.removeItem("ck-user");
+                authBtn.dataset.state = "login";
+                document.getElementById("auth-label").textContent = "Login";
+                document.getElementById("auth-icon").src = "../IMG_5301.png";
+            }
+        });
+    }
 
-      <p><strong>4. Τι είναι mining / staking;</strong><br>
-      Τρόποι με τους οποίους το δίκτυο εγκρίνει συναλλαγές.  
-      • Mining → Bitcoin  
-      • Staking → Solana, Ethereum</p>
+    /* --- ΚΛΕΙΣΙΜΟ LOGIN --- */
+    if (loginClose) {
+        loginClose.addEventListener("click", () => {
+            loginModal.classList.add("hidden");
+        });
+    }
 
-      <p><strong>5. Γιατί δεν μπορεί να χακαριστεί εύκολα;</strong><br>
-      Γιατί χρειάζεται να αλλοιωθεί ταυτόχρονα σε χιλιάδες κόμβους. Αυτό απαιτεί τεράστια υπολογιστική δύναμη.</p>
-    </div>
+    /* --- ΚΛΕΙΣΙΜΟ ΟΤΑΝ ΠΑΤΑΣ ΕΞΩ --- */
+    if (loginModal) {
+        loginModal.addEventListener("click", e => {
+            if (e.target.classList.contains("modal-backdrop")) {
+                loginModal.classList.add("hidden");
+            }
+        });
+    }
 
-<div class="info-box">
-  <h3>Τι θα συνέβαινε αν δεν υπήρχε το Blockchain;</h3>
+});
 
-  <p>
-    Αν αύριο το πρωί εξαφανιζόταν το blockchain, ολόκληρη η ψηφιακή οικονομία θα πάθαινε σοκ.
-    Σχεδόν τα πάντα που βασίζονται σε αποκέντρωση, διαφάνεια και trustless τεχνολογία θα κατέρρεαν.
-  </p>
+/* ======================
+   LOGO Sync (ίδιο όπως πριν)
+====================== */
+function updateGuideLogo() {
+  const logo = document.getElementById("site-logo");
+  const isLight = document.body.classList.contains("light-theme");
+  logo.src = isLight ? "../logo.png" : "../black logo.png";
+}
+updateGuideLogo();
 
-  <p><strong>1. Τα κρυπτονομίσματα θα εξαφανίζονταν</strong><br>
-    Δεν θα υπήρχε Bitcoin, Ethereum, Solana — ούτε συναλλαγές, ούτε πορτοφόλια, ούτε NFTs.
-    Όλα βασίζονται στο blockchain για να λειτουργήσουν.
-  </p>
-
-  <p><strong>2. Οι ψηφιακές συναλλαγές θα γύριζαν σε τράπεζες – 100% κεντρικές</strong><br>
-    Θα χρειαζόσουν πάντα τρίτο μεσολαβητή για μεταφορές χρημάτων.  
-    Δεν θα υπήρχε δυνατότητα να στείλεις χρήματα χωρίς έγκριση από τράπεζες.
-  </p>
-
-  <p><strong>3. Θα αυξανόταν η λογοκρισία και ο έλεγχος</strong><br>
-    Χωρίς αποκέντρωση, οι κυβερνήσεις και οι εταιρείες θα είχαν πλήρη έλεγχο στο τι επιτρέπεται
-    και τι όχι. Το blockchain αφαιρεί αυτή την εξουσία.
-  </p>
-
-  <p><strong>4. Τα έξυπνα συμβόλαια (smart contracts) δεν θα υπήρχαν</strong><br>
-    Χωρίς smart contracts δεν θα είχαμε DeFi, DEXes, staking, tokenization, NFT marketplaces,
-    αυτοματοποιημένες πληρωμές κ.λπ.
-  </p>
-
-  <p><strong>5. Οι online εφαρμογές θα ήταν πιο αργές και ακριβές</strong><br>
-    Το blockchain παρέχει αυτοματοποίηση και εγγυημένη συνέπεια.
-    Χωρίς αυτό, πολλές διαδικασίες θα είχαν:
-    <br>– μεγαλύτερο κόστος  
-    <br>– καθυστερήσεις  
-    <br>– υψηλή πιθανότητα λάθους
-  </p>
-
-  <p><strong>6. Η ασφάλεια δεδομένων θα μειωνόταν</strong><br>
-    Το blockchain δίνει ανθεκτικότητα σε επιθέσεις και αλλοίωση δεδομένων.
-    Χωρίς αυτό, κάθε σύστημα θα γινόταν πιο ευάλωτο σε:
-    <br>– hacking  
-    <br>– διαρροές  
-    <br>– αλλοίωση αρχείων  
-  </p>
-
-  <p><strong>7. Η τεχνολογία Web3 θα πέθαινε</strong><br>
-    DApps, decentralized storage, DAOs, metaverse projects — όλα θα σταματούσαν να υπάρχουν,
-    γιατί η βάση τους είναι το blockchain.
-  </p>
-
-  <div class="callout" style="margin-top:15px;">
-    <strong>Συμπέρασμα:</strong>  
-    Χωρίς Blockchain, ο ψηφιακός κόσμος θα γυρνούσε 20 χρόνια πίσω — σε έναν κόσμο απόλυτα κεντρικό,
-    αργό, ακριβό και εύκολα ελεγχόμενο.
-  </div>
-</div>
-
-
-<!-- ==== EXTRA ADVANCED Πληροφορίες ==== -->
-<div class="info-box">
-  <h3>Προχωρημένες πληροφορίες για το Blockchain</h3>
-
-  <p><strong>• Hashing & ακεραιότητα:</strong><br>
-    Κάθε block περιέχει έναν μοναδικό hash.  
-    Αν αλλάξει έστω ένα byte μέσα στο block, ο hash αλλάζει τελείως.
-    Αυτό το κάνει εξαιρετικά ασφαλές.
-  </p>
-
-  <p><strong>• Proof-of-Work vs Proof-of-Stake:</strong><br>
-    – Το PoW (Bitcoin) βασίζεται σε υπολογιστική ισχύ.<br>
-    – Το PoS (Ethereum, Solana) βασίζεται στο staking και είναι πολύ πιο γρήγορο και οικονομικό.
-  </p>
-
-  <p><strong>• Δυσκολία (difficulty):</strong><br>
-    Στο Bitcoin, η δυσκολία προσαρμόζεται κάθε ~2 εβδομάδες ώστε πάντα να βγαίνει 1 block / 10 λεπτά.
-  </p>
-
-  <p><strong>• Forks:</strong><br>
-    Όταν το δίκτυο χωρίζεται σε δύο.  
-    Hard fork → δύο ξεχωριστά blockchains (π.χ. BTC / BCH).  
-    Soft fork → μικρή συμβατή αλλαγή.
-  </p>
-
-  <p><strong>• Layer 2 λύσεις:</strong><br>
-    Εκτός από τα βασικά blockchains (Layer 1), υπάρχουν Layer 2 δίκτυα όπως Lightning, Arbitrum, Optimism
-    που κάνουν τις συναλλαγές ακόμα πιο γρήγορες και φθηνές.
-  </p>
-
-  <p><strong>• Χρήσεις εκτός crypto:</strong><br>
-    Blockchain δεν είναι μόνο για χρήματα.  
-    Χρησιμοποιείται σε:
-    <br>– Ψηφιακές ταυτότητες  
-    <br>– Supply chain (αλυσίδα τροφοδοσίας)  
-    <br>– Ψηφοφορίες  
-    <br>– Έλεγχο γνησιότητας  
-    <br>– Ιατρικά αρχεία  
-  </p>
-
-  <div class="callout">
-    <strong>Κλειδί:</strong>  
-    Το Blockchain δεν είναι “μόνο κρυπτο”.  
-    Είναι η βάση για ΟΛΗ την νέα γενιά τεχνολογίας.
-  </div>
-</div>
-
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> CryptoKosmos</p>
-      <p class="muted">Disclaimer: Εκπαιδευτικό περιεχόμενο — Δεν αποτελεί επενδυτική συμβουλή.</p>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+document.getElementById("theme-toggle").addEventListener("click", () => {
+  setTimeout(updateGuideLogo, 20);
+});
+</script>
 
 </body>
-
 </html>
