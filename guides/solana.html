@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Αγορά Solana με ασφάλεια – CryptoKosmos</title>
+
+    <!-- ΚΥΡΙΟ CSS -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <style>
+        /* ΜΟΝΟ ειδικές ρυθμίσεις για guides */
+        .guide-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+        }
+
+        .guide-container h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .guide-container p,
+        .guide-container li {
+            font-size: 17px;
+            line-height: 1.65;
+            margin-bottom: 18px;
+        }
+
+        .guide-container img {
+            display: block;
+            max-width: 650px;
+            width: 100%;
+            height: auto;
+            margin: 25px auto;
+            border-radius: 14px;
+        }
+
+        ul {
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ⭐ HEADER -->
+<header class="site-header">
+    <div class="container header-inner">
+
+        <a class="brand" href="../index.html">
+            <img id="site-logo" src="../logo.png" alt="logo" class="logo" />
+            <div class="brand-text">
+                <h1>CryptoKosmos</h1>
+                <p class="tagline">Ο παλμός του κόσμου των crypto</p>
+            </div>
+        </a>
+
+        <nav class="nav">
+            <a href="../index.html#market">Αγορά</a>
+            <a href="../index.html#charts">Τάσεις</a>
+            <a href="../index.html#guides">Οδηγοί</a>
+            <a href="../index.html#glossary">Γλωσσάρι</a>
+        </nav>
+
+        <div class="header-actions">
+            <button id="theme-toggle" class="pill-btn">
+                <img id="theme-icon" src="../IMG_5300.png" class="icon-img" />
+                <span id="theme-label">Dark</span>
+            </button>
+
+            <button id="auth-btn" class="pill-btn" type="button">
+                <img id="auth-icon" src="../IMG_5301.png" class="icon-img" />
+                <span id="auth-label">Login</span>
+            </button>
+        </div>
+
+    </div>
+</header>
+
+
+
+<!-- ⭐ ΠΕΡΙΕΧΟΜΕΝΟ — Οδηγός Solana -->
+<section class="guide-container">
+
+    <h1>Αγορά Solana με ασφάλεια</h1>
+
+    <img src="../IMG_5050.jpg" alt="Solana Guide">
+
+    <p>
+        Η Solana (SOL) είναι ένα από τα ταχύτερα και πιο αποδοτικά blockchain. 
+        Για να αγοράσεις με ασφάλεια, χρειάζεται σωστή επιλογή ανταλλακτηρίου, 
+        ενεργοποίηση 2FA και κατανόηση των fees.
+    </p>
+
+    <h2>1. Επιλογή ασφαλούς ανταλλακτηρίου</h2>
+    <p>Τα πιο ασφαλή και αξιόπιστα είναι:</p>
+
+    <ul>
+        <li><b>Binance</b> – μεγάλος όγκος & χαμηλά fees</li>
+        <li><b>Kraken</b> – πολύ ασφαλές, χαμηλές χρεώσεις</li>
+        <li><b>Coinbase</b> – εύκολο αλλά πιο ακριβό</li>
+    </ul>
+
+    <h2>2. Ενεργοποίηση ασφάλειας (2FA)</h2>
+    <p>
+        Μετά την εγγραφή σου, ενεργοποίησε <b>Google Authenticator</b> ή <b>Authy</b>.
+        Μην χρησιμοποιείς SMS 2FA γιατί γίνεται spoofing.
+    </p>
+
+    <h2>3. Πρακτικός οδηγός αγοράς SOL</h2>
+    <ul>
+        <li>Κατάθεση € μέσω κάρτας ή SEPA</li>
+        <li>Αγορά SOL με Market ή Limit order</li>
+        <li>Έλεγχος τιμών (DCA για πιο ασφαλή στρατηγική)</li>
+    </ul>
+
+    <h2>4. Πού να αποθηκεύσω τα SOL μου</h2>
+    <p>Υπάρχουν δύο επιλογές:</p>
+
+    <ul>
+        <li><b>Non-custodial wallets:</b> Phantom, Solflare (εσύ έχεις τα κλειδιά)</li>
+        <li><b>Custodial:</b> Binance, Coinbase (το ανταλλακτήριο κρατάει τα κλειδιά)</li>
+    </ul>
+
+    <h2>5. Πώς να είσαι ασφαλής</h2>
+    <p>
+        • Μην κρατάς μεγάλα ποσά σε ανταλλακτήρια  
+        • Πρόσεχε phishing sites  
+        • Μην δίνεις ποτέ το seed phrase  
+        • Κράτα αντιγραμμένο offline (χαρτί ή metal plate)
+    </p>
+
+</section>
+
+
+
+<!-- ⭐ LOGIN / SIGNUP / VERIFY (ίδια με τα άλλα pages) -->
+<script src="../app.js?v=3"></script>
+
+<script>
+/* FIX Login Button σε Subpages */
+document.addEventListener("DOMContentLoaded", () => {
+
+    const authBtn      = document.getElementById("auth-btn");
+    const loginModal   = document.getElementById("login-modal");
+    const loginClose   = document.getElementById("login-close");
+    const signupModal  = document.getElementById("signup-modal");
+    const verifyModal  = document.getElementById("verify-modal");
+
+    if (authBtn){
+        authBtn.addEventListener("click", () => {
+            loginModal.classList.remove("hidden");
+            signupModal.classList.add("hidden");
+            verifyModal.classList.add("hidden");
+        });
+    }
+
+    if (loginClose){
+        loginClose.addEventListener("click", () => {
+            loginModal.classList.add("hidden");
+        });
+    }
+});
+
+/* LOGO THEME SYNC */
+function updateGuideLogo() {
+  const logo = document.getElementById("site-logo");
+  const isLight = document.body.classList.contains("light-theme");
+  logo.src = isLight ? "../logo.png" : "../black logo.png";
+}
+updateGuideLogo();
+
+document.getElementById("theme-toggle").addEventListener("click", () => {
+  setTimeout(updateGuideLogo, 20);
+});
+</script>
+
+</body>
+</html>

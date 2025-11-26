@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Wallets — CryptoKosmos</title>
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Preload modal background images -->
+    <link rel="preload" as="image" href="../IMG_5308.jpg">
+    <link rel="preload" as="image" href="../IMG_5377.jpg">
+
+    <style>
+    /* Extra styling only for guides */
+    .guide-container {
+        max-width: 900px;
+        margin: 60px auto;
+        padding: 20px;
+    }
+
+    .guide-container h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .guide-container p {
+        font-size: 17px;
+        line-height: 1.6;
+        margin-bottom: 18px;
+    }
+
+    .guide-container img {
+        display: block;
+        width: 100%;
+        max-width: 600px;
+        margin: 25px auto;
+        border-radius: 14px;
+    }
+    </style>
+
+</head>
+<body>
+
+<!-- ⭐ HEADER -->
+<header class="site-header">
+    <div class="container header-inner">
+
+        <a class="brand" href="../index.html">
+            <img id="site-logo" src="../logo.png" class="logo" />
+            <div class="brand-text">
+                <h1>CryptoKosmos</h1>
+                <p class="tagline">Ο παλμός του κόσμου των crypto</p>
+            </div>
+        </a>
+
+        <nav class="nav">
+            <a href="../index.html#market">Αγορά</a>
+            <a href="../index.html#charts">Τάσεις</a>
+            <a href="../index.html#guides">Οδηγοί</a>
+            <a href="../index.html#glossary">Γλωσσάρι</a>
+        </nav>
+
+        <div class="header-actions">
+
+            <!-- Theme button -->
+            <button id="theme-toggle" class="pill-btn" type="button">
+                <img id="theme-icon" src="../IMG_5300.png" class="icon-img" />
+                <span id="theme-label">Dark</span>
+            </button>
+
+            <!-- Login button -->
+            <button id="auth-btn" class="pill-btn" type="button">
+                <img id="auth-icon" src="../IMG_5301.png" class="icon-img" />
+                <span id="auth-label">Login</span>
+            </button>
+
+        </div>
+    </div>
+</header>
+
+<!-- ⭐ PAGE CONTENT -->
+<section class="guide-container">
+
+    <h1>Wallets: Custodial vs Non-Custodial</h1>
+
+    <img src="../IMG_5051.jpg" alt="Crypto Wallets">
+
+    <p>
+        Ένα crypto wallet είναι ο τρόπος με τον οποίο αποθηκεύεις και διαχειρίζεσαι τα ψηφιακά σου νομίσματα.
+        Δεν αποθηκεύει τα ίδια τα crypto, αλλά τα ιδιωτικά κλειδιά (private keys) που σου δίνουν πρόσβαση σε αυτά.
+    </p>
+
+    <h2>Custodial Wallet</h2>
+    <p>
+        Το custodial wallet είναι πορτοφόλι όπου <b>δεν έχεις εσύ</b> τα private keys.
+        Τα κρατάει η πλατφόρμα/ανταλλακτήριο (π.χ. Binance, Coinbase).
+        Είναι πιο εύκολα στη χρήση αλλά λιγότερο ασφαλή.
+    </p>
+
+    <h2>Non-Custodial Wallet</h2>
+    <p>
+        Σε non-custodial wallet (π.χ. Phantom, MetaMask, Ledger) έχεις εσύ τα private keys.
+        Είσαι 100% υπεύθυνος για την ασφάλεια, αλλά έχεις πλήρη έλεγχο.
+    </p>
+
+    <h2>Seed Phrase</h2>
+    <p>
+        Είναι μια σειρά από 12 ή 24 λέξεις.  
+        Αν χάσεις το κινητό σου, η seed phrase είναι ο μόνος τρόπος να ανακτήσεις το wallet σου.
+    </p>
+
+</section>
+
+<!-- ⭐ LOGIN / SIGNUP / VERIFY MODALS (ίδια με Blockchain page) -->
+<div id="login-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <span class="modal-title">Σύνδεση</span>
+      <button class="modal-close" id="login-close">×</button>
+    </div>
+
+    <form id="login-form">
+      <div class="modal-body">
+
+        <label>Email</label>
+        <input id="login-email" type="email" placeholder="you@example.com" required>
+
+        <label>Password</label>
+        <div class="pass-wrap">
+          <input id="login-pass" type="password" placeholder="••••••••">
+          <img id="login-pass-toggle" class="pass-eye" src="../IMG_5380.png">
+        </div>
+
+      </div>
+
+      <button class="modal-submit" type="submit">Σύνδεση</button>
+
+      <p id="no-account" class="modal-hint" style="color:#ffb3b3; display:none;">Δεν έχεις λογαριασμό.</p>
+
+      <button id="signup-btn" type="button" style="display:none; margin-top:10px; width:100%; padding:10px 14px; border:none; border-radius:14px; background:#1e293b; color:white; font-weight:600; cursor:pointer;">
+        Δημιουργία λογαριασμού
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<!-- SIGNUP -->
+<div id="signup-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 class="modal-title">Δημιούργησε λογαριασμό</h3>
+      <button class="modal-close signup-close">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <label>Email</label>
+      <input id="signup-email" type="email">
+
+      <label>Κωδικός</label>
+      <div class="pass-wrap">
+        <input id="signup-pass1" type="password" placeholder="••••••••">
+        <img id="signup-pass1-toggle" class="pass-eye" src="../IMG_5380.png">
+      </div>
+
+      <label>Επιβεβαίωση</label>
+      <div class="pass-wrap">
+        <input id="signup-pass2" type="password" placeholder="••••••••">
+        <img id="signup-pass2-toggle" class="pass-eye" src="../IMG_5380.png">
+      </div>
+
+      <p id="signup-error" style="color:#ff6b6b; display:none;">Οι κωδικοί δεν ταιριάζουν.</p>
+
+      <button id="signup-create" class="modal-submit">Δημιουργία</button>
+
+      <p class="modal-hint">
+        Έχεις ήδη λογαριασμό; <span id="back-to-login" style="color:#5bb4ff; cursor:pointer;">Σύνδεση</span>
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<!-- VERIFY -->
+<div id="verify-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 class="modal-title">Επαλήθευση</h3>
+      <button class="modal-close verify-close">×</button>
+    </div>
+
+    <div class="modal-body">
+      <p class="muted">Σου στείλαμε έναν 6-ψήφιο κωδικό.</p>
+
+      <label>Κωδικός</label>
+      <input id="verify-code" type="text">
+
+      <p id="verify-error" style="color:#ff6b6b; display:none;">Λάθος κωδικός.</p>
+
+      <button id="verify-submit" class="modal-submit">Επιβεβαίωση</button>
+    </div>
+  </div>
+</div>
+
+<!-- ⭐ MAIN JS -->
+<script src="../app.js?v=3"></script>
+
+<script>
+/* LOGO SYNC */
+function updateGuideLogo() {
+  const logo = document.getElementById("site-logo");
+  const isLight = document.body.classList.contains("light-theme");
+  logo.src = isLight ? "../logo.png" : "../black logo.png";
+}
+updateGuideLogo();
+
+document.getElementById("theme-toggle").addEventListener("click", () => {
+  setTimeout(updateGuideLogo, 20);
+});
+</script>
+
+</body>
+</html>
