@@ -382,7 +382,7 @@ menuToggle.addEventListener("click", () => {
   if (mobileMenu.classList.contains("open")) {
     menuIcon.src = "./IMG_5423.png"; // X icon (κλείσιμο)
   } else {
-    menuIcon.src = "./IMG_5424.png"; // burger icon
+    menuIcon.src = "./IMG_5422.png"; // burger icon
   }
 });
 
@@ -405,7 +405,7 @@ function updateBurgerIcon() {
 
   menuIcon.src = isLight
       ? "./IMG_5423.png"  // burger για light
-      : "./IMG_5424.png"; // burger για dark
+      : "./IMG_5422.png"; // burger για dark
 }
 
 // στο load
