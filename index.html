@@ -1336,7 +1336,223 @@ if (mobileAuth) {
   });
 }
 
+
+
+
+// ========================================
+// HERO RANKING – Top 50 coins (auto scroll)
+// ========================================
+const rankBox  = document.querySelector(".hero-rank-box");
+const rankWrap = document.getElementById("hero-rank-inner");
+
+async function loadHeroRanking() {
+  if (!rankBox || !rankWrap) return;
+
+  try {
+    const res = await fetch(
+      "https://api.coingecko.com/api/v3/coins/markets" +
+      "?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false",
+      { cache: "no-store" }
+    );
+    const data = await res.json();
+
+    rankWrap.innerHTML = "";
+
+    data.forEach((coin, idx) => {
+      const change = coin.price_change_percentage_24h || 0;
+      const up = change >= 0;
+
+      const row = document.createElement("div");
+      row.className = "hero-rank-row";
+
+      row.innerHTML = `
+        <span class="hr-pos">${idx + 1}</span>
+        <div class="hr-icon-wrap">
+          <img src="${coin.image}" class="hr-icon">
+          <span class="hr-symbol">${coin.symbol.toUpperCase()}</span>
+        </div>
+        <span class="hr-change ${up ? "hr-up" : "hr-down"}">
+          ${up ? "▲" : "▼"} ${change.toFixed(2)}%
+        </span>
+        <span class="hr-price">
+          $${coin.current_price.toLocaleString("en-US",{ maximumFractionDigits: 2 })}
+        </span>
+      `;
+
+      rankWrap.appendChild(row);
+    });
+
+    // διπλασιάζουμε για endless scroll
+    rankWrap.innerHTML += rankWrap.innerHTML;
+    startHeroScroll();
+  } catch (e) {
+    console.warn("Hero ranking error:", e);
+  }
+}
+
+function startHeroScroll() {
+  if (!rankBox || !rankWrap) return;
+
+  let pos = 0;
+  const speed = 0.5;
+
+  setInterval(() => {
+    pos += speed;
+    const half = rankWrap.scrollHeight / 2;
+    if (pos >= half) pos = 0;
+    rankBox.scrollTop = pos;
+  }, 30);
+}
+
+loadHeroRanking();
+
+
+
+// ========================================
+// Glossary
+// ========================================
+const TERMS = [
+  {k:"Blockchain", v:"Κοινόχρηστο ψηφιακό βιβλίο συναλλαγών — ασφαλές, διαφανές, αποκεντρωμένο."},
+  {k:"Wallet", v:"Πορτοφόλι crypto: custodial ή non-custodial."},
+  {k:"Seed phrase", v:"12/24 λέξεις ανάκτησης. Μην τη μοιράζεσαι ποτέ."},
+  {k:"Gas/Fees", v:"Κόστη για την εκτέλεση συναλλαγών στο blockchain."},
+  {k:"DCA", v:"Σταδιακές αγορές για μείωση ρίσκου."},
+  {k:"DeFi", v:"Αποκεντρωμένα χρηματοοικονομικά."},
+  {k:"NFT", v:"Μοναδικά ψηφιακά assets."},
+  {k:"SOL", v:"Το νόμισμα του δικτύου Solana."}
+];
+
+const gList   = document.getElementById("glossary-list");
+const gSearch = document.getElementById("glossary-search");
+
+function renderTerms(q) {
+  const query = (q || "").toLowerCase();
+  gList.innerHTML = "";
+
+  TERMS
+    .filter(t => (t.k + " " + t.v).toLowerCase().includes(query))
+    .forEach(t => {
+      const el = document.createElement("div");
+      el.className = "term";
+      el.innerHTML = `<h5>${t.k}</h5><p class="muted">${t.v}</p>`;
+      gList.appendChild(el);
+    });
+}
+
+renderTerms("");
+gSearch.addEventListener("input", e => renderTerms(e.target.value));
+
+
+
+// ========================================
+// LIVE PRICES – CoinGecko
+// ========================================
+const coins = [
+  { id: "bitcoin",  symbol: "BTC" },
+  { id: "ethereum", symbol: "ETH" },
+  { id: "solana",   symbol: "SOL" }
+];
+
+function formatEur(n) {
+  return "€" + new Intl.NumberFormat("el-GR", {
+    maximumFractionDigits: 2
+  }).format(n);
+}
+
+function renderMarket(data) {
+  const wrap = document.getElementById("market-cards");
+  if (!wrap) return;
+
+  wrap.innerHTML = "";
+
+  coins.forEach(c => {
+    const d = data[c.id] || {};
+    const change = typeof d.eur_24h_change === "number" ? d.eur_24h_change : 0;
+    const up = change >= 0;
+
+    const card = document.createElement("article");
+    card.className = "card market-card";
+    card.innerHTML = `
+      <div class="row">
+        <h4>${c.symbol}</h4>
+        <span class="chip ${up ? "up" : "down"}">${change.toFixed(2)}%</span>
+      </div>
+      <div class="price">${formatEur(d.eur || 0)}</div>
+      <div class="row muted">
+        <span>USD: $${(d.usd || 0).toFixed(2)}</span>
+        <span>24h ${up ? "▲" : "▼"}</span>
+      </div>
+    `;
+    wrap.appendChild(card);
+  });
+}
+
+async function fetchPrices() {
+  try {
+    const ids = coins.map(c => c.id).join(",");
+    const url =
+      `https://api.coingecko.com/api/v3/simple/price` +
+      `?ids=${ids}&vs_currencies=usd,eur&include_24hr_change=true`;
+
+    const res = await fetch(url, { cache: "no-store" });
+    const data = await res.json();
+    renderMarket(data);
+  } catch (e) {
+    console.warn("CoinGecko error:", e);
+  }
+}
+
+fetchPrices();
+setInterval(fetchPrices, 60000);
+
+
+// ========================================
+// TradingView Chart
+// ========================================
+let tvWidget = null;
+
+function loadTradingView(symbol) {
+  if (typeof TradingView === "undefined") return;
+
+  if (tvWidget && typeof tvWidget.remove === "function") {
+    tvWidget.remove();
+  }
+
+  tvWidget = new TradingView.widget({
+    autosize: true,
+    symbol,
+    interval: "60",
+    timezone: "Europe/Athens",
+    theme: "dark",
+    style: "1",
+    locale: "en",
+    toolbar_bg: "#0f1216",
+    enable_publishing: false,
+    hide_legend: false,
+    container_id: "tradingview_chart"
+  });
+}
+
+(function loadTV() {
+  const s = document.createElement("script");
+  s.src = "https://s3.tradingview.com/tv.js";
+  s.onload = () => loadTradingView("BINANCE:BTCUSDT");
+  document.body.appendChild(s);
+})();
+
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".pair");
+  if (!btn) return;
+
+  document.querySelectorAll(".pair").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+
+  loadTradingView(btn.dataset.symbol);
+});
+
+
 </script>
+<script src="./app.js"></script>
 
 </body>
 </html>
