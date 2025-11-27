@@ -369,3 +369,50 @@ if (gList) {
 if (gSearch) {
   gSearch.addEventListener("input", e => renderTerms(e.target.value));
 }
+
+// MOBILE MENU
+const menuToggle = document.getElementById("menu-toggle");
+const mobileMenu = document.getElementById("mobile-menu");
+const menuIcon = document.getElementById("menu-icon");
+
+menuToggle.addEventListener("click", () => {
+  mobileMenu.classList.toggle("open");
+
+  // αλλάζει εικόνα burger/open X
+  if (mobileMenu.classList.contains("open")) {
+    menuIcon.src = "./IMG_5423.png"; // X icon (κλείσιμο)
+  } else {
+    menuIcon.src = "./IMG_5424.png"; // burger icon
+  }
+});
+
+
+// MOBILE THEME SWITCH
+document.getElementById("mobile-theme-toggle")?.addEventListener("click", () => {
+    document.getElementById("theme-toggle")?.click();
+});
+
+
+// MOBILE LOGIN
+document.getElementById("mobile-auth-btn")?.addEventListener("click", () => {
+    document.getElementById("auth-btn")?.click();
+});
+
+function updateBurgerIcon() {
+  if (!menuIcon) return;
+
+  const isLight = document.body.classList.contains("light-theme");
+
+  menuIcon.src = isLight
+      ? "./IMG_5423.png"  // burger για light
+      : "./IMG_5424.png"; // burger για dark
+}
+
+// στο load
+updateBurgerIcon();
+
+// όταν αλλάζει το theme
+document.getElementById("theme-toggle")?.addEventListener("click", () => {
+    setTimeout(updateBurgerIcon, 20);
+});
+

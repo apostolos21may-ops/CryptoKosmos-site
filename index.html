@@ -715,6 +715,76 @@ body:not(.light-theme) .modal-card{
   opacity:1;
 }
 
+
+/* =========================
+   MOBILE NAV / BURGER
+========================= */
+
+.menu-btn{
+  display:none;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:6px;
+}
+
+.menu-btn img{
+  width:26px;
+  height:26px;
+  display:block;
+}
+
+/* panel του mobile menu */
+.mobile-menu{
+  display:none;
+}
+
+.mobile-menu.open{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  position:fixed;
+  top:72px;
+  right:12px;
+  left:12px;
+  padding:18px 20px;
+  border-radius:18px;
+  background:var(--card);
+  box-shadow:0 10px 26px rgba(0,0,0,0.35);
+  z-index:200;
+}
+
+.mobile-menu a{
+  font-size:16px;
+}
+
+.mobile-btn{
+  border-radius:999px;
+  border:1px solid var(--border);
+  padding:8px 12px;
+  background:var(--bg-alt);
+  color:var(--text);
+  font-size:14px;
+  cursor:pointer;
+}
+
+/* ΜΟΝΟ σε μικρές οθόνες */
+@media (max-width: 850px){
+
+  .nav{
+    display:none !important;      /* κρύψε τα links */
+  }
+
+  .header-actions .pill-btn{
+    display:none;                 /* κρύψε theme + login */
+  }
+
+  #menu-toggle{
+    display:inline-flex !important; /* δείξε burger */
+    align-items:center;
+    justify-content:center;
+  }
+}
 </style>
 
 </head>
@@ -737,20 +807,25 @@ body:not(.light-theme) .modal-card{
         <a href="#glossary">Γλωσσάρι</a>
       </nav>
 
-      <!-- ΝΕΟ: κουμπί theme + login -->
-   <div class="header-actions">
   
+<div class="header-actions">
+
   <!-- THEME BUTTON -->
   <button id="theme-toggle" class="pill-btn" type="button">
-    <img id="theme-icon" src="./IMG_5300.png" alt="theme" class="icon-img" />
+    <img id="theme-icon" src="./IMG_5300.png" class="icon-img" />
     <span id="theme-label">Dark</span>
   </button>
 
   <!-- LOGIN BUTTON -->
   <button id="auth-btn" class="pill-btn" type="button">
-  <img id="auth-icon" src="./IMG_5301.png" alt="login" class="icon-img" />
-  <span id="auth-label">Login</span>
-</button>
+    <img id="auth-icon" src="./IMG_5301.png" class="icon-img" />
+    <span id="auth-label">Login</span>
+  </button>
+
+  <!-- MOBILE BURGER -->
+  <button id="menu-toggle" class="menu-btn">
+    <img id="menu-icon" src="./IMG_5424.png" alt="menu">
+  </button>
 
 </div>
 
@@ -758,7 +833,18 @@ body:not(.light-theme) .modal-card{
   </header>
 
 
+<!-- MOBILE MENU PANEL -->
+<div id="mobile-menu" class="mobile-menu hidden">
+    <a href="#market">Αγορά</a>
+    <a href="#charts">Τάσεις</a>
+    <a href="#guides">Οδηγοί</a>
+    <a href="#glossary">Γλωσσάρι</a>
 
+    <hr>
+
+    <button id="mobile-theme-toggle" class="mobile-btn">Αλλαγή Θέματος</button>
+    <button id="mobile-auth-btn" class="mobile-btn">Login</button>
+</div>
 
 <!-- 🔥🔥🔥 ΤΟ ΝΕΟ HERO ΜΕ ΤΟ 3D PANEL 🔥🔥🔥 -->
 <section class="hero">
@@ -969,7 +1055,6 @@ body:not(.light-theme) .modal-card{
   </div>
 </div>
 
-
 <script>
 // ========================================
 // FOOTER YEAR
@@ -978,269 +1063,95 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
 
 // ========================================
-// LIVE PRICES – CoinGecko
+// LOGIN ELEMENTS
 // ========================================
-const coins = [
-  { id: "bitcoin",  symbol: "BTC" },
-  { id: "ethereum", symbol: "ETH" },
-  { id: "solana",   symbol: "SOL" }
-];
-
-function formatEur(n) {
-  return "€" + new Intl.NumberFormat("el-GR", {
-    maximumFractionDigits: 2
-  }).format(n);
-}
-
-function renderMarket(data) {
-  const wrap = document.getElementById("market-cards");
-  if (!wrap) return;
-
-  wrap.innerHTML = "";
-
-  coins.forEach(c => {
-    const d = data[c.id] || {};
-    const change = typeof d.eur_24h_change === "number" ? d.eur_24h_change : 0;
-    const up = change >= 0;
-
-    const card = document.createElement("article");
-    card.className = "card market-card";
-    card.innerHTML = `
-      <div class="row">
-        <h4>${c.symbol}</h4>
-        <span class="chip ${up ? "up" : "down"}">${change.toFixed(2)}%</span>
-      </div>
-      <div class="price">${formatEur(d.eur || 0)}</div>
-      <div class="row muted">
-        <span>USD: $${(d.usd || 0).toFixed(2)}</span>
-        <span>24h ${up ? "▲" : "▼"}</span>
-      </div>
-    `;
-    wrap.appendChild(card);
-  });
-}
-
-async function fetchPrices() {
-  try {
-    const ids = coins.map(c => c.id).join(",");
-    const url =
-      `https://api.coingecko.com/api/v3/simple/price` +
-      `?ids=${ids}&vs_currencies=usd,eur&include_24hr_change=true`;
-
-    const res = await fetch(url, { cache: "no-store" });
-    const data = await res.json();
-    renderMarket(data);
-  } catch (e) {
-    console.warn("CoinGecko error:", e);
-  }
-}
-
-fetchPrices();
-setInterval(fetchPrices, 60000);
-
-
-// ========================================
-// TradingView Chart
-// ========================================
-let tvWidget = null;
-
-function loadTradingView(symbol) {
-  if (typeof TradingView === "undefined") return;
-
-  if (tvWidget && typeof tvWidget.remove === "function") {
-    tvWidget.remove();
-  }
-
-  tvWidget = new TradingView.widget({
-    autosize: true,
-    symbol,
-    interval: "60",
-    timezone: "Europe/Athens",
-    theme: "dark",
-    style: "1",
-    locale: "en",
-    toolbar_bg: "#0f1216",
-    enable_publishing: false,
-    hide_legend: false,
-    container_id: "tradingview_chart"
-  });
-}
-
-(function loadTV() {
-  const s = document.createElement("script");
-  s.src = "https://s3.tradingview.com/tv.js";
-  s.onload = () => loadTradingView("BINANCE:BTCUSDT");
-  document.body.appendChild(s);
-})();
-
-document.addEventListener("click", e => {
-  const btn = e.target.closest(".pair");
-  if (!btn) return;
-
-  document.querySelectorAll(".pair").forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-
-  loadTradingView(btn.dataset.symbol);
-});
-
-
-// ========================================
-// Glossary
-// ========================================
-const TERMS = [
-  {k:"Blockchain", v:"Κοινόχρηστο ψηφιακό βιβλίο συναλλαγών — ασφαλές, διαφανές, αποκεντρωμένο."},
-  {k:"Wallet", v:"Πορτοφόλι crypto: custodial ή non-custodial."},
-  {k:"Seed phrase", v:"12/24 λέξεις ανάκτησης. Μην τη μοιράζεσαι ποτέ."},
-  {k:"Gas/Fees", v:"Κόστη για την εκτέλεση συναλλαγών στο blockchain."},
-  {k:"DCA", v:"Σταδιακές αγορές για μείωση ρίσκου."},
-  {k:"DeFi", v:"Αποκεντρωμένα χρηματοοικονομικά."},
-  {k:"NFT", v:"Μοναδικά ψηφιακά assets."},
-  {k:"SOL", v:"Το νόμισμα του δικτύου Solana."}
-];
-
-const gList   = document.getElementById("glossary-list");
-const gSearch = document.getElementById("glossary-search");
-
-function renderTerms(q) {
-  const query = (q || "").toLowerCase();
-  gList.innerHTML = "";
-
-  TERMS
-    .filter(t => (t.k + " " + t.v).toLowerCase().includes(query))
-    .forEach(t => {
-      const el = document.createElement("div");
-      el.className = "term";
-      el.innerHTML = `<h5>${t.k}</h5><p class="muted">${t.v}</p>`;
-      gList.appendChild(el);
-    });
-}
-
-renderTerms("");
-gSearch.addEventListener("input", e => renderTerms(e.target.value));
-
-
-// ========================================
-// LOGIN / SIGNUP / VERIFY SYSTEM
-// ========================================
-
-// Navbar auth button
 const authBtn   = document.getElementById("auth-btn");
 const authLabel = document.getElementById("auth-label");
 const authIcon  = document.getElementById("auth-icon");
 
-// Login modal
 const loginModal = document.getElementById("login-modal");
 const loginClose = document.getElementById("login-close");
 const loginForm  = document.getElementById("login-form");
 const noAccountMsg = document.getElementById("no-account");
 const signupBtn  = document.getElementById("signup-btn");
 
-// Signup modal
 const signupModal   = document.getElementById("signup-modal");
 const signupClose   = document.querySelector(".signup-close");
 const signupCreate  = document.getElementById("signup-create");
 const backToLogin   = document.getElementById("back-to-login");
 const signupError   = document.getElementById("signup-error");
 
-// Verify modal
 const verifyModal   = document.getElementById("verify-modal");
 const verifyClose   = document.querySelector(".verify-close");
 const verifySubmit  = document.getElementById("verify-submit");
 const verifyError   = document.getElementById("verify-error");
 
-let currentUser       = null;
-let tempUser          = null;
-let verificationCode  = null;
+let currentUser      = null;
+let tempUser         = null;
+let verificationCode = null;
 
 
-// ---------- Storage ----------
+// ========================================
+// USER STORAGE
+// ========================================
 function loadUser() {
   try {
-    return JSON.parse(localStorage.getItem("ck-user")) || null;
+    return JSON.parse(localStorage.getItem("ck-user"));
   } catch {
     return null;
   }
 }
 
 function saveUser(user) {
-  if (user) {
-    localStorage.setItem("ck-user", JSON.stringify(user));
-  } else {
-    localStorage.removeItem("ck-user");
-  }
+  if (user) localStorage.setItem("ck-user", JSON.stringify(user));
+  else localStorage.removeItem("ck-user");
 }
 
 
-// ---------- Update auth UI ----------
+// ========================================
+// AUTH UI
+// ========================================
 function updateAuthUI() {
-  if (!authBtn || !authLabel || !authIcon) return;
+  if (!authBtn) return;
 
   if (currentUser) {
     authLabel.textContent = "Logout";
     authBtn.dataset.state = "logout";
-    authIcon.src = "./IMG_5367.png";   // avatar μετά το login
-    authBtn.title = currentUser.email || "";
+    authIcon.src = "./IMG_5367.png";
   } else {
     authLabel.textContent = "Login";
     authBtn.dataset.state = "login";
-    authIcon.src = "./IMG_5301.png";   // default ανθρωπάκι
-    authBtn.title = "";
+    authIcon.src = "./IMG_5301.png";
   }
 }
 
+currentUser = loadUser();
+updateAuthUI();
 
-// ---------- Open / close modals ----------
+
+// ========================================
+// LOGIN OPEN/CLOSE
+// ========================================
 function openLogin() {
-  if (!loginModal) return;
   loginForm && loginForm.reset();
-  if (noAccountMsg) noAccountMsg.style.display = "none";
-  if (signupBtn)    signupBtn.style.display = "none";
+  noAccountMsg.style.display = "none";
+  signupBtn.style.display = "none";
 
-  signupModal && signupModal.classList.add("hidden");
-  verifyModal && verifyModal.classList.add("hidden");
+  signupModal.classList.add("hidden");
+  verifyModal.classList.add("hidden");
 
   loginModal.classList.remove("hidden");
 }
 
 function closeLogin() {
-  if (!loginModal) return;
   loginModal.classList.add("hidden");
   loginForm && loginForm.reset();
 }
 
-function openSignup() {
-  if (!signupModal) return;
-  signupModal.classList.remove("hidden");
-}
-
-function closeSignup() {
-  if (!signupModal) return;
-  signupModal.classList.add("hidden");
-}
-
-function openVerify() {
-  if (!verifyModal) return;
-  verifyError && (verifyError.style.display = "none");
-  verifyModal.classList.remove("hidden");
-}
-
-function closeVerify() {
-  if (!verifyModal) return;
-  verifyModal.classList.add("hidden");
-}
-
-
-// ---------- Initial load ----------
-currentUser = loadUser();
-updateAuthUI();
-
-
-// ---------- Auth button (navbar) ----------
 if (authBtn) {
   authBtn.addEventListener("click", () => {
-    if (authBtn.dataset.state === "login") {
-      openLogin();
-    } else {
+    if (authBtn.dataset.state === "login") openLogin();
+    else {
       currentUser = null;
       saveUser(null);
       updateAuthUI();
@@ -1248,20 +1159,16 @@ if (authBtn) {
   });
 }
 
+if (loginClose) loginClose.addEventListener("click", closeLogin);
 
-// ---------- Login modal ----------
-if (loginClose) {
-  loginClose.addEventListener("click", closeLogin);
-}
+loginModal.addEventListener("click", e => {
+  if (e.target.classList.contains("modal-backdrop")) closeLogin();
+});
 
-if (loginModal) {
-  loginModal.addEventListener("click", e => {
-    if (e.target.classList.contains("modal-backdrop")) {
-      closeLogin();
-    }
-  });
-}
 
+// ========================================
+// LOGIN SUBMIT
+// ========================================
 if (loginForm) {
   loginForm.addEventListener("submit", e => {
     e.preventDefault();
@@ -1270,14 +1177,12 @@ if (loginForm) {
     const pass  = document.getElementById("login-pass").value.trim();
     const saved = loadUser();
 
-    // Δεν έχει αποθηκευτεί user ή email/κωδικός δεν ταιριάζουν
     if (!saved || saved.email !== email || saved.pass !== pass) {
-      if (noAccountMsg) noAccountMsg.style.display = "block";
-      if (signupBtn)    signupBtn.style.display = "block";
+      noAccountMsg.style.display = "block";
+      signupBtn.style.display = "block";
       return;
     }
 
-    // OK → login
     currentUser = saved;
     updateAuthUI();
     closeLogin();
@@ -1285,279 +1190,151 @@ if (loginForm) {
 }
 
 
-// ---------- "Δημιουργία λογαριασμού" από login ----------
-if (signupBtn) {
-  signupBtn.addEventListener("click", () => {
-    // κλείνουμε login
-    closeLogin();
+// ========================================
+// SIGNUP FLOW
+// ========================================
+signupBtn.addEventListener("click", () => {
+  closeLogin();
+  noAccountMsg.style.display = "none";
+  signupModal.classList.remove("hidden");
+});
 
-    if (noAccountMsg) noAccountMsg.style.display = "none";
-    signupBtn.style.display = "none";
+signupClose.addEventListener("click", () => signupModal.classList.add("hidden"));
 
-    // ανοίγουμε signup
-    openSignup();
-  });
-}
+backToLogin.addEventListener("click", () => {
+  signupModal.classList.add("hidden");
+  openLogin();
+});
 
+signupCreate.addEventListener("click", () => {
+  const email = document.getElementById("signup-email").value.trim();
+  const p1    = document.getElementById("signup-pass1").value.trim();
+  const p2    = document.getElementById("signup-pass2").value.trim();
 
-// ---------- Signup modal ----------
-if (signupClose) {
-  signupClose.addEventListener("click", () => {
-    closeSignup();
-  });
-}
+  if (!email || !p1 || !p2) return;
 
-if (backToLogin) {
-  backToLogin.addEventListener("click", () => {
-    closeSignup();
-    openLogin();
-  });
-}
+  if (p1 !== p2) {
+    signupError.style.display = "block";
+    return;
+  }
 
-if (signupCreate) {
-  signupCreate.addEventListener("click", () => {
-    const email = document.getElementById("signup-email").value.trim();
-    const pass1 = document.getElementById("signup-pass1").value.trim();
-    const pass2 = document.getElementById("signup-pass2").value.trim();
+  signupError.style.display = "none";
 
-    if (!email || !pass1 || !pass2) return;
+  verificationCode = String(Math.floor(100000 + Math.random() * 900000));
+  console.log("Verification:", verificationCode);
 
-    if (pass1 !== pass2) {
-      signupError && (signupError.style.display = "block");
-      return;
-    }
+  tempUser = { email, pass: p1 };
 
-    signupError && (signupError.style.display = "none");
-
-    // fake verification code
-    verificationCode = String(Math.floor(100000 + Math.random() * 900000));
-    console.log("Verification code:", verificationCode); // για debug
-
-    tempUser = { email, pass: pass1 };
-
-    closeSignup();
-    openVerify();
-  });
-}
-
-
-// ---------- Verify modal ----------
-if (verifyClose) {
-  verifyClose.addEventListener("click", () => {
-    closeVerify();
-  });
-}
-
-if (verifySubmit) {
-  verifySubmit.addEventListener("click", () => {
-    const code = document.getElementById("verify-code").value.trim();
-    if (code !== verificationCode) {
-      verifyError && (verifyError.style.display = "block");
-      return;
-    }
-
-    verifyError && (verifyError.style.display = "none");
-
-    // Save user
-    saveUser(tempUser);
-    currentUser = tempUser;
-    updateAuthUI();
-    closeVerify();
-    alert("Ο λογαριασμός δημιουργήθηκε!");
-  });
-}
-
-
-
-
-
-// ===== PASSWORD EYE TOGGLE =====
-document.querySelectorAll(".toggle-pass").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const id = btn.dataset.target;
-    const input = document.getElementById(id);
-
-    if (input.type === "password") {
-      input.type = "text";
-      btn.textContent = "🙈";
-    } else {
-      input.type = "password";
-      btn.textContent = "👁️";
-    }
-  });
+  signupModal.classList.add("hidden");
+  verifyModal.classList.remove("hidden");
 });
 
 
-// ===== PASSWORD EYE TOGGLE (with images) =====
-document.querySelectorAll(".toggle-pass").forEach( eye => {
-  eye.addEventListener("click", () => {
+// ========================================
+// VERIFY FLOW
+// ========================================
+verifyClose.addEventListener("click", () => verifyModal.classList.add("hidden"));
 
-    const id = eye.dataset.target;
-    const input = document.getElementById(id);
+verifySubmit.addEventListener("click", () => {
+  const code = document.getElementById("verify-code").value.trim();
+  if (code !== verificationCode) {
+    verifyError.style.display = "block";
+    return;
+  }
 
-    if (input.type === "password") {
-      input.type = "text";
-      eye.src = "./IMG_5381.png";  // 👁️ ανοιχτό μάτι
-    } else {
-      input.type = "password";
-      eye.src = "./IMG_5380.png";  // 👁️ κλειστό μάτι
-    }
+  saveUser(tempUser);
+  currentUser = tempUser;
+  updateAuthUI();
+  verifyModal.classList.add("hidden");
 
-  });
+  alert("Ο λογαριασμός δημιουργήθηκε!");
 });
 
 
-
-
-
+// ========================================
+// PASSWORD EYE (images)
+// ========================================
 function setupPasswordToggle(inputId, iconId) {
   const input = document.getElementById(inputId);
   const icon  = document.getElementById(iconId);
-
   if (!input || !icon) return;
 
   icon.addEventListener("click", () => {
-    const isHidden = input.type === "password";
-    input.type = isHidden ? "text" : "password";
-    icon.src = isHidden ? "./IMG_5381.png" : "./IMG_5380.png";
+    const show = input.type === "password";
+    input.type = show ? "text" : "password";
+    icon.src = show ? "./IMG_5381.png" : "./IMG_5380.png";
   });
 }
 
-// LOGIN
 setupPasswordToggle("login-pass", "login-pass-toggle");
-
-// SIGNUP
 setupPasswordToggle("signup-pass1", "signup-pass1-toggle");
 setupPasswordToggle("signup-pass2", "signup-pass2-toggle");
 
 
-const preloadImages = [
-  "./IMG_5308.jpg",
-  "./IMG_5377.jpg"
-];
-
-preloadImages.forEach(src => {
-  const img = new Image();
-  img.src = src;
-});
-
 // ========================================
-// HERO RANKING – Top 50 coins (auto scroll)
-// ========================================
-const rankBox  = document.querySelector(".hero-rank-box");
-const rankWrap = document.getElementById("hero-rank-inner");
-
-async function loadHeroRanking() {
-  if (!rankBox || !rankWrap) return;
-
-  try {
-    const res = await fetch(
-      "https://api.coingecko.com/api/v3/coins/markets" +
-      "?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false",
-      { cache: "no-store" }
-    );
-    const data = await res.json();
-
-    rankWrap.innerHTML = "";
-
-    data.forEach((coin, idx) => {
-      const change = coin.price_change_percentage_24h || 0;
-      const up = change >= 0;
-
-      const row = document.createElement("div");
-      row.className = "hero-rank-row";
-
-      row.innerHTML = `
-        <span class="hr-pos">${idx + 1}</span>
-        <div class="hr-icon-wrap">
-          <img src="${coin.image}" class="hr-icon">
-          <span class="hr-symbol">${coin.symbol.toUpperCase()}</span>
-        </div>
-        <span class="hr-change ${up ? "hr-up" : "hr-down"}">
-          ${up ? "▲" : "▼"} ${change.toFixed(2)}%
-        </span>
-        <span class="hr-price">
-          $${coin.current_price.toLocaleString("en-US",{ maximumFractionDigits: 2 })}
-        </span>
-      `;
-
-      rankWrap.appendChild(row);
-    });
-
-    // διπλασιάζουμε για endless scroll
-    rankWrap.innerHTML += rankWrap.innerHTML;
-    startHeroScroll();
-  } catch (e) {
-    console.warn("Hero ranking error:", e);
-  }
-}
-
-function startHeroScroll() {
-  if (!rankBox || !rankWrap) return;
-
-  let pos = 0;
-  const speed = 0.5;
-
-  setInterval(() => {
-    pos += speed;
-    const half = rankWrap.scrollHeight / 2;
-    if (pos >= half) pos = 0;
-    rankBox.scrollTop = pos;
-  }, 30);
-}
-
-loadHeroRanking();
-
-
-// ========================================
-// THEME TOGGLER
+// THEME TOGGLE (CLEAN VERSION)
 // ========================================
 const themeBtn   = document.getElementById("theme-toggle");
 const themeIcon  = document.getElementById("theme-icon");
 const themeLabel = document.getElementById("theme-label");
+const siteLogo   = document.getElementById("site-logo");
+const menuIcon   = document.getElementById("menu-icon");
 
-let isLight = false;
+let isLight = localStorage.getItem("ck-theme") === "light";
 
-if (localStorage.getItem("ck-theme") === "light") {
-  document.body.classList.add("light-theme");
-  isLight = true;
-  if (themeIcon)  themeIcon.src = "./IMG_5299.png";
-  if (themeLabel) themeLabel.textContent = "Light";
+function applyTheme() {
+  if (isLight) {
+    document.body.classList.add("light-theme");
+    themeIcon.src = "./IMG_5299.png";
+    themeLabel.textContent = "Light";
+    siteLogo.src = "./logo.png";
+    menuIcon && (menuIcon.src = "./IMG_5423.png");
+  } else {
+    document.body.classList.remove("light-theme");
+    themeIcon.src = "./IMG_5300.png";
+    themeLabel.textContent = "Dark";
+    siteLogo.src = "./black logo.png";
+    menuIcon && (menuIcon.src = "./IMG_5424.png");
+  }
 }
+
+applyTheme();
 
 if (themeBtn) {
   themeBtn.addEventListener("click", () => {
     isLight = !isLight;
-
-    if (isLight) {
-      document.body.classList.add("light-theme");
-      if (themeIcon)  themeIcon.src = "./IMG_5299.png";
-      if (themeLabel) themeLabel.textContent = "Light";
-      localStorage.setItem("ck-theme", "light");
-    } else {
-      document.body.classList.remove("light-theme");
-      if (themeIcon)  themeIcon.src = "./IMG_5300.png";
-      if (themeLabel) themeLabel.textContent = "Dark";
-      localStorage.setItem("ck-theme", "dark");
-    }
+    localStorage.setItem("ck-theme", isLight ? "light" : "dark");
+    applyTheme();
   });
 }
 
-const siteLogo = document.getElementById("site-logo");
 
-function updateLogoTheme() {
-  if (document.body.classList.contains("light-theme")) {
-    siteLogo.src = "./logo.png"; // λογότυπο για Light
-  } else {
-    siteLogo.src = "./black logo.png"; // λογότυπο για Dark
-  }
+// ========================================
+// MOBILE MENU
+// ========================================
+const menuToggle = document.getElementById("menu-toggle");
+const mobileMenu = document.getElementById("mobile-menu");
+const mobileTheme = document.getElementById("mobile-theme-toggle");
+const mobileAuth  = document.getElementById("mobile-auth-btn");
+
+if (menuToggle) {
+  menuToggle.addEventListener("click", () => {
+    mobileMenu.classList.toggle("open");
+  });
 }
 
-// Κάθε φορά που αλλάζει το theme
-themeBtn.addEventListener("click", updateLogoTheme);
+if (mobileTheme) {
+  mobileTheme.addEventListener("click", () => {
+    themeBtn.click();
+  });
+}
 
-// Όταν φορτώνει η σελίδα
-updateLogoTheme();
+if (mobileAuth) {
+  mobileAuth.addEventListener("click", () => {
+    authBtn.click();
+    mobileMenu.classList.remove("open");
+  });
+}
 
 </script>
 

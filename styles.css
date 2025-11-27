@@ -684,4 +684,170 @@ body:not(.light-theme) .modal-card{
   opacity:1;
 }
 
+/* BURGER BTN */
+.burger-btn {
+  background: none;
+  border: none;
+  padding: 6px;
+  display: none; /* κρυφό σε desktop */
+  cursor: pointer;
+}
+.burger-btn img {
+  width: 26px;
+  height: 26px;
+}
 
+/* ============= BURGER BUTTON ============= */
+.menu-btn {
+  display:none; /* default = hidden on desktop */
+  border:none;
+  background:transparent;
+  cursor:pointer;
+}
+
+.menu-btn img {
+  width:26px;
+  height:26px;
+}
+
+
+/* ============= MOBILE MENU PANEL ============= */
+.mobile-menu {
+  position:fixed;
+  top:72px; /* κάτω από header */
+  left:0;
+  width:100%;
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  z-index:999;
+}
+
+.mobile-menu a {
+  font-size:17px;
+  padding:8px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.mobile-btn {
+  padding:12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--bg-alt);
+  color:var(--text);
+  font-size:15px;
+}
+
+.hidden {
+  display:none !important;
+}
+
+
+/* ============= SHOW ONLY ON MOBILE ============= */
+@media (max-width: 850px) {
+  .nav {
+    display:none !important;
+  }
+  .header-actions {
+    display:none !important;
+  }
+  .menu-btn {
+    display:block;
+  }
+}
+
+
+
+
+
+/* DEFAULT: hide burger on desktop */
+.menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+
+  position: absolute;
+  right: 20px;
+  top: 18px;
+}
+
+.menu-btn img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* MOBILE */
+@media (max-width: 850px) {
+
+  /* Κρύψε desktop μενού */
+  .nav {
+    display: none !important;
+  }
+
+  .header-actions {
+    display: none !important;
+  }
+
+  /* Δείξε burger */
+  .menu-btn {
+    display: block !important;
+  }
+}
+
+
+/* ---- MOBILE NAVIGATION ---- */
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.menu-btn img {
+  width: 26px;
+  height: 26px;
+}
+
+/* MOBILE PANEL */
+.mobile-menu {
+  display: none;
+}
+
+.mobile-menu.open {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: fixed;
+  top: 70px;
+  right: 10px;
+  left: 10px;
+  padding: 25px;
+  border-radius: 18px;
+  background: var(--card);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.28);
+  z-index: 999;
+}
+
+/* --- SHOW BURGER ON MOBILE ONLY --- */
+@media (max-width: 850px) {
+
+  .nav {
+    display: none !important;
+  }
+
+  .header-actions .pill-btn {
+    display: none; /* theme + login */
+  }
+
+  #menu-toggle {
+    display: inline-block !important;
+  }
+}
