@@ -23,6 +23,19 @@ function saveUser(user) {
 let currentUser = loadUser();
 
 
+
+
+function closeBurgerMenu() {
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (!menuToggle || !mobileMenu) return;
+
+    menuToggle.classList.remove("open"); // το κάνει ≡
+    mobileMenu.classList.remove("open"); // κλείνει το menu
+}
+
+
 // ==========================
 // 2) THEME SYSTEM (GLOBAL)
 // ==========================

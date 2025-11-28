@@ -1131,6 +1131,16 @@ currentUser = loadUser();
 updateAuthUI();
 
 
+function closeBurgerMenu() {
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (!menuToggle || !mobileMenu) return;
+
+  menuToggle.classList.remove("open");  // γυρνάει το X σε ≡
+  mobileMenu.classList.remove("open");  // κλείνει το burger panel
+}
+
 // ========================================
 // LOGIN OPEN/CLOSE
 // ========================================
@@ -1161,10 +1171,16 @@ if (authBtn) {
   });
 }
 
-if (loginClose) loginClose.addEventListener("click", closeLogin);
+if (loginClose) loginClose.addEventListener("click", () => {
+    closeLogin();
+    closeBurgerMenu();
+});
 
 loginModal.addEventListener("click", e => {
-  if (e.target.classList.contains("modal-backdrop")) closeLogin();
+  if (e.target.classList.contains("modal-backdrop")) {
+      closeLogin();
+      closeBurgerMenu();
+  }
 });
 
 
