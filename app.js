@@ -370,49 +370,44 @@ if (gSearch) {
   gSearch.addEventListener("input", e => renderTerms(e.target.value));
 }
 
-// MOBILE MENU
-const menuToggle = document.getElementById("menu-toggle");
+// ===============================
+// CLEAN BURGER MENU (CSS ONLY)
+// ===============================
+
+const burger = document.getElementById("menu-toggle");
 const mobileMenu = document.getElementById("mobile-menu");
-const menuIcon = document.getElementById("menu-icon");
 
-menuToggle.addEventListener("click", () => {
+function closeBurger() {
+  burger.classList.remove("open");
+  mobileMenu.classList.remove("open");
+}
+
+// Toggle open/close
+burger.addEventListener("click", () => {
+  burger.classList.toggle("open");
   mobileMenu.classList.toggle("open");
+});
 
-  // αλλάζει εικόνα burger/open X
-  if (mobileMenu.classList.contains("open")) {
-    menuIcon.src = "./IMG_5423.png"; // X icon (κλείσιμο)
-  } else {
-    menuIcon.src = "./IMG_5422.png"; // burger icon
+// Close burger on modal close
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("modal-backdrop")) {
+    closeBurger();
   }
 });
 
-
-// MOBILE THEME SWITCH
-document.getElementById("mobile-theme-toggle")?.addEventListener("click", () => {
-    document.getElementById("theme-toggle")?.click();
-});
-
-
-// MOBILE LOGIN
+// When pressing login in mobile menu
 document.getElementById("mobile-auth-btn")?.addEventListener("click", () => {
-    document.getElementById("auth-btn")?.click();
+  document.getElementById("auth-btn")?.click();
+  closeBurger();
 });
 
-function updateBurgerIcon() {
-  if (!menuIcon) return;
-
-  const isLight = document.body.classList.contains("light-theme");
-
-  menuIcon.src = isLight
-      ? "./IMG_5423.png"  // burger για light
-      : "./IMG_5422.png"; // burger για dark
-}
-
-// στο load
-updateBurgerIcon();
-
-// όταν αλλάζει το theme
-document.getElementById("theme-toggle")?.addEventListener("click", () => {
-    setTimeout(updateBurgerIcon, 20);
+// When pressing theme in mobile menu
+document.getElementById("mobile-theme-toggle")?.addEventListener("click", () => {
+  document.getElementById("theme-toggle")?.click();
+  closeBurger();
 });
 
+// When login/signup/verify modals close
+document.getElementById("login-close")?.addEventListener("click", closeBurger);
+document.querySelector(".signup-close")?.addEventListener("click", closeBurger);
+document.querySelector(".verify-close")?.addEventListener("click", closeBurger);

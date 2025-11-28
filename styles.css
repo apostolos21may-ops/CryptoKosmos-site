@@ -851,3 +851,29 @@ body:not(.light-theme) .modal-card{
     display: inline-block !important;
   }
 }
+
+
+
+
+/* ΔΕΣΚΤΟΠ: κρύβουμε το burger, δείχνουμε full menu */
+#menu-toggle {
+  display: none;
+}
+
+/* Αν έχεις κλασικό nav με links, π.χ. .main-nav ή .desktop-nav */
+.main-nav {
+  display: flex;
+}
+
+/* ΜΟΒΙLE: δείχνουμε burger, κρύβουμε full menu */
+@media (max-width: 768px) {
+  #menu-toggle {
+    display: flex;   /* ή block, ανάλογα πώς το έχεις */
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main-nav {
+    display: none;
+  }
+}
