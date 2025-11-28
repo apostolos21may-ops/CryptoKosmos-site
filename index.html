@@ -1217,7 +1217,18 @@ signupBtn.addEventListener("click", () => {
   signupModal.classList.remove("hidden");
 });
 
-signupClose.addEventListener("click", () => signupModal.classList.add("hidden"));
+signupClose.addEventListener("click", () => {
+    signupModal.classList.add("hidden");
+    closeBurgerMenu();   // 🟩 RESET BURGER
+});
+
+signupModal.addEventListener("click", e => {
+    if (e.target.classList.contains("modal-backdrop")) {
+        signupModal.classList.add("hidden");
+        closeBurgerMenu();   // 🟩 RESET BURGER
+    }
+});
+
 
 backToLogin.addEventListener("click", () => {
   signupModal.classList.add("hidden");
@@ -1251,7 +1262,17 @@ signupCreate.addEventListener("click", () => {
 // ========================================
 // VERIFY FLOW
 // ========================================
-verifyClose.addEventListener("click", () => verifyModal.classList.add("hidden"));
+verifyClose.addEventListener("click", () => {
+    verifyModal.classList.add("hidden");
+    closeBurgerMenu();  // 🟩 RESET BURGER
+});
+
+verifyModal.addEventListener("click", e => {
+    if (e.target.classList.contains("modal-backdrop")) {
+        verifyModal.classList.add("hidden");
+        closeBurgerMenu(); // 🟩 RESET BURGER
+    }
+});
 
 verifySubmit.addEventListener("click", () => {
   const code = document.getElementById("verify-code").value.trim();
