@@ -863,6 +863,38 @@ html, body {
   }
 }
 
+
+
+
+/* =========================================
+   MOBILE – οριζόντιο scroll για τους Οδηγούς
+========================================= */
+@media (max-width: 850px) {
+
+  #guides-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 8px;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* για iPhone */
+  }
+
+  #guides-cards .card {
+    min-width: 260px;
+    flex: 0 0 260px;
+    scroll-snap-align: start;
+  }
+
+  #guides-cards::-webkit-scrollbar {
+    height: 0;
+    background: transparent; /* αόρατη μπάρα */
+  }
+}
 </style>
 
 </head>
@@ -980,10 +1012,10 @@ html, body {
 
   <!-- GUIDES -->
   <section id="guides" class="section">
-    <div class="container">
-      <h3>Οδηγοί για αρχάριους</h3>
-      <div class="cards guides">
-        <article class="card">
+  <div class="container">
+    <h3>Οδηγοί για αρχάριους</h3>
+    <div id="guides-cards" class="cards guides">
+      <article class="card">
           <h4>Τι είναι το Blockchain</h4>
           <p>Το “κοινόχρηστο ψηφιακό βιβλίο” που καταγράφει συναλλαγές με ασφάλεια &amp; διαφάνεια.</p>
           <a href="guides/blockchain.html" class="btn">Διάβασε</a>
