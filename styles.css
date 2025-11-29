@@ -880,43 +880,42 @@ body:not(.light-theme) .modal-card{
 
 
 /* ==========================================
-   UNIVERSAL MOBILE HORIZONTAL SCROLL FIX
-   (for cards, lists, grids that get cut off)
+   MOBILE FIXED CARD SIZE + SMOOTH HORIZONTAL SCROLL
+   (για market cards, guides, charts pairs κτλ)
 ========================================== */
 
 @media (max-width: 850px) {
 
-  /* ΟΛΕΣ οι σειρές/λίστες μπορούν να κάνουν scroll-x */
-  .scroll-x,
+  /* οριζόντιο scroll για όλες τις σειρές */
   .cards,
-  .pairs,
+  #market-cards,
   .guides,
-  #market-cards {
+  .pairs {
     display: flex !important;
+    flex-wrap: nowrap !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
     gap: 16px;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 4px;
-    width: 100%;
   }
 
-  /* ΑΟΡΑΤΗ scroll bar */
-  .scroll-x::-webkit-scrollbar,
+  /* αόρατη scrollbar */
   .cards::-webkit-scrollbar,
+  #market-cards::-webkit-scrollbar,
   .guides::-webkit-scrollbar,
-  .pairs::-webkit-scrollbar,
-  #market-cards::-webkit-scrollbar {
+  .pairs::-webkit-scrollbar {
     height: 0px !important;
     width: 0px !important;
   }
 
-  /* Μην κόβονται κάρτες */
+  /* όλες οι κάρτες έχουν σταθερό πλάτος 280px */
   .cards > *,
   #market-cards > *,
   .guides > *,
   .pairs > * {
-    flex: 0 0 auto !important;
+    flex: 0 0 280px !important;
+    max-width: 280px !important;
   }
 }
