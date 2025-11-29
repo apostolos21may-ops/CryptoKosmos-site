@@ -800,53 +800,23 @@ body:not(.light-theme) .modal-card{
   }
 }
 
-/* ============================
-   BURGER MENU — CLEAN VERSION
-==============================*/
+
+/* ---- MOBILE NAVIGATION ---- */
 
 .menu-btn {
-  width: 32px;
-  height: 26px;
   display: none;
-  flex-direction: column;
-  justify-content: space-between;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
-  z-index: 300;
+  padding: 6px;
 }
 
-.burger-line {
-  width: 100%;
-  height: 3px;
-  background: var(--text);
-  border-radius: 4px;
-  transition: 0.35s ease;
+.menu-btn img {
+  width: 26px;
+  height: 26px;
 }
 
-/* OPEN → γίνεται Χ */
-.menu-btn.open .burger-line:nth-child(1) {
-  transform: translateY(11px) rotate(45deg);
-}
-.menu-btn.open .burger-line:nth-child(2) {
-  opacity: 0;
-}
-.menu-btn.open .burger-line:nth-child(3) {
-  transform: translateY(-11px) rotate(-45deg);
-}
-
-/* Only mobile shows burger */
-@media (max-width: 850px) {
-  #menu-toggle { display:flex; }
-  .nav { display:none !important; }
-  .header-actions .pill-btn { display:none !important; }
-}
-
-/* ============================
-   MOBILE MENU PANEL
-==============================*/
-
+/* MOBILE PANEL */
 .mobile-menu {
   display: none;
 }
@@ -854,62 +824,99 @@ body:not(.light-theme) .modal-card{
 .mobile-menu.open {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
   position: fixed;
-  top: 72px;
-  left: 12px;
-  right: 12px;
-  padding: 22px;
+  top: 70px;
+  right: 10px;
+  left: 10px;
+  padding: 25px;
   border-radius: 18px;
-
-  background: rgba(25, 32, 45, 0.55);
-  backdrop-filter: blur(22px) saturate(160%);
-  -webkit-backdrop-filter: blur(22px) saturate(160%);
-
-  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
-  z-index: 200;
+  background: var(--card);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.28);
+  z-index: 999;
 }
 
-/* ============================
-   GLOBAL HIDE SCROLLBAR
-==============================*/
+/* --- SHOW BURGER ON MOBILE ONLY --- */
+@media (max-width: 850px) {
 
-* {
-  scrollbar-width: none !important;
-}
-*::-webkit-scrollbar {
-  display: none !important;
+  .nav {
+    display: none !important;
+  }
+
+  .header-actions .pill-btn {
+    display: none; /* theme + login */
+  }
+
+  #menu-toggle {
+    display: inline-block !important;
+  }
 }
 
-/* Χωρίς οριζόντιο scroll στο body */
-body {
-  overflow-x: hidden !important;
+
+
+
+/* ΔΕΣΚΤΟΠ: κρύβουμε το burger, δείχνουμε full menu */
+#menu-toggle {
+  display: none;
 }
 
-/* ============================
-   HORIZONTAL SCROLL FOR MARKET
-==============================*/
+/* Αν έχεις κλασικό nav με links, π.χ. .main-nav ή .desktop-nav */
+.main-nav {
+  display: flex;
+}
+
+/* ΜΟΒΙLE: δείχνουμε burger, κρύβουμε full menu */
+@media (max-width: 768px) {
+  #menu-toggle {
+    display: flex;   /* ή block, ανάλογα πώς το έχεις */
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main-nav {
+    display: none;
+  }
+}
+
+
+/* ==========================================
+   UNIVERSAL MOBILE HORIZONTAL SCROLL FIX
+   (for cards, lists, grids that get cut off)
+========================================== */
 
 @media (max-width: 850px) {
 
-  .cards-scroll {
+  /* ΟΛΕΣ οι σειρές/λίστες μπορούν να κάνουν scroll-x */
+  .scroll-x,
+  .cards,
+  .pairs,
+  .guides,
+  #market-cards {
+    display: flex !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
-    -webkit-overflow-scrolling: touch;
-    width: 100%;
-    white-space: nowrap;
-  }
-
-  #market-cards {
-    display: inline-flex !important;
-    flex-wrap: nowrap !important;
     gap: 16px;
-    width: max-content;
-    padding-bottom: 12px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+    width: 100%;
   }
 
-  #market-cards .card {
+  /* ΑΟΡΑΤΗ scroll bar */
+  .scroll-x::-webkit-scrollbar,
+  .cards::-webkit-scrollbar,
+  .guides::-webkit-scrollbar,
+  .pairs::-webkit-scrollbar,
+  #market-cards::-webkit-scrollbar {
+    height: 0px !important;
+    width: 0px !important;
+  }
+
+  /* Μην κόβονται κάρτες */
+  .cards > *,
+  #market-cards > *,
+  .guides > *,
+  .pairs > * {
     flex: 0 0 auto !important;
-    width: 260px !important;
   }
 }
