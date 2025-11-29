@@ -359,12 +359,6 @@ h3{
   font-size:22px;
 }
 
-.cards{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
-
 .card{
   background:var(--card);
   border:1px solid var(--border);
@@ -879,9 +873,8 @@ body:not(.light-theme) .modal-card{
   <div class="container">
     <h3>Ζωντανές τιμές</h3>
 
-    <!-- Ο ΣΩΣΤΟΣ WRAPPER -->
     <div class="cards-scroll">
-      <div class="cards" id="market-cards"></div>
+      <div id="market-cards"></div>
     </div>
 
     <p class="muted note">Πηγή τιμών: CoinGecko (ανανεώνεται αυτόματα).</p>
