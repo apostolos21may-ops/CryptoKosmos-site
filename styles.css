@@ -795,3 +795,31 @@ body:not(.light-theme) .modal-card{
     height: 0;           /* αόρατη scroll bar */
   }
 }
+
+/* ===========================================
+   MOBILE: οριζόντιο scroll ΜΟΝΟ στα κουτάκια
+   για ό,τι έχει κλάση .scroll-x
+=========================================== */
+@media (max-width: 850px) {
+
+  .scroll-x {
+    display: flex !important;      /* αντί για grid */
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 14px;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch; /* iPhone smooth scroll */
+  }
+
+  .scroll-x > * {
+    flex: 0 0 260px;               /* σταθερό πλάτος κάθε κάρτας */
+    max-width: 260px;
+  }
+
+  /* Αόρατη scrollbar */
+  .scroll-x::-webkit-scrollbar {
+    height: 0;
+    background: transparent;
+  }
+}
