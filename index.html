@@ -715,24 +715,27 @@ body:not(.light-theme) .modal-card{
   opacity:1;
 }
 
-/* ================================
-   BURGER BUTTON (pure CSS)
-================================ */
+/* ============================================
+   BURGER BUTTON — CLEAN & FINAL VERSION
+============================================ */
 
+/* The icon itself */
 .menu-btn {
-  width: 32px;
+  display: none;               /* Hidden on desktop */
+  position: relative;
+  width: 34px;
   height: 26px;
-  display: none;            /* κρυφό σε desktop */
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  background: none;
   border: none;
+  background: transparent;
+  cursor: pointer;
   padding: 0;
   z-index: 300;
 }
 
+/* The 3 lines */
 .burger-line {
+  position: absolute;
+  left: 0;
   width: 100%;
   height: 3px;
   background: var(--text);
@@ -740,7 +743,12 @@ body:not(.light-theme) .modal-card{
   transition: 0.35s ease;
 }
 
-/* === OPEN STATE (≡ → X) === */
+/* Line positions */
+.burger-line:nth-child(1) { top: 0; }
+.burger-line:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.burger-line:nth-child(3) { bottom: 0; }
+
+/* ----- OPEN → X Animation ----- */
 .menu-btn.open .burger-line:nth-child(1) {
   transform: translateY(11px) rotate(45deg);
 }
@@ -751,20 +759,26 @@ body:not(.light-theme) .modal-card{
   transform: translateY(-11px) rotate(-45deg);
 }
 
-/* SHOW ONLY ON MOBILE */
+/* ============================================
+   MOBILE ONLY
+============================================ */
 @media (max-width: 850px) {
-  #menu-toggle {
-    display: flex;
+  .menu-btn {
+    display: block;            /* Show burger */
   }
+
   .nav {
-    display: none !important;
+    display: none !important;  /* Hide desktop nav */
   }
+
   .header-actions .pill-btn {
-    display: none !important;
+    display: none !important;  /* Hide theme + login desktop */
   }
 }
 
-/* MOBILE MENU PANEL */
+/* ============================================
+   MOBILE MENU PANEL
+============================================ */
 .mobile-menu {
   display: none;
 }
@@ -780,115 +794,75 @@ body:not(.light-theme) .modal-card{
   padding: 22px;
   border-radius: 18px;
   background: var(--card);
+  border: 1px solid var(--border);
   box-shadow: 0 10px 30px rgba(0,0,0,0.45);
   z-index: 200;
 }
 
-/* FIX HORIZONTAL SCROLL */
+/* Prevent horizontal scrolling globally */
 html, body {
   overflow-x: hidden;
 }
 
-
-
-
-
-/* ---------------------------
-   BURGER BUTTON BASE
----------------------------- */
-.menu-btn {
-  display: none;
-  position: relative;
-  width: 34px;
-  height: 26px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
-}
-
-.burger-line {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--text);
-  border-radius: 4px;
-  transition: 0.35s ease;
-}
-
-/* 3 γραμμές */
-.burger-line:nth-child(1) {
-  top: 0;
-}
-.burger-line:nth-child(2) {
-  top: 50%;
-  transform: translateY(-50%);
-}
-.burger-line:nth-child(3) {
-  bottom: 0;
-}
-
-/* ---------------------------
-   ANIMATION: OPEN (X STATE)
----------------------------- */
-.menu-btn.open .burger-line:nth-child(1) {
-  transform: translateY(11px) rotate(45deg);
-}
-
-.menu-btn.open .burger-line:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-btn.open .burger-line:nth-child(3) {
-  transform: translateY(-11px) rotate(-45deg);
-}
-
-/* ---------------------------
-   SHOW BURGER ONLY ON MOBILE
----------------------------- */
-@media (max-width: 850px) {
-  .menu-btn { display: block; }
-  .nav { display: none !important; }
-  .header-actions .pill-btn { display: none !important; }
-}
-
-
-
-
-
-/* =========================================
-   MOBILE – οριζόντιο scroll μόνο για Ζωντανές Τιμές
-========================================= */
+/* ============================================
+   MOBILE — Horizontal scroll for LIVE PRICES
+============================================ */
 @media (max-width: 850px) {
 
-  /* το container με τις κάρτες */
   #market-cards {
-    display: flex;
+    display: flex !important;
     flex-direction: row;
     gap: 14px;
 
     overflow-x: auto;
     overflow-y: hidden;
+
     padding-bottom: 8px;
 
     scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch; /* για iPhone */
+    -webkit-overflow-scrolling: touch;
   }
 
-  /* κάθε κάρτα δικό της πλάτος */
   #market-cards .card {
-    min-width: 260px;
     flex: 0 0 260px;
+    min-width: 260px;
     scroll-snap-align: start;
   }
 
-  /* αόρατη οριζόντια μπάρα */
   #market-cards::-webkit-scrollbar {
     height: 0;
     background: transparent;
   }
 }
+
+/* ============================================
+   DESKTOP — FIX LIVE PRICE CARDS LAYOUT
+============================================ */
+
+@media (min-width: 851px) {
+
+  /* container of the cards */
+  #market-cards {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr); /* 3 ίδιες στήλες */
+    gap: 20px;
+    width: 100%;
+    max-width: 1100px;  /* ίδιο με το container των sections */
+    margin: 0 auto;     /* κέντρο */
+  }
+
+  /* κάθε κάρτα ίδια, καθαρή, ίσια */
+  #market-cards .card {
+    width: 100%;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 16px;
+  }
+}
+
 </style>
 
 </head>
