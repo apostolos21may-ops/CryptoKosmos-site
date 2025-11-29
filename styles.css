@@ -910,83 +910,37 @@ backdrop-filter: blur(22px) saturate(160%);
   transform: translateY(-11px) rotate(-45deg);
 }
 
-/* =========================================
-   MOBILE HORIZONTAL SCROLL FOR LIVE PRICES
-========================================= */
-
-@media (max-width: 850px) {
-
-  .live-scroll-wrapper {
-      overflow-x: auto;            /* επιτρέπει swipe */
-      overflow-y: hidden;
-      white-space: nowrap;         /* όλα σε μία γραμμή */
-      scrollbar-width: none;       /* κρύβει scrollbar στο Firefox */
-  }
-
-  .live-scroll-wrapper::-webkit-scrollbar {
-      display: none;               /* κρύβει scrollbar στο iOS/Chrome */
-  }
-
-  /* κάνουμε τις κάρτες inline για να μπαίνουν σε σειρά */
-  #market-cards .card {
-      display: inline-block;
-      width: 260px;                /* τέλειο μέγεθος για mobile */
-      margin-right: 12px;
-      vertical-align: top;
-  }
-
-  /* για να μην κάνουν wrap */
-  #market-cards {
-      white-space: nowrap;
-  }
-}
-
-/* Οριζόντιο scroll μόνο για τα καρτελάκια */
-.scroll-x {
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  width: 100%;
-}
-
-.scroll-x::-webkit-scrollbar {
-  display: none; /* Κρύβει την μπάρα */
-}
-
-/* Τα cards πρέπει να είναι inline για το scroll */
-.scroll-x .cards {
-  display: inline-flex;
-  gap: 16px;
-  padding-bottom: 10px;
-  width: max-content; /* 🔥 αυτό σταματάει το ξεχείλωμα της σελίδας */
-}
-
-/* 🔥 Κρύβει ΟΛΕΣ τις scrollbars σε όλο το site */
+/* Κρύβει ΟΛΕΣ τις scrollbars σε όλο το site */
 * {
   scrollbar-width: none !important;  /* Firefox */
 }
-
 *::-webkit-scrollbar {
-  display: none !important; /* Chrome, Safari, iOS */
+  display: none !important;          /* Chrome / Safari / iOS */
 }
 
-/* === Scroll Container for Mobile === */
+/* Σταματάει ΟΛΟ το οριζόντιο scroll του body */
+html, body {
+  overflow-x: hidden !important;
+}
+
+/* === Οριζόντιο scroll ΜΟΝΟ για τα crypto cards === */
 .cards-scroll {
-  overflow-x: auto;
-  overflow-y: hidden;
-  width: 100%;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
   -webkit-overflow-scrolling: touch;
+  width: 100%;
+  white-space: nowrap;
 }
 
-/* Αόρατη scrollbar */
+/* Αόρατη μπάρα σκρολαρίσματος */
 .cards-scroll::-webkit-scrollbar {
-  display: none;
+  display: none !important;
 }
 
-/* Κάνει τα cards να μην “απλώνουν” όλο το body */
+/* Κάρτες σε σειρά, χωρίς να ξεχειλώνουν το body */
 .cards-scroll .cards {
-  display: flex;
-  flex-wrap: nowrap;
+  display: inline-flex !important;
+  flex-wrap: nowrap !important;
   gap: 16px;
   width: max-content;
 }
