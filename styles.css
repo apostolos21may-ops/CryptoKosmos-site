@@ -800,106 +800,33 @@ body:not(.light-theme) .modal-card{
   }
 }
 
+/* ============================
+   BURGER MENU — CLEAN VERSION
+==============================*/
 
-/* ---- MOBILE NAVIGATION ---- */
-
+/* Burger button (κρυφό σε desktop) */
 .menu-btn {
+  width: 32px;
+  height: 26px;
   display: none;
+  flex-direction: column;
+  justify-content: space-between;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 6px;
+  padding: 0;
+  z-index: 300;
 }
 
-.menu-btn img {
-  width: 26px;
-  height: 26px;
-}
-
-
-
-
-.mobile-menu {
-  position: fixed;
-  top: 72px;
-  left: 12px;
-  right: 12px;
-  padding: 22px;
-  border-radius: 18px;
- background: rgba(25, 32, 45, 0.55);
-backdrop-filter: blur(22px) saturate(160%);
--webkit-backdrop-filter: blur(22px) saturate(160%);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
-
-  display: block;
-  transform: translateY(-25px);
-  opacity: 0;
-  visibility: hidden;
-  transition: 
-    transform 0.35s ease,
-    opacity 0.35s ease,
-    visibility 0s linear 0.35s;
-}
-
-.mobile-menu.open {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-  transition-delay: 0s;
-}
-
-
-/* --- SHOW BURGER ON MOBILE ONLY --- */
-@media (max-width: 850px) {
-
-  .nav {
-    display: none !important;
-  }
-
-  .header-actions .pill-btn {
-    display: none; /* theme + login */
-  }
-
-  #menu-toggle {
-    display: inline-block !important;
-  }
-}
-
-
-
-
-/* ΔΕΣΚΤΟΠ: κρύβουμε το burger, δείχνουμε full menu */
-#menu-toggle {
-  display: none;
-}
-
-/* Αν έχεις κλασικό nav με links, π.χ. .main-nav ή .desktop-nav */
-.main-nav {
-  display: flex;
-}
-
-/* ΜΟΒΙLE: δείχνουμε burger, κρύβουμε full menu */
-@media (max-width: 768px) {
-  #menu-toggle {
-    display: flex;   /* ή block, ανάλογα πώς το έχεις */
-    align-items: center;
-    justify-content: center;
-  }
-
-  .main-nav {
-    display: none;
-  }
-}
-
-/* Smooth fade + rotation στο burger lines */
 .burger-line {
-  transition: 
-    transform 0.35s ease,
-    opacity 0.25s ease,
-    background-color 0.25s ease;
+  width: 100%;
+  height: 3px;
+  background: var(--text);
+  border-radius: 4px;
+  transition: 0.35s ease;
 }
 
-/* όταν ανοίγει */
+/* OPEN → γίνεται Χ */
 .menu-btn.open .burger-line:nth-child(1) {
   transform: translateY(11px) rotate(45deg);
 }
@@ -910,37 +837,92 @@ backdrop-filter: blur(22px) saturate(160%);
   transform: translateY(-11px) rotate(-45deg);
 }
 
-/* Κρύβει ΟΛΕΣ τις scrollbars σε όλο το site */
+/* Show only on mobile */
+@media (max-width: 850px) {
+  #menu-toggle {
+    display: flex;
+  }
+  .nav {
+    display: none !important;
+  }
+  .header-actions .pill-btn {
+    display: none !important;
+  }
+}
+
+/* ============================
+   MOBILE MENU PANEL
+==============================*/
+.mobile-menu {
+  display: none;
+}
+
+.mobile-menu.open {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  position: fixed;
+  top: 72px;
+  left: 12px;
+  right: 12px;
+
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(25, 32, 45, 0.55);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+  z-index: 200;
+
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ============================
+   GLOBAL – Κρύψε scrollbars
+==============================*/
 * {
-  scrollbar-width: none !important;  /* Firefox */
+  scrollbar-width: none !important;
 }
 *::-webkit-scrollbar {
-  display: none !important;          /* Chrome / Safari / iOS */
-}
-
-/* Σταματάει ΟΛΟ το οριζόντιο scroll του body */
-html, body {
-  overflow-x: hidden !important;
-}
-
-/* === Οριζόντιο scroll ΜΟΝΟ για τα crypto cards === */
-.cards-scroll {
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  -webkit-overflow-scrolling: touch;
-  width: 100%;
-  white-space: nowrap;
-}
-
-/* Αόρατη μπάρα σκρολαρίσματος */
-.cards-scroll::-webkit-scrollbar {
   display: none !important;
 }
 
-/* Κάρτες σε σειρά, χωρίς να ξεχειλώνουν το body */
-.cards-scroll .cards {
-  display: inline-flex !important;
-  flex-wrap: nowrap !important;
-  gap: 16px;
-  width: max-content;
+/* Stop horizontal scroll για ΟΛΟ το site */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100%;
+  position: relative;
+}
+
+/* ============================
+   MOBILE HORIZONTAL SCROLL
+==============================*/
+@media (max-width: 850px) {
+
+  .cards-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none !important;
+  }
+
+  .cards-scroll::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  #market-cards {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+    width: max-content;
+    padding-bottom: 10px;
+  }
+
+  #market-cards .card {
+    flex: 0 0 auto;
+    width: 260px;
+  }
 }
