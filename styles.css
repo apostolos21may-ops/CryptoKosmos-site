@@ -940,3 +940,23 @@ backdrop-filter: blur(22px) saturate(160%);
       white-space: nowrap;
   }
 }
+
+/* Οριζόντιο scroll μόνο για τα καρτελάκια */
+.scroll-x {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+
+.scroll-x::-webkit-scrollbar {
+  display: none; /* Κρύβει την μπάρα */
+}
+
+/* Τα cards πρέπει να είναι inline για το scroll */
+.scroll-x .cards {
+  display: inline-flex;
+  gap: 16px;
+  padding-bottom: 10px;
+  width: max-content; /* 🔥 αυτό σταματάει το ξεχείλωμα της σελίδας */
+}
