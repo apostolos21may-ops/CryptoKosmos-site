@@ -804,7 +804,6 @@ body:not(.light-theme) .modal-card{
    BURGER MENU — CLEAN VERSION
 ==============================*/
 
-/* Burger button (κρυφό σε desktop) */
 .menu-btn {
   width: 32px;
   height: 26px;
@@ -837,22 +836,17 @@ body:not(.light-theme) .modal-card{
   transform: translateY(-11px) rotate(-45deg);
 }
 
-/* Show only on mobile */
+/* Only mobile shows burger */
 @media (max-width: 850px) {
-  #menu-toggle {
-    display: flex;
-  }
-  .nav {
-    display: none !important;
-  }
-  .header-actions .pill-btn {
-    display: none !important;
-  }
+  #menu-toggle { display:flex; }
+  .nav { display:none !important; }
+  .header-actions .pill-btn { display:none !important; }
 }
 
 /* ============================
    MOBILE MENU PANEL
 ==============================*/
+
 .mobile-menu {
   display: none;
 }
@@ -861,27 +855,25 @@ body:not(.light-theme) .modal-card{
   display: flex;
   flex-direction: column;
   gap: 18px;
-
   position: fixed;
   top: 72px;
   left: 12px;
   right: 12px;
-
   padding: 22px;
   border-radius: 18px;
+
   background: rgba(25, 32, 45, 0.55);
   backdrop-filter: blur(22px) saturate(160%);
   -webkit-backdrop-filter: blur(22px) saturate(160%);
+
   box-shadow: 0 10px 30px rgba(0,0,0,0.45);
   z-index: 200;
-
-  transform: translateY(0);
-  opacity: 1;
 }
 
 /* ============================
-   GLOBAL – Κρύψε scrollbars
+   GLOBAL HIDE SCROLLBAR
 ==============================*/
+
 * {
   scrollbar-width: none !important;
 }
@@ -889,40 +881,35 @@ body:not(.light-theme) .modal-card{
   display: none !important;
 }
 
-/* Stop horizontal scroll για ΟΛΟ το site */
-html, body {
+/* Χωρίς οριζόντιο scroll στο body */
+body {
   overflow-x: hidden !important;
-  max-width: 100%;
-  position: relative;
 }
 
 /* ============================
-   MOBILE HORIZONTAL SCROLL
+   HORIZONTAL SCROLL FOR MARKET
 ==============================*/
+
 @media (max-width: 850px) {
 
   .cards-scroll {
-    overflow-x: auto;
-    overflow-y: hidden;
-    width: 100%;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none !important;
-  }
-
-  .cards-scroll::-webkit-scrollbar {
-    display: none !important;
+    width: 100%;
+    white-space: nowrap;
   }
 
   #market-cards {
-    display: flex;
-    flex-wrap: nowrap;
+    display: inline-flex !important;
+    flex-wrap: nowrap !important;
     gap: 16px;
     width: max-content;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
   }
 
   #market-cards .card {
-    flex: 0 0 auto;
-    width: 260px;
+    flex: 0 0 auto !important;
+    width: 260px !important;
   }
 }
