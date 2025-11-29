@@ -820,3 +820,36 @@ body:not(.light-theme) .modal-card{
     background: transparent;
   }
 }
+
+
+
+
+/* =========================================
+   MOBILE — horizontal scroll για Οδηγούς
+========================================= */
+@media (max-width: 850px) {
+
+  #guides-cards {
+    display: flex !important;
+    flex-direction: row;
+    gap: 14px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding-bottom: 6px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #guides-cards .card {
+    flex: 0 0 260px;
+    min-width: 260px;
+    scroll-snap-align: start;
+  }
+
+  #guides-cards::-webkit-scrollbar {
+    height: 0;
+    background: transparent;
+  }
+}
