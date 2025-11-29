@@ -852,6 +852,43 @@ html, body {
   .nav { display: none !important; }
   .header-actions .pill-btn { display: none !important; }
 }
+
+
+
+
+
+/* =========================================
+   MOBILE – οριζόντιο scroll μόνο για Ζωντανές Τιμές
+========================================= */
+@media (max-width: 850px) {
+
+  /* το container με τις κάρτες */
+  #market-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 8px;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* για iPhone */
+  }
+
+  /* κάθε κάρτα δικό της πλάτος */
+  #market-cards .card {
+    min-width: 260px;
+    flex: 0 0 260px;
+    scroll-snap-align: start;
+  }
+
+  /* αόρατη οριζόντια μπάρα */
+  #market-cards::-webkit-scrollbar {
+    height: 0;
+    background: transparent;
+  }
+}
 </style>
 
 </head>
@@ -941,15 +978,16 @@ html, body {
 </section>
 
   <!-- MARKET -->
-  <section id="market" class="section">
-    <div class="container">
-      <h3>Ζωντανές τιμές</h3>
-    <div id="market-cards" class="scroll-x">
-    <!-- Οι κάρτες μπαίνουν εδώ από το JS -->
-</div>
-      <p class="muted note">Πηγή τιμών: CoinGecko (ανανεώνεται αυτόματα).</p>
-    </div>
-  </section>
+ <section id="market" class="section">
+  <div class="container">
+    <h3>Ζωντανές τιμές</h3>
+
+    <!-- ΕΔΩ -->
+    <div id="market-cards" class="scroll-x"></div>
+
+    <p class="muted note">Πηγή τιμών: CoinGecko (ανανεώνεται αυτόματα).</p>
+  </div>
+</section>
 
   <!-- CHARTS -->
   <section id="charts" class="section alt">
