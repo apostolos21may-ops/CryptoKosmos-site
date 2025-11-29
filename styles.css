@@ -919,3 +919,22 @@ body:not(.light-theme) .modal-card{
     max-width: 280px !important;
   }
 }
+
+/* ===========================================
+   INVISIBLE HORIZONTAL SCROLL FOR MOBILE
+   =========================================== */
+@media (max-width: 850px) {
+
+  /* Για κάθε οριζόντιο container που κόβεται */
+  .scroll-x {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  .scroll-x::-webkit-scrollbar {
+    height: 0px;      /* ΑΟΡΑΤΗ scroll bar */
+    background: transparent;
+  }
+}
