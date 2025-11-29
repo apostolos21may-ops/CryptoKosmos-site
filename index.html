@@ -895,6 +895,30 @@ html, body {
     background: transparent; /* αόρατη μπάρα */
   }
 }
+
+/* =========================================
+   GLOBAL — Κάνε όλες τις scrollbars αόρατες
+========================================= */
+
+/* Chrome, Safari, Edge */
+*::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+    display: none !important;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: none !important;
+}
+
+/* Extra για iPadOS (εξαφανίζει τις transient bars) */
+html, body {
+    -ms-overflow-style: none !important; /* IE/Edge */
+    overflow: -moz-scrollbars-none !important;
+}
+
 </style>
 
 </head>
