@@ -729,7 +729,7 @@ body:not(.light-theme) .modal-card{
   background: none;
   border: none;
   padding: 0;
-  z-index: 300;             /* πάνω από όλα */
+  z-index: 300;
 }
 
 .burger-line {
@@ -740,7 +740,7 @@ body:not(.light-theme) .modal-card{
   transition: 0.35s ease;
 }
 
-/* === OPEN STATE === */
+/* === OPEN STATE (≡ → X) === */
 .menu-btn.open .burger-line:nth-child(1) {
   transform: translateY(11px) rotate(45deg);
 }
@@ -764,7 +764,7 @@ body:not(.light-theme) .modal-card{
   }
 }
 
-
+/* MOBILE MENU PANEL */
 .mobile-menu {
   display: none;
 }
@@ -782,10 +782,76 @@ body:not(.light-theme) .modal-card{
   background: var(--card);
   box-shadow: 0 10px 30px rgba(0,0,0,0.45);
   z-index: 200;
-  transform: translateY(0);
-  opacity: 1;
 }
 
+/* FIX HORIZONTAL SCROLL */
+html, body {
+  overflow-x: hidden;
+}
+
+
+
+
+
+/* ---------------------------
+   BURGER BUTTON BASE
+---------------------------- */
+.menu-btn {
+  display: none;
+  position: relative;
+  width: 34px;
+  height: 26px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.burger-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--text);
+  border-radius: 4px;
+  transition: 0.35s ease;
+}
+
+/* 3 γραμμές */
+.burger-line:nth-child(1) {
+  top: 0;
+}
+.burger-line:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.burger-line:nth-child(3) {
+  bottom: 0;
+}
+
+/* ---------------------------
+   ANIMATION: OPEN (X STATE)
+---------------------------- */
+.menu-btn.open .burger-line:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.menu-btn.open .burger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.open .burger-line:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+/* ---------------------------
+   SHOW BURGER ONLY ON MOBILE
+---------------------------- */
+@media (max-width: 850px) {
+  .menu-btn { display: block; }
+  .nav { display: none !important; }
+  .header-actions .pill-btn { display: none !important; }
+}
 </style>
 
 </head>
@@ -793,59 +859,59 @@ body:not(.light-theme) .modal-card{
 <body>
  
   <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#">
-       <img id="site-logo" src="./logo.png" alt="CryptoKosmos logo" class="logo" />
-        <div class="brand-text">
-          <h1>CryptoKosmos</h1>
-          <p class="tagline">Ο παλμός του κόσμου των crypto</p>
-        </div>
-      </a>
-      <nav class="nav">
-        <a href="#market">Αγορά</a>
-        <a href="#charts">Τάσεις</a>
-        <a href="#guides">Οδηγοί</a>
-        <a href="#glossary">Γλωσσάρι</a>
-      </nav>
+  <div class="container header-inner">
 
-  
-<div class="header-actions">
+    <a class="brand" href="#">
+      <img id="site-logo" src="./logo.png" alt="CryptoKosmos logo" class="logo" />
+      <div class="brand-text">
+        <h1>CryptoKosmos</h1>
+        <p class="tagline">Ο παλμός του κόσμου των crypto</p>
+      </div>
+    </a>
 
-  <!-- THEME BUTTON -->
-  <button id="theme-toggle" class="pill-btn" type="button">
-    <img id="theme-icon" src="./IMG_5300.png" class="icon-img" />
-    <span id="theme-label">Dark</span>
-  </button>
+    <nav class="nav">
+      <a href="#market">Αγορά</a>
+      <a href="#charts">Τάσεις</a>
+      <a href="#guides">Οδηγοί</a>
+      <a href="#glossary">Γλωσσάρι</a>
+    </nav>
 
-  <!-- LOGIN BUTTON -->
-  <button id="auth-btn" class="pill-btn" type="button">
-    <img id="auth-icon" src="./IMG_5301.png" class="icon-img" />
-    <span id="auth-label">Login</span>
-  </button>
+    <div class="header-actions">
 
- <button id="menu-toggle" class="menu-btn">
-  <span class="burger-line"></span>
-  <span class="burger-line"></span>
-  <span class="burger-line"></span>
-</button>
+      <!-- THEME BUTTON -->
+      <button id="theme-toggle" class="pill-btn" type="button">
+        <img id="theme-icon" src="./IMG_5300.png" class="icon-img" />
+        <span id="theme-label">Dark</span>
+      </button>
 
-</div>
+      <!-- LOGIN BUTTON -->
+      <button id="auth-btn" class="pill-btn" type="button">
+        <img id="auth-icon" src="./IMG_5301.png" class="icon-img" />
+        <span id="auth-label">Login</span>
+      </button>
+
+      <!-- BURGER BUTTON -->
+      <button id="menu-toggle" class="menu-btn">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
 
     </div>
-  </header>
-
+  </div>
+</header>
 
 <!-- MOBILE MENU PANEL -->
-<div id="mobile-menu" class="mobile-menu hidden">
-    <a href="#market">Αγορά</a>
-    <a href="#charts">Τάσεις</a>
-    <a href="#guides">Οδηγοί</a>
-    <a href="#glossary">Γλωσσάρι</a>
+<div id="mobile-menu" class="mobile-menu">
+  <a href="#market">Αγορά</a>
+  <a href="#charts">Τάσεις</a>
+  <a href="#guides">Οδηγοί</a>
+  <a href="#glossary">Γλωσσάρι</a>
 
-    <hr>
+  <hr>
 
-    <button id="mobile-theme-toggle" class="mobile-btn">Αλλαγή Θέματος</button>
-    <button id="mobile-auth-btn" class="mobile-btn">Login</button>
+  <button id="mobile-theme-toggle" class="mobile-btn">Αλλαγή Θέματος</button>
+  <button id="mobile-auth-btn" class="mobile-btn">Login</button>
 </div>
 
 <!-- 🔥🔥🔥 ΤΟ ΝΕΟ HERO ΜΕ ΤΟ 3D PANEL 🔥🔥🔥 -->
@@ -1347,37 +1413,55 @@ if (themeBtn) {
   });
 }
 
-
 // ========================================
-// MOBILE MENU
+// CLEAN BURGER MENU SYSTEM
 // ========================================
 const menuToggle = document.getElementById("menu-toggle");
 const mobileMenu = document.getElementById("mobile-menu");
 const mobileTheme = document.getElementById("mobile-theme-toggle");
 const mobileAuth  = document.getElementById("mobile-auth-btn");
 
-if (menuToggle) {
- menuToggle.addEventListener("click", () => {
-  menuToggle.classList.toggle("open");
-  mobileMenu.classList.toggle("open");
-});
+// 🔥 Reset burger back to ≡
+function resetBurger() {
+  menuToggle.classList.remove("open");
+  mobileMenu.classList.remove("open");
 }
 
-if (mobileTheme) {
-  mobileTheme.addEventListener("click", () => {
-    themeBtn.click();
+// 🔥 Ανοίγει / Κλείνει burger
+if (menuToggle) {
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("open");
+    mobileMenu.classList.toggle("open");
   });
 }
 
+// 🔥 Mobile → Αλλαγή Θέματος
+if (mobileTheme) {
+  mobileTheme.addEventListener("click", () => {
+    themeBtn.click();  // χρησιμοποιεί το κεντρικό theme button
+    resetBurger();
+  });
+}
+
+// 🔥 Mobile → Login
 if (mobileAuth) {
   mobileAuth.addEventListener("click", () => {
     authBtn.click();
-    mobileMenu.classList.remove("open");
+    resetBurger();
   });
 }
 
+// 🔥 Κλείσιμο modals = reset burger
+document.querySelectorAll(".modal-backdrop, .modal-close").forEach(el => {
+  el.addEventListener("click", resetBurger);
+});
 
-
+// 🔥 Κλείσιμο burger όταν πατάς κάποιο link του mobile menu
+document.querySelectorAll("#mobile-menu a").forEach(link => {
+  link.addEventListener("click", () => {
+    resetBurger();
+  });
+});
 
 // ========================================
 // HERO RANKING – Top 50 coins (auto scroll)

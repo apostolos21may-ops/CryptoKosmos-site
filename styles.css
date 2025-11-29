@@ -684,257 +684,111 @@ body:not(.light-theme) .modal-card{
   opacity:1;
 }
 
-/* BURGER BTN */
-.burger-btn {
-  background: none;
+/* ============================================
+   BURGER BUTTON — CLEAN VERSION
+============================================ */
+#menu-toggle {
+  display: none;               /* Hidden on desktop */
   border: none;
-  padding: 6px;
-  display: none; /* κρυφό σε desktop */
-  cursor: pointer;
-}
-.burger-btn img {
-  width: 26px;
-  height: 26px;
-}
-
-/* ============= BURGER BUTTON ============= */
-.menu-btn {
-  display:none; /* default = hidden on desktop */
-  border:none;
-  background:transparent;
-  cursor:pointer;
-}
-
-.menu-btn img {
-  width:26px;
-  height:26px;
-}
-
-
-/* ============= MOBILE MENU PANEL ============= */
-.mobile-menu {
-  position:fixed;
-  top:72px; /* κάτω από header */
-  left:0;
-  width:100%;
-  background:var(--card);
-  border-bottom:1px solid var(--border);
-  padding:18px;
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-  z-index:999;
-}
-
-.mobile-menu a {
-  font-size:17px;
-  padding:8px 0;
-  border-bottom:1px solid var(--border);
-}
-
-.mobile-btn {
-  padding:12px;
-  border-radius:10px;
-  border:1px solid var(--border);
-  background:var(--bg-alt);
-  color:var(--text);
-  font-size:15px;
-}
-
-.hidden {
-  display:none !important;
-}
-
-
-/* ============= SHOW ONLY ON MOBILE ============= */
-@media (max-width: 850px) {
-  .nav {
-    display:none !important;
-  }
-  .header-actions {
-    display:none !important;
-  }
-  .menu-btn {
-    display:block;
-  }
-}
-
-
-
-
-
-/* DEFAULT: hide burger on desktop */
-.menu-btn {
-  display: none;
   background: transparent;
-  border: none;
-  padding: 6px;
   cursor: pointer;
-
-  position: absolute;
-  right: 20px;
-  top: 18px;
+  padding: 6px;
 }
 
-.menu-btn img {
+#menu-toggle img {
   width: 28px;
   height: 28px;
   object-fit: contain;
 }
 
-/* MOBILE */
+/* Show burger only on mobile */
 @media (max-width: 850px) {
+  #menu-toggle {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 18px;
+  }
 
-  /* Κρύψε desktop μενού */
   .nav {
-    display: none !important;
+    display: none !important;        /* Hide desktop nav */
   }
 
   .header-actions {
-    display: none !important;
-  }
-
-  /* Δείξε burger */
-  .menu-btn {
-    display: block !important;
+    display: none !important;        /* Hide theme + login */
   }
 }
 
-
-/* ---- MOBILE NAVIGATION ---- */
-
-.menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px;
-}
-
-.menu-btn img {
-  width: 26px;
-  height: 26px;
-}
-
-/* MOBILE PANEL */
+/* ============================================
+   MOBILE MENU PANEL
+============================================ */
 .mobile-menu {
   display: none;
+  flex-direction: column;
+  gap: 20px;
+
+  position: fixed;
+  top: 70px;
+  left: 10px;
+  right: 10px;
+
+  padding: 24px;
+  background: var(--card);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+
+  z-index: 999;
 }
 
 .mobile-menu.open {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  position: fixed;
-  top: 70px;
-  right: 10px;
-  left: 10px;
-  padding: 25px;
-  border-radius: 18px;
-  background: var(--card);
-  box-shadow: 0 6px 22px rgba(0,0,0,0.28);
-  z-index: 999;
 }
 
-/* --- SHOW BURGER ON MOBILE ONLY --- */
-@media (max-width: 850px) {
+.mobile-menu a {
+  font-size: 18px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
 
-  .nav {
+/* mobile menu buttons */
+.mobile-btn {
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  font-size: 16px;
+  color: var(--text);
+}
+
+/* ensure desktop never sees mobile menu */
+@media (min-width: 851px) {
+  .mobile-menu {
     display: none !important;
   }
-
-  .header-actions .pill-btn {
-    display: none; /* theme + login */
-  }
-
-  #menu-toggle {
-    display: inline-block !important;
-  }
 }
 
-
-
-
-/* ΔΕΣΚΤΟΠ: κρύβουμε το burger, δείχνουμε full menu */
-#menu-toggle {
-  display: none;
-}
-
-/* Αν έχεις κλασικό nav με links, π.χ. .main-nav ή .desktop-nav */
-.main-nav {
-  display: flex;
-}
-
-/* ΜΟΒΙLE: δείχνουμε burger, κρύβουμε full menu */
-@media (max-width: 768px) {
-  #menu-toggle {
-    display: flex;   /* ή block, ανάλογα πώς το έχεις */
-    align-items: center;
-    justify-content: center;
-  }
-
-  .main-nav {
-    display: none;
-  }
-}
-
-
-/* ==========================================
-   MOBILE FIXED CARD SIZE + SMOOTH HORIZONTAL SCROLL
-   (για market cards, guides, charts pairs κτλ)
-========================================== */
-
+/* =========================================
+   MOBILE HORIZONTAL SCROLL FOR MARKET CARDS
+========================================= */
 @media (max-width: 850px) {
-
-  /* οριζόντιο scroll για όλες τις σειρές */
-  .cards,
-  #market-cards,
-  .guides,
-  .pairs {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    gap: 16px;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 4px;
-  }
-
-  /* αόρατη scrollbar */
-  .cards::-webkit-scrollbar,
-  #market-cards::-webkit-scrollbar,
-  .guides::-webkit-scrollbar,
-  .pairs::-webkit-scrollbar {
-    height: 0px !important;
-    width: 0px !important;
-  }
-
-  /* όλες οι κάρτες έχουν σταθερό πλάτος 280px */
-  .cards > *,
-  #market-cards > *,
-  .guides > *,
-  .pairs > * {
-    flex: 0 0 280px !important;
-    max-width: 280px !important;
-  }
-}
-
-/* ===========================================
-   INVISIBLE HORIZONTAL SCROLL FOR MOBILE
-   =========================================== */
-@media (max-width: 850px) {
-
-  /* Για κάθε οριζόντιο container που κόβεται */
-  .scroll-x {
-    overflow-x: auto;
+  #market-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    overflow-x: auto;     /* δυνατότητα scroll */
     overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 6px;  /* δίνει χώρο για κρυφή μπάρα */
   }
 
-  .scroll-x::-webkit-scrollbar {
-    height: 0px;      /* ΑΟΡΑΤΗ scroll bar */
-    background: transparent;
+  #market-cards .card {
+    min-width: 260px;     /* 🔥 το "πλάτος κινητού" για κάθε κουτάκι */
+    scroll-snap-align: start;
+  }
+
+  /* ΑΟΡΑΤΗ scroll bar */
+  #market-cards::-webkit-scrollbar {
+    height: 0;   /* δεν φαίνεται */
   }
 }
