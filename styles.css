@@ -769,26 +769,29 @@ body:not(.light-theme) .modal-card{
 }
 
 /* =========================================
-   MOBILE HORIZONTAL SCROLL FOR MARKET CARDS
+   FIX — Mobile horizontal scroll for LIVE PRICES
 ========================================= */
 @media (max-width: 850px) {
+
+  /* Override το grid ΜΟΝΟ για #market-cards */
   #market-cards {
-    display: flex;
+    display: flex !important;        /* 👈 αντικαθιστά το grid */
     flex-direction: row;
     gap: 14px;
-    overflow-x: auto;     /* δυνατότητα scroll */
+    overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
-    padding-bottom: 6px;  /* δίνει χώρο για κρυφή μπάρα */
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch; /* 👈 σημαντικό για iPhone */
   }
 
   #market-cards .card {
-    min-width: 260px;     /* 🔥 το "πλάτος κινητού" για κάθε κουτάκι */
+    min-width: 260px;   /* 👈 κάθε κουτάκι το δικό του πλάτος */
+    flex-shrink: 0;
     scroll-snap-align: start;
   }
 
-  /* ΑΟΡΑΤΗ scroll bar */
   #market-cards::-webkit-scrollbar {
-    height: 0;   /* δεν φαίνεται */
+    height: 0;           /* αόρατη scroll bar */
   }
 }
