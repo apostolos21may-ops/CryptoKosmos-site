@@ -960,3 +960,33 @@ backdrop-filter: blur(22px) saturate(160%);
   padding-bottom: 10px;
   width: max-content; /* 🔥 αυτό σταματάει το ξεχείλωμα της σελίδας */
 }
+
+/* 🔥 Κρύβει ΟΛΕΣ τις scrollbars σε όλο το site */
+* {
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari, iOS */
+}
+
+/* === Scroll Container for Mobile === */
+.cards-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Αόρατη scrollbar */
+.cards-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Κάνει τα cards να μην “απλώνουν” όλο το body */
+.cards-scroll .cards {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  width: max-content;
+}
