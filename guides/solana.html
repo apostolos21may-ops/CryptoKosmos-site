@@ -279,6 +279,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+document.querySelectorAll("#mobile-menu a").forEach(link => {
+  link.addEventListener("click", () => {
+    closeBurgerMenu();  // κλείνει με animation
+  });
+});
+
 /* ======================
    LOGO Sync (ίδιο όπως πριν)
 ====================== */

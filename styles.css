@@ -816,25 +816,38 @@ body:not(.light-theme) .modal-card{
   height: 26px;
 }
 
-/* MOBILE PANEL */
+
+
+
 .mobile-menu {
-  display: none;
+  position: fixed;
+  top: 72px;
+  left: 12px;
+  right: 12px;
+  padding: 22px;
+  border-radius: 18px;
+ background: rgba(25, 32, 45, 0.55);
+backdrop-filter: blur(22px) saturate(160%);
+-webkit-backdrop-filter: blur(22px) saturate(160%);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+
+  display: block;
+  transform: translateY(-25px);
+  opacity: 0;
+  visibility: hidden;
+  transition: 
+    transform 0.35s ease,
+    opacity 0.35s ease,
+    visibility 0s linear 0.35s;
 }
 
 .mobile-menu.open {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  position: fixed;
-  top: 70px;
-  right: 10px;
-  left: 10px;
-  padding: 25px;
-  border-radius: 18px;
-  background: var(--card);
-  box-shadow: 0 6px 22px rgba(0,0,0,0.28);
-  z-index: 999;
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
 }
+
 
 /* --- SHOW BURGER ON MOBILE ONLY --- */
 @media (max-width: 850px) {
@@ -875,5 +888,55 @@ body:not(.light-theme) .modal-card{
 
   .main-nav {
     display: none;
+  }
+}
+
+/* Smooth fade + rotation στο burger lines */
+.burger-line {
+  transition: 
+    transform 0.35s ease,
+    opacity 0.25s ease,
+    background-color 0.25s ease;
+}
+
+/* όταν ανοίγει */
+.menu-btn.open .burger-line:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+.menu-btn.open .burger-line:nth-child(2) {
+  opacity: 0;
+}
+.menu-btn.open .burger-line:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+/* =========================================
+   MOBILE HORIZONTAL SCROLL FOR LIVE PRICES
+========================================= */
+
+@media (max-width: 850px) {
+
+  .live-scroll-wrapper {
+      overflow-x: auto;            /* επιτρέπει swipe */
+      overflow-y: hidden;
+      white-space: nowrap;         /* όλα σε μία γραμμή */
+      scrollbar-width: none;       /* κρύβει scrollbar στο Firefox */
+  }
+
+  .live-scroll-wrapper::-webkit-scrollbar {
+      display: none;               /* κρύβει scrollbar στο iOS/Chrome */
+  }
+
+  /* κάνουμε τις κάρτες inline για να μπαίνουν σε σειρά */
+  #market-cards .card {
+      display: inline-block;
+      width: 260px;                /* τέλειο μέγεθος για mobile */
+      margin-right: 12px;
+      vertical-align: top;
+  }
+
+  /* για να μην κάνουν wrap */
+  #market-cards {
+      white-space: nowrap;
   }
 }
