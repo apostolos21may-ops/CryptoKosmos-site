@@ -1,113 +1,193 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="el">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Τι είναι το Blockchain – CryptoKosmos</title>
 
-    <title>Τι είναι το Blockchain – CryptoKosmos</title>
-
-    <!-- ΚΥΡΙΟ CSS -->
-    <link rel="stylesheet" href="../styles.css">
-
-    <style>
-        /* ΜΟΝΟ αυτά χρειάζονται ειδικά για guides */
-
-        .guide-container {
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 20px;
-        }
-
-        .guide-container h1 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .guide-container p {
-            font-size: 17px;
-            line-height: 1.6;
-            margin-bottom: 18px;
-        }
-
-        /* SAFARI FIX για εικόνες */
-        .guide-container img {
-            display: block;
-            max-width: 600px;
-            width: 100%;
-            height: auto;
-            margin: 20px auto;
-            border-radius: 14px;
-        }
-
-/* FIX: Δείξε το placeholder στα password fields */
-.modal-body input::placeholder {
-  color: #cccccc !important;
-  opacity: 1 !important;
-}
-
-    </style>
-
+  <!-- GLOBAL STYLES -->
+  <link rel="stylesheet" href="../styles.css">
 </head>
+
 <body>
 
-<!-- ⭐ HEADER -->
 <header class="site-header">
-    <div class="container header-inner">
+  <div class="container header-inner">
 
-        <a class="brand" href="../index.html">
-            <img id="site-logo" src="../logo.png" alt="logo" class="logo" />
-            <div class="brand-text">
-                <h1>CryptoKosmos</h1>
-                <p class="tagline">Ο παλμός του κόσμου των crypto</p>
-            </div>
-        </a>
+    <a class="brand" href="../index.html">
+      <img id="site-logo" src="../logo.png" alt="CryptoKosmos logo" class="logo" />
+      <div class="brand-text">
+        <h1>CryptoKosmos</h1>
+        <p class="tagline">Ο παλμός του κόσμου των crypto</p>
+      </div>
+    </a>
 
-        <nav class="nav">
-            <a href="../index.html#market">Αγορά</a>
-            <a href="../index.html#charts">Τάσεις</a>
-            <a href="../index.html#guides">Οδηγοί</a>
-            <a href="../index.html#glossary">Γλωσσάρι</a>
-        </nav>
+    <nav class="nav">
+      <a href="../index.html#market">Αγορά</a>
+      <a href="../index.html#charts">Τάσεις</a>
+      <a href="../index.html#guides">Οδηγοί</a>
+      <a href="../index.html#glossary">Γλωσσάρι</a>
+    </nav>
 
-        <div class="header-actions">
-            <button id="theme-toggle" class="pill-btn">
-                <img id="theme-icon" src="../IMG_5300.png" class="icon-img" />
-                <span id="theme-label">Dark</span>
-            </button>
+    <div class="header-actions">
 
-        <button id="auth-btn" class="pill-btn" type="button">
-    <img id="auth-icon" src="../IMG_5301.png" class="icon-img" />
-    <span id="auth-label">Login</span>
-</button>
-        </div>
+      <button id="theme-toggle" class="pill-btn">
+        <img id="theme-icon" src="../IMG_5300.png" class="icon-img" />
+        <span id="theme-label">Dark</span>
+      </button>
+
+      <button id="auth-btn" class="pill-btn">
+        <img id="auth-icon" src="../IMG_5301.png" class="icon-img" />
+        <span id="auth-label">Login</span>
+      </button>
+
+      <button id="menu-toggle" class="menu-btn">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
 
     </div>
+  </div>
 </header>
 
-<!-- ⭐ ΠΕΡΙΕΧΟΜΕΝΟ BLOCKCHAIN -->
-<section class="guide-container">
+<!-- MOBILE MENU -->
+<div id="mobile-menu" class="mobile-menu">
+  <a href="../index.html#market">Αγορά</a>
+  <a href="../index.html#charts">Τάσεις</a>
+  <a href="../index.html#guides">Οδηγοί</a>
+  <a href="../index.html#glossary">Γλωσσάρι</a>
 
-    <h1>Τι είναι το Blockchain;</h1>
+  <!-- ⭐ ΝΕΟ BUTTON -->
+  <button id="mobile-home-btn" class="mobile-btn">⬅ Αρχική Σελίδα</button>
 
-    <img src="../IMG_5050.jpg" alt="Blockchain" />
+  <button id="mobile-theme-toggle" class="mobile-btn">Αλλαγή Θέματος</button>
+  <button id="mobile-auth-btn" class="mobile-btn">Login</button>
+</div>
 
-    <p>
-        Το blockchain είναι ένα κατανεμημένο ψηφιακό βιβλίο (ledger) που επιτρέπει
-        ασφαλή καταγραφή συναλλαγών χωρίς κεντρική αρχή.
-    </p>
-
-    <p>
-        Κάθε block περιέχει δεδομένα και συνδέεται με το επόμενο μέσω hash,
-        δημιουργώντας αδιάβλητη αλυσίδα.
-    </p>
-
-    <p>
-        Τεχνολογία που χρησιμοποιείται σε Bitcoin, Ethereum, Solana και άλλα δίκτυα.
-    </p>
-
-</section>
+<div class="article-container" style="max-width:800px;margin:auto;padding:20px;">
+  
+  
 
 
+<h2>Τι είναι το Blockchain;</h2>
+
+<p>
+  Το blockchain είναι ένας ψηφιακός, αποκεντρωμένος και διαφανής τρόπος αποθήκευσης δεδομένων. 
+  Δημιουργήθηκε για να επιτρέψει την ασφάλεια, την ακεραιότητα και τη μόνιμη καταγραφή 
+  συναλλαγών χωρίς να υπάρχει κάποια κεντρική αρχή, όπως μια τράπεζα ή ένας οργανισμός.
+</p>
+
+
+
+  <img id="article-image" 
+     src="./IMG_5537.png" 
+     alt="Blockchain" 
+     style="width:100%;border-radius:16px;margin:20px 0;">
+
+<h3>Πώς λειτουργεί το Blockchain;</h3>
+<p>
+  Η λειτουργία του στηρίζεται στην έννοια των “μπλοκ” (blocks). Κάθε μπλοκ περιέχει:
+</p>
+
+<ul>
+  <li><strong>Δεδομένα συναλλαγών</strong> (π.χ. κάποιος στέλνει 1 BTC σε κάποιον άλλον)</li>
+  <li><strong>Χρονική σφραγίδα (timestamp)</strong></li>
+  <li><strong>Ένα μοναδικό κρυπτογραφικό αποτύπωμα (hash)</strong></li>
+  <li><strong>Το hash του προηγούμενου μπλοκ</strong></li>
+</ul>
+
+<p>
+  Όταν το μπλοκ ολοκληρωθεί, “κλειδώνει” και συνδέεται με το επόμενο. Έτσι δημιουργείται 
+  μια αλυσίδα από μπλοκ — η αλυσίδα των μπλοκ ή αλλιώς blockchain.
+</p>
+
+<h3>Βήμα–βήμα: Τι συμβαίνει όταν κάνεις μια συναλλαγή;</h3>
+<ol>
+  <li>Ο χρήστης στέλνει μια συναλλαγή στο δίκτυο.</li>
+  <li>Η συναλλαγή διαμοιράζεται σε χιλιάδες κόμβους (nodes).</li>
+  <li>Οι κόμβοι ελέγχουν αν η συναλλαγή είναι έγκυρη.</li>
+  <li>Αν είναι έγκυρη, προστίθεται σε ένα νέο μπλοκ.</li>
+  <li>Το μπλοκ “σφραγίζεται” με hash.</li>
+  <li>Το νέο μπλοκ μπαίνει στην αλυσίδα και γίνεται μόνιμη καταγραφή.</li>
+</ol>
+
+<h3>Τι είναι Hash;</h3>
+<p>
+  Hash είναι ένας μαθηματικός αλγόριθμος που παίρνει δεδομένα και τα μετατρέπει σε έναν 
+  μοναδικό κωδικό. Αν αλλάξει έστω και ένα bit των δεδομένων, το hash γίνεται εντελώς 
+  διαφορετικό. Αυτό κάνει την αλλοίωση των δεδομένων πρακτικά αδύνατη.
+</p>
+
+<h3>Proof-of-Work (PoW)</h3>
+<p>
+  Στο PoW, όπως στο Bitcoin, οι miners χρησιμοποιούν υπολογιστική ισχύ για να λύσουν 
+  πολύπλοκα μαθηματικά προβλήματα. Όποιος λύσει το πρόβλημα, δημιουργεί το επόμενο μπλοκ 
+  και παίρνει ανταμοιβή.  
+</p>
+<p><strong>Πλεονεκτήματα:</strong> Υψηλή ασφάλεια, ανθεκτικότητα σε επιθέσεις.</p>
+<p><strong>Μειονεκτήματα:</strong> Μεγάλη κατανάλωση ενέργειας, αργό.</p>
+
+<h3>Proof-of-Stake (PoS)</h3>
+<p>
+  Στο PoS, όπως στο Ethereum 2.0 και Solana, οι validators δεν κάνουν mining. Αντί για αυτό,  
+  “κλειδώνουν” (stake) ένα ποσό crypto και επιλέγονται τυχαία για να εγκρίνουν μπλοκ.
+</p>
+<p><strong>Πλεονεκτήματα:</strong> Πολύ χαμηλή κατανάλωση ενέργειας, ταχύτητα.</p>
+<p><strong>Μειονεκτήματα:</strong> Κίνδυνος συγκέντρωσης εξουσίας αν λίγοι έχουν πολύ μεγάλο stake.</p>
+
+<h3>Πού χρησιμοποιείται το Blockchain;</h3>
+<ul>
+  <li>Κρυπτονομίσματα (Bitcoin, Ethereum, Solana)</li>
+  <li>Έξυπνα συμβόλαια (Smart Contracts)</li>
+  <li>Αποκεντρωμένες χρηματοοικονομικές εφαρμογές (DeFi)</li>
+  <li>Ψηφιακή ταυτοποίηση</li>
+  <li>Αλυσίδες προμηθειών (Supply Chain)</li>
+  <li>Ασφαλής αποθήκευση ιατρικών δεδομένων</li>
+  <li>Ψηφιακά πιστοποιητικά</li>
+</ul>
+
+<h3>Πλεονεκτήματα του Blockchain</h3>
+<ul>
+  <li><strong>Αποκέντρωση:</strong> Δεν υπάρχει κεντρικός έλεγχος.</li>
+  <li><strong>Ασφάλεια:</strong> Τα δεδομένα δεν μπορούν να παραποιηθούν.</li>
+  <li><strong>Διαφάνεια:</strong> Όλες οι συναλλαγές είναι ορατές.</li>
+  <li><strong>Ταχύτητα:</strong> Συναλλαγές χωρίς μεσάζοντες.</li>
+  <li><strong>Μόνιμη καταγραφή:</strong> Τίποτα δεν σβήνεται.</li>
+</ul>
+
+<h3>Μειονεκτήματα του Blockchain</h3>
+<ul>
+  <li>Κατανάλωση ενέργειας (κυρίως στα PoW).</li>
+  <li>Μεγάλο κόστος συναλλαγών σε ορισμένα δίκτυα (π.χ. Ethereum παλιά).</li>
+  <li>Δυσκολία κλιμάκωσης σε πολύ μεγάλες ταχύτητες.</li>
+  <li>Πολυπλοκότητα για κάποια συστήματα.</li>
+</ul>
+
+<h3>Παραδείγματα χρήσης στον πραγματικό κόσμο</h3>
+<ul>
+  <li><strong>Bitcoin:</strong> Ψηφιακό χρήμα χωρίς τράπεζες.</li>
+  <li><strong>Ethereum:</strong> Βάση για χιλιάδες εφαρμογές DeFi.</li>
+  <li><strong>Solana:</strong> Υπερ-γρήγορο δίκτυο για NFTs και αποκεντρωμένες εφαρμογές.</li>
+  <li><strong>Chainlink:</strong> Διασύνδεση blockchain με πραγματικά δεδομένα.</li>
+</ul>
+
+<h3>Συμπέρασμα</h3>
+<p>
+  Το blockchain αποτελεί μία από τις σημαντικότερες τεχνολογίες του 21ου αιώνα. 
+  Συνδυάζει ασφάλεια, διαφάνεια και αποκέντρωση, δημιουργώντας έναν νέο τρόπο 
+  καταγραφής και μεταφοράς πληροφοριών. Η τεχνολογία εξελίσσεται γρήγορα και 
+  αναμένεται να επηρεάσει σχεδόν κάθε τομέα της οικονομίας τα επόμενα χρόνια.
+</p>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> CryptoKosmos — Όλα τα δικαιώματα διατηρούνται.</p>
+  </div>
+</footer>
 
 <!-- ========= LOGIN MODAL ========= -->
 <div id="login-modal" class="modal hidden">
@@ -125,11 +205,11 @@
         <label>Email</label>
         <input id="login-email" type="email" required placeholder="you@example.com">
 
-      <label>Password</label>
-<div class="pass-wrap">
-  <input id="login-pass" type="password" placeholder="••••••••">
-  <img id="login-pass-toggle" class="pass-eye" src="../IMG_5380.png">
-</div>
+        <label>Password</label>
+        <div class="pass-wrap">
+          <input id="login-pass" type="password" placeholder="••••••••">
+          <img id="login-pass-toggle" class="pass-eye" src="../IMG_5380.png">
+        </div>
 
       </div>
 
@@ -171,21 +251,20 @@
     </div>
 
     <div class="modal-body">
-
       <label>Email</label>
       <input id="signup-email" type="email">
 
       <label>Κωδικός</label>
-<div class="pass-wrap">
-  <input id="signup-pass1" type="password" placeholder="••••••••">
-  <img id="signup-pass1-toggle" class="pass-eye" src="../IMG_5380.png">
-</div>
+      <div class="pass-wrap">
+        <input id="signup-pass1" type="password" placeholder="••••••••">
+        <img id="signup-pass1-toggle" class="pass-eye" src="../IMG_5380.png">
+      </div>
 
-<label>Επιβεβαίωση κωδικού</label>
-<div class="pass-wrap">
-  <input id="signup-pass2" type="password" placeholder="••••••••">
-  <img id="signup-pass2-toggle" class="pass-eye" src="../IMG_5380.png">
-</div>
+      <label>Επιβεβαίωση κωδικού</label>
+      <div class="pass-wrap">
+        <input id="signup-pass2" type="password" placeholder="••••••••">
+        <img id="signup-pass2-toggle" class="pass-eye" src="../IMG_5380.png">
+      </div>
 
       <p id="signup-error" style="color:#ff6b6b; display:none;">Οι κωδικοί δεν ταιριάζουν.</p>
 
@@ -196,11 +275,10 @@
         <span id="back-to-login" style="color:#5bb4ff; cursor:pointer;">Σύνδεση</span>
       </p>
     </div>
-
   </div>
 </div>
 
-<!-- VERIFY MODAL -->
+<!-- ========= VERIFY MODAL ========= -->
 <div id="verify-modal" class="modal hidden">
   <div class="modal-backdrop"></div>
 
@@ -225,72 +303,18 @@
   </div>
 </div>
 
-<!-- ⭐ main JS -->
-<script src="../app.js?v=3"></script>
 
+<!-- LOAD GLOBAL APP -->
+<script src="../app.js"></script>
+
+<!-- ONLY year updater -->
 <script>
-/* ============================
-   FIX LOGIN BUTTON FOR SUBPAGES
-============================ */
+document.getElementById("year").textContent = new Date().getFullYear();
 
-// Περιμένουμε να φορτώσει το DOM
-document.addEventListener("DOMContentLoaded", () => {
 
-    const authBtn      = document.getElementById("auth-btn");
-    const loginModal   = document.getElementById("login-modal");
-    const loginClose   = document.getElementById("login-close");
-    const signupModal  = document.getElementById("signup-modal");
-    const verifyModal  = document.getElementById("verify-modal");
-
-    /* --- ΑΝΟΙΓΜΑ LOGIN --- */
-    if (authBtn) {
-        authBtn.addEventListener("click", () => {
-            // Αν είσαι logout → άνοιξε login
-            if (authBtn.dataset.state === "login" || !authBtn.dataset.state) {
-                loginModal.classList.remove("hidden");
-                signupModal.classList.add("hidden");
-                verifyModal.classList.add("hidden");
-            } 
-            // Αν είσαι login → κάνε logout
-            else {
-                localStorage.removeItem("ck-user");
-                authBtn.dataset.state = "login";
-                document.getElementById("auth-label").textContent = "Login";
-                document.getElementById("auth-icon").src = "../IMG_5301.png";
-            }
-        });
-    }
-
-    /* --- ΚΛΕΙΣΙΜΟ LOGIN --- */
-    if (loginClose) {
-        loginClose.addEventListener("click", () => {
-            loginModal.classList.add("hidden");
-        });
-    }
-
-    /* --- ΚΛΕΙΣΙΜΟ ΟΤΑΝ ΠΑΤΑΣ ΕΞΩ --- */
-    if (loginModal) {
-        loginModal.addEventListener("click", e => {
-            if (e.target.classList.contains("modal-backdrop")) {
-                loginModal.classList.add("hidden");
-            }
-        });
-    }
-
-});
-
-/* ======================
-   LOGO Sync (ίδιο όπως πριν)
-====================== */
-function updateGuideLogo() {
-  const logo = document.getElementById("site-logo");
-  const isLight = document.body.classList.contains("light-theme");
-  logo.src = isLight ? "../logo.png" : "../black logo.png";
-}
-updateGuideLogo();
-
-document.getElementById("theme-toggle").addEventListener("click", () => {
-  setTimeout(updateGuideLogo, 20);
+document.getElementById("mobile-home-btn")
+?.addEventListener("click", () => {
+  window.location.href = "../index.html";
 });
 </script>
 
