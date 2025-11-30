@@ -685,171 +685,124 @@ body:not(.light-theme) .modal-card{
 }
 
 /* ============================================
-   BURGER BUTTON — CLEAN VERSION
+   BURGER BUTTON — FINAL CLEAN VERSION
 ============================================ */
-#menu-toggle {
-  display: none;               /* Hidden on desktop */
+
+.menu-btn {
+  display: none;
+  position: relative;
+  width: 34px;
+  height: 26px;
   border: none;
   background: transparent;
   cursor: pointer;
-  padding: 6px;
+  padding: 0;
+  z-index: 300;
 }
 
-#menu-toggle img {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
+.burger-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--text);
+  border-radius: 4px;
+  transition: 0.35s ease;
 }
 
-/* Show burger only on mobile */
+.burger-line:nth-child(1) { top: 0; }
+.burger-line:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.burger-line:nth-child(3) { bottom: 0; }
+
+.menu-btn.open .burger-line:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+.menu-btn.open .burger-line:nth-child(2) {
+  opacity: 0;
+}
+.menu-btn.open .burger-line:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+/* MOBILE ONLY */
 @media (max-width: 850px) {
-  #menu-toggle {
-    display: block;
-    position: absolute;
-    right: 20px;
-    top: 18px;
-  }
+  .menu-btn { display: block; }
 
   .nav {
-    display: none !important;        /* Hide desktop nav */
+    display: none !important;
   }
 
-  .header-actions {
-    display: none !important;        /* Hide theme + login */
-  }
-}
-
-/* ============================================
-   MOBILE MENU PANEL
-============================================ */
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  gap: 20px;
-
-  position: fixed;
-  top: 70px;
-  left: 10px;
-  right: 10px;
-
-  padding: 24px;
-  background: var(--card);
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.35);
-
-  z-index: 999;
-}
-
-.mobile-menu.open {
-  display: flex;
-}
-
-.mobile-menu a {
-  font-size: 18px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-/* mobile menu buttons */
-.mobile-btn {
-  padding: 14px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: var(--bg-alt);
-  font-size: 16px;
-  color: var(--text);
-}
-
-/* ensure desktop never sees mobile menu */
-@media (min-width: 851px) {
-  .mobile-menu {
+  .header-actions .pill-btn {
     display: none !important;
   }
 }
 
-/* =========================================
-   FIX — Mobile horizontal scroll for LIVE PRICES
-========================================= */
-@media (max-width: 850px) {
+/* ============================================
+   MOBILE MENU — FINAL CLEAN VERSION
+============================================ */
 
-  /* Override το grid ΜΟΝΟ για #market-cards */
-  #market-cards {
-    display: flex !important;        /* 👈 αντικαθιστά το grid */
-    flex-direction: row;
-    gap: 14px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 6px;
-    -webkit-overflow-scrolling: touch; /* 👈 σημαντικό για iPhone */
-  }
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 18px;
 
-  #market-cards .card {
-    min-width: 260px;   /* 👈 κάθε κουτάκι το δικό του πλάτος */
-    flex-shrink: 0;
-    scroll-snap-align: start;
-  }
+  position: fixed;
+  top: 70px;
+  left: 12px;
+  right: 12px;
 
-  #market-cards::-webkit-scrollbar {
-    height: 0;           /* αόρατη scroll bar */
-  }
+  padding: 22px 20px;
+
+  background: rgba(255,255,255,0.12);
+  border-radius: 20px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.35);
+
+  z-index: 999;
+
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: 0.35s ease;
 }
 
-@media(max-width: 850px) {
-
-  .scroll-x {
-    display: flex !important;
-    overflow-x: auto !important;
-    overflow-y: hidden;
-    gap: 14px;
-    flex-wrap: nowrap;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 8px;
-  }
-
-  .scroll-x > * {
-    flex: 0 0 260px;
-    max-width: 260px;
-    scroll-snap-align: start;
-  }
-
-  .scroll-x::-webkit-scrollbar {
-    height: 0 !important;
-    background: transparent;
-  }
+body.light-theme .mobile-menu {
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(0,0,0,0.12);
 }
 
+.mobile-menu.open {
+  display: flex;
+  transform: translateY(0);
+  opacity: 1;
+}
 
+.mobile-menu a {
+  font-size: 20px;
+  padding: 12px 0;
+  color: var(--text);
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
 
+body.light-theme .mobile-menu a {
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+}
 
-/* =========================================
-   MOBILE — horizontal scroll για Οδηγούς
-========================================= */
-@media (max-width: 850px) {
+.mobile-btn {
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
 
-  #guides-cards {
-    display: flex !important;
-    flex-direction: row;
-    gap: 14px;
-
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    padding-bottom: 6px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  #guides-cards .card {
-    flex: 0 0 260px;
-    min-width: 260px;
-    scroll-snap-align: start;
-  }
-
-  #guides-cards::-webkit-scrollbar {
-    height: 0;
-    background: transparent;
-  }
+@media (min-width: 851px) {
+  .mobile-menu { display: none !important; }
 }

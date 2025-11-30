@@ -424,3 +424,26 @@ document.getElementById("mobile-theme-toggle")?.addEventListener("click", () => 
 document.getElementById("login-close")?.addEventListener("click", closeBurger);
 document.querySelector(".signup-close")?.addEventListener("click", closeBurger);
 document.querySelector(".verify-close")?.addEventListener("click", closeBurger);
+
+// ================================
+// ARTICLE IMAGE THEME SWITCH
+// ================================
+const articleImage = document.getElementById("article-image");
+
+function updateArticleImage() {
+    if (!articleImage) return;
+
+    if (document.body.classList.contains("light-theme")) {
+        articleImage.src = "./IMG_5536.png";   // light mode image
+    } else {
+        articleImage.src = "./IMG_5537.png";   // dark mode image
+    }
+}
+
+// Όποτε αλλάζει το theme
+themeBtn?.addEventListener("click", () => {
+    setTimeout(updateArticleImage, 20);
+});
+
+// Σωστό image στο initial load
+updateArticleImage();
