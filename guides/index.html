@@ -1,0 +1,1800 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CryptoKosmos — Ο παλμός των crypto</title>
+  <meta name="description" content="CryptoKosmos: Ενημέρωση, ανάλυση και τάσεις στα κρυπτονομίσματα." />
+<link rel="preload" as="image" href="./IMG_5308.jpg">
+<link rel="preload" as="image" href="./IMG_5377.jpg">
+  <!-- Favicon & logo -->
+  <link rel="icon" href="./logo.png" type="image/png" />
+
+  <style>
+
+/* =========================================
+   GLOBAL VARIABLES / THEMES
+========================================= */
+:root {
+  --bg:#0f1216; 
+  --bg-alt:#12161c; 
+  --card:#171b22; 
+  --text:#e8edf2; 
+  --muted:#8ea0b3;
+  --brand:#5bb4ff; 
+  --brand2:#7b61ff; 
+  --accent:#35d0a7; 
+  --border:#222a33;
+}
+
+/* Light theme */
+body.light-theme {
+  --bg:#f7fafc;
+  --bg-alt:#edf2f7;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --border:#d0d7e2;
+}
+
+/* =========================================
+   BASE
+========================================= */
+*{
+  box-sizing:border-box;
+}
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  transition:background-color .25s ease,color .25s ease;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:0 16px;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(15,18,22,.9);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--border);
+}
+body.light-theme .site-header{
+  background:rgba(255,255,255,.9);
+}
+
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:72px;
+  gap:16px;
+}
+
+.brand{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.logo{
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  display:block;
+  object-fit:cover;
+}
+
+.brand-text h1{
+  font-size:20px;
+  line-height:1;
+  margin:0;
+}
+
+.tagline{
+  margin:2px 0 0;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.nav{
+  display:flex;
+  gap:18px;
+}
+.nav a{
+  padding:8px 10px;
+  border-radius:8px;
+  color:#cfe3ff;
+}
+.nav a:hover{
+  background:var(--bg-alt);
+}
+body.light-theme .nav a{
+  color:#1f2937;
+}
+
+/* Header actions (theme + login) */
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.pill-btn{
+  border-radius:999px;
+  border:1px solid var(--border);
+  padding:6px 12px;
+  font-size:13px;
+  background:rgba(15,23,42,0.9);
+  color:var(--text);
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  transition:.18s ease;
+}
+body.light-theme .pill-btn{
+  background:#ffffff;
+}
+.pill-btn:hover{
+  border-color:var(--brand);
+}
+
+/* IMG icons μέσα στα κουμπιά */
+.pill-btn .icon-img{
+  width:22px;
+  height:22px;
+  object-fit:contain;
+  display:inline-block;
+  margin-right:4px;
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+.hero{
+  padding:70px 0;
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg,rgba(91,180,255,.05),transparent);
+  perspective:1600px;
+}
+
+.hero-flex{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:40px;
+  perspective:1200px;
+}
+
+/* =========================================
+   🔥 PREMIUM 3D CRYPTO PANEL
+========================================= */
+.hero-rank-box{
+  width:320px;
+  max-height:440px;
+  padding:22px 18px;
+  border-radius:32px;
+
+  background:
+    radial-gradient(circle at 15% 0%,rgba(120,170,255,0.28),transparent 55%),
+    radial-gradient(circle at 85% 100%,rgba(150,110,255,0.28),transparent 55%),
+    linear-gradient(145deg,#0c111b,#0f141f);
+
+  box-shadow:
+    0 0 60px rgba(91,180,255,0.28),
+    0 0 130px rgba(123,97,255,0.25),
+    inset 0 0 22px rgba(255,255,255,0.06),
+    0 35px 55px rgba(0,0,0,0.45);
+
+  overflow:hidden;
+  transform:
+    rotate(6deg)
+    rotateY(35deg)
+    translateX(-25px)
+    scale(0.93);
+  transition:transform .55s ease, box-shadow .55s ease;
+  -webkit-overflow-scrolling:touch;
+}
+
+.hero-rank-box:hover{
+  transform:rotate(0) rotateY(0) translateX(0) scale(1.06);
+  box-shadow:
+    0 0 100px rgba(91,180,255,0.55),
+    0 0 180px rgba(123,97,255,0.45),
+    inset 0 0 30px rgba(255,255,255,0.10),
+    0 45px 75px rgba(0,0,0,0.65);
+}
+
+/* CRYPTO ROWS */
+.hero-rank-inner{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.hero-rank-row{
+  display:grid;
+  grid-template-columns:28px 120px 1fr 80px;
+  align-items:center;
+  padding:8px 12px;
+  border-radius:14px;
+  background:rgba(10,15,25,0.88);
+  box-shadow:0 8px 18px rgba(0,0,0,0.45);
+  font-size:13px;
+}
+
+.hr-pos{
+  opacity:.7;
+}
+.hr-symbol{
+  font-weight:600;
+  text-transform:uppercase;
+}
+.hr-price{
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+}
+.hr-change{
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+  font-weight:600;
+}
+.hr-up{
+  color:#4ade80;
+}
+.hr-down{
+  color:#f97373;
+}
+.hr-icon{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  margin-right:6px;
+}
+
+/* HERO TEXT */
+.hero-text{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.hero-text h2{
+  margin-bottom:12px;
+  font-size:34px;
+}
+
+.hero-text p{
+  max-width:480px;
+  font-size:16px;
+  line-height:1.6;
+  color:var(--muted);
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .hero-flex{
+    flex-direction:column;
+    text-align:center;
+    gap:20px;
+  }
+
+  .hero-rank-box{
+    margin:auto;
+    transform:rotate(0deg) rotateY(0deg) scale(0.9);
+  }
+}
+
+/* =========================================
+   LIGHT THEME TWEAKS FOR HERO BOX
+========================================= */
+body.light-theme .hero-rank-box {
+  background:#ffffff;
+  border:1px solid #e2e8f0;
+  box-shadow:
+    0 0 40px rgba(0,0,0,0.08),
+    0 0 80px rgba(0,0,0,0.05);
+}
+
+body.light-theme .hero-rank-row {
+  background:#ffffff;
+  box-shadow:0 4px 10px rgba(0,0,0,0.06);
+  color:#111 !important;
+}
+
+body.light-theme .hr-pos {
+  color:#111 !important;
+  opacity:.6;
+}
+body.light-theme .hr-symbol {
+  color:#111 !important;
+}
+body.light-theme .hr-price {
+  color:#111 !important;
+}
+body.light-theme .hr-change {
+  font-weight:700;
+}
+
+body.light-theme .hr-up {
+  color:#16a34a !important;
+}
+body.light-theme .hr-down {
+  color:#dc2626 !important;
+}
+body.light-theme .hr-icon {
+  filter:none !important;
+}
+
+/* =========================================
+   SECTIONS & CARDS
+========================================= */
+.section{
+  padding:40px 0;
+}
+
+.section.alt{
+  background:var(--bg-alt);
+}
+
+h3{
+  margin:0 0 18px;
+  font-size:22px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:16px;
+  transition:background-color .25s ease, border-color .25s ease;
+}
+
+.card h4{
+  margin:0 0 6px;
+}
+
+.card .btn{
+  display:inline-block;
+  margin-top:10px;
+  background:linear-gradient(135deg,var(--brand),var(--brand2));
+  padding:8px 12px;
+  border-radius:10px;
+  color:#0f1216;
+  font-weight:600;
+}
+
+/* =========================================
+   MARKET CARDS
+========================================= */
+.market-card{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.price{
+  font-size:24px;
+  font-weight:700;
+}
+
+.row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.chip{
+  font-weight:600;
+  border-radius:10px;
+  padding:4px 8px;
+}
+
+.up{
+  background:#0d2d1f;
+  color:#6fffce;
+}
+
+.down{
+  background:#2d1414;
+  color:#ff8c8c;
+}
+
+.muted{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.note{
+  margin-top:8px;
+}
+
+/* =========================================
+   CHARTS
+========================================= */
+.chart-wrap{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:8px;
+}
+
+.pairs{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+  flex-wrap:wrap;
+}
+
+.pair{
+  background:#12161c;
+  color:#cfe3ff;
+  border:1px solid var(--border);
+  padding:8px 10px;
+  border-radius:10px;
+  cursor:pointer;
+}
+body.light-theme .pair{
+  background:#e5edff;
+  color:#1f2937;
+}
+.pair.active,
+.pair:hover{
+  border-color:#355cff;
+}
+
+/* =========================================
+   GLOSSARY
+========================================= */
+.search{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#0f1319;
+  color:var(--text);
+  margin-bottom:16px;
+}
+
+.glossary{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.term{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px;
+}
+
+.term h5{
+  margin:0 0 6px;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+.site-footer{
+  padding:28px 0;
+  border-top:1px solid var(--border);
+  text-align:center;
+}
+
+/* =========================================
+   MODALS (LOGIN / SIGNUP / VERIFY)
+========================================= */
+.modal{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:200;
+}
+.modal.hidden{
+  display:none;
+}
+
+.modal-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(15,23,42,0.65);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  z-index:0;
+}
+
+/* Card */
+.modal-card{
+  position:relative;
+  z-index:10;
+  width:100%;
+  max-width:380px;
+  padding:24px;
+
+  /* background-image μπαίνει από τα theme rules */
+  background-size:cover;
+  background-position:center;
+
+  border-radius:22px;
+  border:2px solid transparent;
+  background-clip:padding-box;
+  overflow:hidden;
+  box-shadow:0 25px 60px rgba(0,0,0,0.65);
+  isolation:isolate;
+}
+
+/* Gradient περίγραμμα */
+.modal-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:22px;
+  padding:2px;
+  background:linear-gradient(135deg,#5bb4ff,#7b61ff);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+  z-index:5;
+  pointer-events:none;
+}
+
+/* Ελαφρύ blur πάνω από την εικόνα */
+.modal-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.25);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  z-index:0;
+}
+
+/* Περιεχόμενο */
+.modal-header,
+.modal-body,
+.modal-submit,
+.modal-hint{
+  position:relative;
+  z-index:10;
+}
+
+.modal-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+
+.modal-title{
+  color:#fff;
+  font-size:20px;
+  font-weight:700;
+  text-shadow:0 0 6px rgba(0,0,0,0.5);
+}
+
+.modal-close{
+  border:none;
+  background:transparent;
+  color:#e2e8f0;
+  font-size:18px;
+  cursor:pointer;
+}
+
+/* Inputs */
+.modal-body label{
+  display:block;
+  font-size:13px;
+  color:#f9fafb;
+  margin-bottom:4px;
+}
+
+.modal-body input{
+  width:100%;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.35);
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+  color:#fff;
+  margin-bottom:12px;
+  transition:.2s;
+}
+
+.modal-body input:focus{
+  background:rgba(0,0,0,0.65);
+  border-color:#7b61ff;
+  outline:none;
+}
+
+/* Button */
+.modal-submit{
+  width:100%;
+  margin-top:8px;
+  padding:10px 14px;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(135deg,#5bb4ff,#7b61ff);
+  color:#fff;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.modal-submit:hover{
+  transform:scale(1.03);
+  box-shadow:0 8px 18px rgba(0,0,0,0.4);
+}
+
+/* Hint */
+.modal-hint{
+  font-size:12px;
+  color:#e7e7e7;
+  margin-top:6px;
+}
+
+/* Signup button + no-account πάνω από blur */
+#signup-btn,
+#no-account{
+  position:relative;
+  z-index:20 !important;
+}
+
+.modal-card *{
+  position:relative;
+  z-index:10;
+}
+
+/* =========================================
+   MODAL BACKGROUND IMAGES per THEME
+========================================= */
+/* Light theme → IMG_5308 */
+body.light-theme .modal-card{
+  background-image:url("./IMG_5308.jpg");
+}
+
+/* Dark theme → IMG_5377 */
+body:not(.light-theme) .modal-card{
+  background-image:url("./IMG_5377.jpg");
+}
+
+/* =========================================
+   PASSWORD EYE (ΜΟΝΟ στα password fields)
+========================================= */
+.pass-wrap{
+  position:relative;
+  width:100%;
+}
+
+.pass-wrap input{
+  width:100%;
+  padding-right:42px; /* χώρος για το μάτι */
+}
+
+.pass-eye{
+  position:absolute;
+  right:10px;
+  top:50%;
+  width:22px;
+  height:22px;
+  transform:translateY(-50%);
+  cursor:pointer;
+  opacity:0.8;
+}
+
+.pass-eye:hover{
+  opacity:1;
+}
+
+/* ============================================
+   BURGER BUTTON — CLEAN & FINAL VERSION
+============================================ */
+
+/* The icon itself */
+.menu-btn {
+  display: none;               /* Hidden on desktop */
+  position: relative;
+  width: 34px;
+  height: 26px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  z-index: 300;
+}
+
+/* The 3 lines */
+.burger-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--text);
+  border-radius: 4px;
+  transition: 0.35s ease;
+}
+
+/* Line positions */
+.burger-line:nth-child(1) { top: 0; }
+.burger-line:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.burger-line:nth-child(3) { bottom: 0; }
+
+/* ----- OPEN → X Animation ----- */
+.menu-btn.open .burger-line:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+.menu-btn.open .burger-line:nth-child(2) {
+  opacity: 0;
+}
+.menu-btn.open .burger-line:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+/* ============================================
+   MOBILE ONLY
+============================================ */
+@media (max-width: 850px) {
+  .menu-btn {
+    display: block;            /* Show burger */
+  }
+
+  .nav {
+    display: none !important;  /* Hide desktop nav */
+  }
+
+  .header-actions .pill-btn {
+    display: none !important;  /* Hide theme + login desktop */
+  }
+}
+
+/* =========================================
+   MOBILE MENU — PREMIUM CRYPTO STYLE
+========================================= */
+.mobile-menu {
+  position: fixed;
+  top: 70px;
+  left: 14px;
+  right: 14px;
+
+  display: none;
+  flex-direction: column;
+  gap: 18px;
+
+  padding: 22px 20px;
+
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.25);
+
+  box-shadow: 0 14px 45px rgba(0,0,0,0.35);
+
+  z-index: 999;
+
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: 0.35s ease;
+}
+
+body.light-theme .mobile-menu {
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* OPEN ANIMATION */
+.mobile-menu.open {
+  display: flex;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* LINKS */
+.mobile-menu a {
+  font-size: 20px;
+  padding: 12px 0;
+  color: var(--text);
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+body.light-theme .mobile-menu a {
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+
+/* BUTTONS */
+.mobile-btn {
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+  color: #fff;
+
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+body.light-theme .mobile-btn {
+  color: #fff !important;
+}
+
+/* ============================================
+   MOBILE — Horizontal scroll for LIVE PRICES
+============================================ */
+@media (max-width: 850px) {
+
+  #market-cards {
+    display: flex !important;
+    flex-direction: row;
+    gap: 14px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding-bottom: 8px;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #market-cards .card {
+    flex: 0 0 260px;
+    min-width: 260px;
+    scroll-snap-align: start;
+  }
+
+  #market-cards::-webkit-scrollbar {
+    height: 0;
+    background: transparent;
+  }
+}
+
+/* ============================================
+   DESKTOP — FIX LIVE PRICE CARDS LAYOUT
+============================================ */
+
+@media (min-width: 851px) {
+
+  /* container of the cards */
+  #market-cards {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr); /* 3 ίδιες στήλες */
+    gap: 20px;
+    width: 100%;
+    max-width: 1100px;  /* ίδιο με το container των sections */
+    margin: 0 auto;     /* κέντρο */
+  }
+
+  /* κάθε κάρτα ίδια, καθαρή, ίσια */
+  #market-cards .card {
+    width: 100%;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 16px;
+  }
+}
+
+
+
+
+/* =========================================
+   MOBILE – οριζόντιο scroll για τους Οδηγούς
+========================================= */
+@media (max-width: 850px) {
+
+  #guides-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 8px;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* για iPhone */
+  }
+
+  #guides-cards .card {
+    min-width: 260px;
+    flex: 0 0 260px;
+    scroll-snap-align: start;
+  }
+
+  #guides-cards::-webkit-scrollbar {
+    height: 0;
+    background: transparent; /* αόρατη μπάρα */
+  }
+}
+
+/* =========================================
+   GLOBAL — Κάνε όλες τις scrollbars αόρατες
+========================================= */
+
+/* Chrome, Safari, Edge */
+*::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+    display: none !important;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: none !important;
+}
+
+/* Extra για iPadOS (εξαφανίζει τις transient bars) */
+html, body {
+    -ms-overflow-style: none !important; /* IE/Edge */
+    overflow: -moz-scrollbars-none !important;
+}
+
+</style>
+
+</head>
+
+<body>
+ 
+  <header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="#">
+      <img id="site-logo" src="./logo.png" alt="CryptoKosmos logo" class="logo" />
+      <div class="brand-text">
+        <h1>CryptoKosmos</h1>
+        <p class="tagline">Ο παλμός του κόσμου των crypto</p>
+      </div>
+    </a>
+
+    <nav class="nav">
+      <a href="#market">Αγορά</a>
+      <a href="#charts">Τάσεις</a>
+      <a href="#guides">Οδηγοί</a>
+      <a href="#glossary">Γλωσσάρι</a>
+    </nav>
+
+    <div class="header-actions">
+
+      <!-- THEME BUTTON -->
+      <button id="theme-toggle" class="pill-btn" type="button">
+        <img id="theme-icon" src="./IMG_5300.png" class="icon-img" />
+        <span id="theme-label">Dark</span>
+      </button>
+
+      <!-- LOGIN BUTTON -->
+      <button id="auth-btn" class="pill-btn" type="button">
+        <img id="auth-icon" src="./IMG_5301.png" class="icon-img" />
+        <span id="auth-label">Login</span>
+      </button>
+
+      <!-- BURGER BUTTON -->
+      <button id="menu-toggle" class="menu-btn">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU PANEL -->
+<div id="mobile-menu" class="mobile-menu">
+  <a href="#market">Αγορά</a>
+  <a href="#charts">Τάσεις</a>
+  <a href="#guides">Οδηγοί</a>
+  <a href="#glossary">Γλωσσάρι</a>
+
+  <hr>
+
+  <button id="mobile-theme-toggle" class="mobile-btn">Αλλαγή Θέματος</button>
+  <button id="mobile-auth-btn" class="mobile-btn">Login</button>
+</div>
+
+<!-- 🔥🔥🔥 ΤΟ ΝΕΟ HERO ΜΕ ΤΟ 3D PANEL 🔥🔥🔥 -->
+<section class="hero">
+  <div class="container hero-flex">
+
+    <!-- ΑΡΙΣΤΕΡΑ: 3D Crypto Panel -->
+    <div class="hero-rank-box">
+      <div class="hero-rank-inner" id="hero-rank-inner">
+        <!-- Τα rows μπαίνουν αυτόματα με JS -->
+      </div>
+    </div>
+
+    <!-- ΔΕΞΙΑ: Κείμενο -->
+    <div class="hero-text">
+      <h2>Καλώς ήρθες στο CryptoKosmos</h2>
+      <p>
+        To CryptoKosmos είναι η πιο απλή και ασφαλής ελληνική πλατφόρμα για να βλέπεις ζωντανές τιμές,
+        να καταλαβαίνεις τάσεις και να μπαίνεις στον κόσμο των crypto χωρίς πονοκέφαλο.
+      </p>
+      <p>
+        Ζωντανά δεδομένα από Binance & CoinGecko, premium ανάλυση και γλώσσα απλή — για όλους.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+  <!-- MARKET -->
+ <section id="market" class="section">
+  <div class="container">
+    <h3>Ζωντανές τιμές</h3>
+
+    <!-- ΕΔΩ -->
+    <div id="market-cards" class="scroll-x"></div>
+
+    <p class="muted note">Πηγή τιμών: CoinGecko (ανανεώνεται αυτόματα).</p>
+  </div>
+</section>
+
+  <!-- CHARTS -->
+  <section id="charts" class="section alt">
+    <div class="container">
+      <h3>Τάσεις αγοράς</h3>
+      <div class="chart-wrap">
+        <div id="tradingview_chart" style="height:420px;"></div>
+      </div>
+      <div class="pairs">
+        <button data-symbol="BINANCE:BTCUSDT" class="pair active">BTC/USDT</button>
+        <button data-symbol="BINANCE:ETHUSDT" class="pair">ETH/USDT</button>
+        <button data-symbol="BINANCE:SOLUSDT" class="pair">SOL/USDT</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDES -->
+  <section id="guides" class="section">
+  <div class="container">
+    <h3>Οδηγοί για αρχάριους</h3>
+    <div id="guides-cards" class="cards guides">
+      <article class="card">
+          <h4>Τι είναι το Blockchain</h4>
+          <p>Το “κοινόχρηστο ψηφιακό βιβλίο” που καταγράφει συναλλαγές με ασφάλεια &amp; διαφάνεια.</p>
+          <a href="guides/blockchain.html" class="btn">Διάβασε</a>
+        </article>
+        <article class="card">
+          <h4>Wallets: Custodial vs Non-custodial</h4>
+          <p>Ποιες είναι οι διαφορές και πότε διαλέγω το ένα ή το άλλο. Seed phrase &amp; 2FA.</p>
+         <a class="btn" href="./guides/wallets.html">Διάβασε</a>
+        </article>
+        <article class="card">
+          <h4>Αγορά Solana με ασφάλεια</h4>
+          <p>DCA, alerts, fees, επιλογή ανταλλακτηρίου και πρακτικά tips για αρχή.</p>
+         <a class="btn" href="./guides/solana.html">Διάβασε</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLOSSARY -->
+  <section id="glossary" class="section alt">
+    <div class="container">
+      <h3>Γλωσσάρι</h3>
+      <input id="glossary-search" class="search" placeholder="Αναζήτηση όρου (π.χ. blockchain, gas, DCA)"/>
+      <div id="glossary-list" class="glossary"></div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> CryptoKosmos — Όλα τα δικαιώματα διατηρούνται.</p>
+      <p class="muted">Disclaimer: Εκπαιδευτικό περιεχόμενο. Δεν αποτελεί επενδυτική συμβουλή.</p>
+    </div>
+  </footer>
+
+ <!-- LOGIN MODAL -->
+<div id="login-modal" class="modal hidden" aria-hidden="true">
+  <div class="modal-backdrop"></div>
+
+  <div class="modal-card">
+    <div class="modal-header">
+      <span class="modal-title">Σύνδεση</span>
+      <button class="modal-close" type="button" id="login-close">×</button>
+    </div>
+
+    <form id="login-form">
+      <div class="modal-body">
+        <label for="login-email">Email</label>
+        <input id="login-email" type="email" required placeholder="you@example.com" />
+
+      
+<label for="login-pass">Password</label>
+<div class="pass-wrap">
+  <input id="login-pass" type="password" required placeholder="••••••••" />
+  <img id="login-pass-toggle" class="pass-eye" src="./IMG_5380.png" />
+</div>
+      </div>
+
+      <button class="modal-submit" type="submit">Σύνδεση</button>
+
+      <p class="modal-hint">Demo login: δεν στέλνεται τίποτα σε server.</p>
+
+      <p id="no-account" class="modal-hint" style="color:#ffb3b3; display:none;">
+        Δεν έχεις λογαριασμό στο CryptoKosmos.
+      </p>
+
+      <button id="signup-btn" type="button" style="
+        display:none;
+        margin-top:10px;
+        width:100%;
+        padding:10px 14px;
+        border:none;
+        border-radius:14px;
+        background:#1e293b;
+        color:white;
+        font-weight:600;
+        cursor:pointer;
+        border:1px solid rgba(255,255,255,0.25);
+      ">
+        Δημιουργία λογαριασμού
+      </button>
+
+    </form>
+  </div>
+</div>
+
+<!-- SIGNUP MODAL -->
+<div id="signup-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 class="modal-title">Δημιούργησε λογαριασμό</h3>
+      <button class="modal-close signup-close">×</button>
+    </div>
+
+    <div class="modal-body">
+      <label>Email</label>
+      <input id="signup-email" type="email" placeholder="you@example.com">
+
+     
+   <label>Κωδικός</label>
+<div class="pass-wrap">
+  <input id="signup-pass1" type="password" placeholder="••••••••">
+  <img id="signup-pass1-toggle" class="pass-eye" src="./IMG_5380.png">
+</div>
+
+
+<label>Επιβεβαίωση κωδικού</label>
+<div class="pass-wrap">
+  <input id="signup-pass2" type="password" placeholder="••••••••">
+  <img id="signup-pass2-toggle" class="pass-eye" src="./IMG_5380.png">
+</div>
+
+      <p id="signup-error" style="color:#ff6b6b; display:none;">
+        Οι κωδικοί δεν ταιριάζουν.
+      </p>
+
+      <button id="signup-create" class="modal-submit">Δημιουργία λογαριασμού</button>
+
+      <p class="modal-hint">
+        Έχεις ήδη λογαριασμό;
+        <span id="back-to-login" style="color:#5bb4ff; cursor:pointer;">Σύνδεση</span>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- VERIFY MODAL -->
+<div id="verify-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 class="modal-title">Επαλήθευση Email</h3>
+      <button class="modal-close verify-close">×</button>
+    </div>
+
+    <div class="modal-body">
+      <p class="muted">Σου στείλαμε έναν 6-ψήφιο κωδικό.</p>
+
+      <label>Κωδικός</label>
+      <input id="verify-code" type="text" placeholder="123456">
+
+      <p id="verify-error" style="color:#ff6b6b; display:none;">
+        Λάθος κωδικός. Προσπάθησε ξανά.
+      </p>
+
+      <button id="verify-submit" class="modal-submit">Επιβεβαίωση</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ========================================
+// FOOTER YEAR
+// ========================================
+document.getElementById("year").textContent = new Date().getFullYear();
+
+
+// ========================================
+// LOGIN ELEMENTS
+// ========================================
+const authBtn   = document.getElementById("auth-btn");
+const authLabel = document.getElementById("auth-label");
+const authIcon  = document.getElementById("auth-icon");
+
+const loginModal = document.getElementById("login-modal");
+const loginClose = document.getElementById("login-close");
+const loginForm  = document.getElementById("login-form");
+const noAccountMsg = document.getElementById("no-account");
+const signupBtn  = document.getElementById("signup-btn");
+
+const signupModal   = document.getElementById("signup-modal");
+const signupClose   = document.querySelector(".signup-close");
+const signupCreate  = document.getElementById("signup-create");
+const backToLogin   = document.getElementById("back-to-login");
+const signupError   = document.getElementById("signup-error");
+
+const verifyModal   = document.getElementById("verify-modal");
+const verifyClose   = document.querySelector(".verify-close");
+const verifySubmit  = document.getElementById("verify-submit");
+const verifyError   = document.getElementById("verify-error");
+
+let currentUser      = null;
+let tempUser         = null;
+let verificationCode = null;
+
+
+// ========================================
+// USER STORAGE
+// ========================================
+function loadUser() {
+  try {
+    return JSON.parse(localStorage.getItem("ck-user"));
+  } catch {
+    return null;
+  }
+}
+
+function saveUser(user) {
+  if (user) localStorage.setItem("ck-user", JSON.stringify(user));
+  else localStorage.removeItem("ck-user");
+}
+
+
+// ========================================
+// AUTH UI
+// ========================================
+function updateAuthUI() {
+  if (!authBtn) return;
+
+  if (currentUser) {
+    authLabel.textContent = "Logout";
+    authBtn.dataset.state = "logout";
+    authIcon.src = "./IMG_5367.png";
+  } else {
+    authLabel.textContent = "Login";
+    authBtn.dataset.state = "login";
+    authIcon.src = "./IMG_5301.png";
+  }
+}
+
+currentUser = loadUser();
+updateAuthUI();
+
+
+function closeBurgerMenu() {
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (!menuToggle || !mobileMenu) return;
+
+  menuToggle.classList.remove("open");  // γυρνάει το X σε ≡
+  mobileMenu.classList.remove("open");  // κλείνει το burger panel
+}
+
+// ========================================
+// LOGIN OPEN/CLOSE
+// ========================================
+function openLogin() {
+  loginForm && loginForm.reset();
+  noAccountMsg.style.display = "none";
+  signupBtn.style.display = "none";
+
+  signupModal.classList.add("hidden");
+  verifyModal.classList.add("hidden");
+
+  loginModal.classList.remove("hidden");
+}
+
+function closeLogin() {
+  loginModal.classList.add("hidden");
+  loginForm && loginForm.reset();
+}
+
+if (authBtn) {
+  authBtn.addEventListener("click", () => {
+    if (authBtn.dataset.state === "login") openLogin();
+    else {
+      currentUser = null;
+      saveUser(null);
+      updateAuthUI();
+    }
+  });
+}
+
+if (loginClose) loginClose.addEventListener("click", () => {
+    closeLogin();
+    closeBurgerMenu();
+});
+
+loginModal.addEventListener("click", e => {
+  if (e.target.classList.contains("modal-backdrop")) {
+      closeLogin();
+      closeBurgerMenu();
+  }
+});
+
+
+// ========================================
+// LOGIN SUBMIT
+// ========================================
+if (loginForm) {
+  loginForm.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const email = document.getElementById("login-email").value.trim();
+    const pass  = document.getElementById("login-pass").value.trim();
+    const saved = loadUser();
+
+    if (!saved || saved.email !== email || saved.pass !== pass) {
+      noAccountMsg.style.display = "block";
+      signupBtn.style.display = "block";
+      return;
+    }
+
+    currentUser = saved;
+    updateAuthUI();
+    closeLogin();
+  });
+}
+
+
+// ========================================
+// SIGNUP FLOW
+// ========================================
+signupBtn.addEventListener("click", () => {
+  closeLogin();
+  noAccountMsg.style.display = "none";
+  signupModal.classList.remove("hidden");
+});
+
+signupClose.addEventListener("click", () => {
+    signupModal.classList.add("hidden");
+    closeBurgerMenu();   // 🟩 RESET BURGER
+});
+
+signupModal.addEventListener("click", e => {
+    if (e.target.classList.contains("modal-backdrop")) {
+        signupModal.classList.add("hidden");
+        closeBurgerMenu();   // 🟩 RESET BURGER
+    }
+});
+
+
+backToLogin.addEventListener("click", () => {
+  signupModal.classList.add("hidden");
+  openLogin();
+});
+
+signupCreate.addEventListener("click", () => {
+  const email = document.getElementById("signup-email").value.trim();
+  const p1    = document.getElementById("signup-pass1").value.trim();
+  const p2    = document.getElementById("signup-pass2").value.trim();
+
+  if (!email || !p1 || !p2) return;
+
+  if (p1 !== p2) {
+    signupError.style.display = "block";
+    return;
+  }
+
+  signupError.style.display = "none";
+
+  verificationCode = String(Math.floor(100000 + Math.random() * 900000));
+  console.log("Verification:", verificationCode);
+
+  tempUser = { email, pass: p1 };
+
+  signupModal.classList.add("hidden");
+  verifyModal.classList.remove("hidden");
+});
+
+
+// ========================================
+// VERIFY FLOW
+// ========================================
+verifyClose.addEventListener("click", () => {
+    verifyModal.classList.add("hidden");
+    closeBurgerMenu();  // 🟩 RESET BURGER
+});
+
+verifyModal.addEventListener("click", e => {
+    if (e.target.classList.contains("modal-backdrop")) {
+        verifyModal.classList.add("hidden");
+        closeBurgerMenu(); // 🟩 RESET BURGER
+    }
+});
+
+verifySubmit.addEventListener("click", () => {
+  const code = document.getElementById("verify-code").value.trim();
+  if (code !== verificationCode) {
+    verifyError.style.display = "block";
+    return;
+  }
+
+  saveUser(tempUser);
+  currentUser = tempUser;
+  updateAuthUI();
+  verifyModal.classList.add("hidden");
+
+  alert("Ο λογαριασμός δημιουργήθηκε!");
+});
+
+
+// ========================================
+// PASSWORD EYE (images)
+// ========================================
+function setupPasswordToggle(inputId, iconId) {
+  const input = document.getElementById(inputId);
+  const icon  = document.getElementById(iconId);
+  if (!input || !icon) return;
+
+  icon.addEventListener("click", () => {
+    const show = input.type === "password";
+    input.type = show ? "text" : "password";
+    icon.src = show ? "./IMG_5381.png" : "./IMG_5380.png";
+  });
+}
+
+setupPasswordToggle("login-pass", "login-pass-toggle");
+setupPasswordToggle("signup-pass1", "signup-pass1-toggle");
+setupPasswordToggle("signup-pass2", "signup-pass2-toggle");
+
+
+// ========================================
+// THEME TOGGLE (CLEAN VERSION)
+// ========================================
+const themeBtn   = document.getElementById("theme-toggle");
+const themeIcon  = document.getElementById("theme-icon");
+const themeLabel = document.getElementById("theme-label");
+const siteLogo   = document.getElementById("site-logo");
+const menuIcon   = document.getElementById("menu-icon");
+
+let isLight = localStorage.getItem("ck-theme") === "light";
+
+function applyTheme() {
+  if (isLight) {
+    document.body.classList.add("light-theme");
+    themeIcon.src = "./IMG_5299.png";
+    themeLabel.textContent = "Light";
+    siteLogo.src = "./logo.png";
+    menuIcon && (menuIcon.src = "./IMG_5423.png");
+  } else {
+    document.body.classList.remove("light-theme");
+    themeIcon.src = "./IMG_5300.png";
+    themeLabel.textContent = "Dark";
+    siteLogo.src = "./black logo.png";
+    menuIcon && (menuIcon.src = "./IMG_5422.png");
+  }
+}
+
+applyTheme();
+
+if (themeBtn) {
+  themeBtn.addEventListener("click", () => {
+    isLight = !isLight;
+    localStorage.setItem("ck-theme", isLight ? "light" : "dark");
+    applyTheme();
+  });
+}
+
+// ========================================
+// CLEAN BURGER MENU SYSTEM
+// ========================================
+const menuToggle = document.getElementById("menu-toggle");
+const mobileMenu = document.getElementById("mobile-menu");
+const mobileTheme = document.getElementById("mobile-theme-toggle");
+const mobileAuth  = document.getElementById("mobile-auth-btn");
+
+// 🔥 Reset burger back to ≡
+function resetBurger() {
+  menuToggle.classList.remove("open");
+  mobileMenu.classList.remove("open");
+}
+
+// 🔥 Ανοίγει / Κλείνει burger
+if (menuToggle) {
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("open");
+    mobileMenu.classList.toggle("open");
+  });
+}
+
+// 🔥 Mobile → Αλλαγή Θέματος
+if (mobileTheme) {
+  mobileTheme.addEventListener("click", () => {
+    themeBtn.click();  // χρησιμοποιεί το κεντρικό theme button
+    resetBurger();
+  });
+}
+
+// 🔥 Mobile → Login
+if (mobileAuth) {
+  mobileAuth.addEventListener("click", () => {
+    authBtn.click();
+    resetBurger();
+  });
+}
+
+// 🔥 Κλείσιμο modals = reset burger
+document.querySelectorAll(".modal-backdrop, .modal-close").forEach(el => {
+  el.addEventListener("click", resetBurger);
+});
+
+// 🔥 Κλείσιμο burger όταν πατάς κάποιο link του mobile menu
+document.querySelectorAll("#mobile-menu a").forEach(link => {
+  link.addEventListener("click", () => {
+    resetBurger();
+  });
+});
+
+// ========================================
+// HERO RANKING – Top 50 coins (auto scroll)
+// ========================================
+const rankBox  = document.querySelector(".hero-rank-box");
+const rankWrap = document.getElementById("hero-rank-inner");
+
+async function loadHeroRanking() {
+  if (!rankBox || !rankWrap) return;
+
+  try {
+    const res = await fetch(
+      "https://api.coingecko.com/api/v3/coins/markets" +
+      "?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false",
+      { cache: "no-store" }
+    );
+    const data = await res.json();
+
+    rankWrap.innerHTML = "";
+
+    data.forEach((coin, idx) => {
+      const change = coin.price_change_percentage_24h || 0;
+      const up = change >= 0;
+
+      const row = document.createElement("div");
+      row.className = "hero-rank-row";
+
+      row.innerHTML = `
+        <span class="hr-pos">${idx + 1}</span>
+        <div class="hr-icon-wrap">
+          <img src="${coin.image}" class="hr-icon">
+          <span class="hr-symbol">${coin.symbol.toUpperCase()}</span>
+        </div>
+        <span class="hr-change ${up ? "hr-up" : "hr-down"}">
+          ${up ? "▲" : "▼"} ${change.toFixed(2)}%
+        </span>
+        <span class="hr-price">
+          $${coin.current_price.toLocaleString("en-US",{ maximumFractionDigits: 2 })}
+        </span>
+      `;
+
+      rankWrap.appendChild(row);
+    });
+
+    // διπλασιάζουμε για endless scroll
+    rankWrap.innerHTML += rankWrap.innerHTML;
+    startHeroScroll();
+  } catch (e) {
+    console.warn("Hero ranking error:", e);
+  }
+}
+
+function startHeroScroll() {
+  if (!rankBox || !rankWrap) return;
+
+  let pos = 0;
+  const speed = 0.5;
+
+  setInterval(() => {
+    pos += speed;
+    const half = rankWrap.scrollHeight / 2;
+    if (pos >= half) pos = 0;
+    rankBox.scrollTop = pos;
+  }, 30);
+}
+
+loadHeroRanking();
+
+
+
+// ========================================
+// Glossary
+// ========================================
+const TERMS = [
+  {k:"Blockchain", v:"Κοινόχρηστο ψηφιακό βιβλίο συναλλαγών — ασφαλές, διαφανές, αποκεντρωμένο."},
+  {k:"Wallet", v:"Πορτοφόλι crypto: custodial ή non-custodial."},
+  {k:"Seed phrase", v:"12/24 λέξεις ανάκτησης. Μην τη μοιράζεσαι ποτέ."},
+  {k:"Gas/Fees", v:"Κόστη για την εκτέλεση συναλλαγών στο blockchain."},
+  {k:"DCA", v:"Σταδιακές αγορές για μείωση ρίσκου."},
+  {k:"DeFi", v:"Αποκεντρωμένα χρηματοοικονομικά."},
+  {k:"NFT", v:"Μοναδικά ψηφιακά assets."},
+  {k:"SOL", v:"Το νόμισμα του δικτύου Solana."}
+];
+
+const gList   = document.getElementById("glossary-list");
+const gSearch = document.getElementById("glossary-search");
+
+function renderTerms(q) {
+  const query = (q || "").toLowerCase();
+  gList.innerHTML = "";
+
+  TERMS
+    .filter(t => (t.k + " " + t.v).toLowerCase().includes(query))
+    .forEach(t => {
+      const el = document.createElement("div");
+      el.className = "term";
+      el.innerHTML = `<h5>${t.k}</h5><p class="muted">${t.v}</p>`;
+      gList.appendChild(el);
+    });
+}
+
+renderTerms("");
+gSearch.addEventListener("input", e => renderTerms(e.target.value));
+
+
+
+// ========================================
+// LIVE PRICES – CoinGecko
+// ========================================
+const coins = [
+  { id: "bitcoin",  symbol: "BTC" },
+  { id: "ethereum", symbol: "ETH" },
+  { id: "solana",   symbol: "SOL" }
+];
+
+function formatEur(n) {
+  return "€" + new Intl.NumberFormat("el-GR", {
+    maximumFractionDigits: 2
+  }).format(n);
+}
+
+function renderMarket(data) {
+  const wrap = document.getElementById("market-cards");
+  if (!wrap) return;
+
+  wrap.innerHTML = "";
+
+  coins.forEach(c => {
+    const d = data[c.id] || {};
+    const change = typeof d.eur_24h_change === "number" ? d.eur_24h_change : 0;
+    const up = change >= 0;
+
+    const card = document.createElement("article");
+    card.className = "card market-card";
+    card.innerHTML = `
+      <div class="row">
+        <h4>${c.symbol}</h4>
+        <span class="chip ${up ? "up" : "down"}">${change.toFixed(2)}%</span>
+      </div>
+      <div class="price">${formatEur(d.eur || 0)}</div>
+      <div class="row muted">
+        <span>USD: $${(d.usd || 0).toFixed(2)}</span>
+        <span>24h ${up ? "▲" : "▼"}</span>
+      </div>
+    `;
+    wrap.appendChild(card);
+  });
+}
+
+async function fetchPrices() {
+  try {
+    const ids = coins.map(c => c.id).join(",");
+    const url =
+      `https://api.coingecko.com/api/v3/simple/price` +
+      `?ids=${ids}&vs_currencies=usd,eur&include_24hr_change=true`;
+
+    const res = await fetch(url, { cache: "no-store" });
+    const data = await res.json();
+    renderMarket(data);
+  } catch (e) {
+    console.warn("CoinGecko error:", e);
+  }
+}
+
+fetchPrices();
+setInterval(fetchPrices, 60000);
+
+
+// ========================================
+// TradingView Chart
+// ========================================
+let tvWidget = null;
+
+function loadTradingView(symbol) {
+  if (typeof TradingView === "undefined") return;
+
+  if (tvWidget && typeof tvWidget.remove === "function") {
+    tvWidget.remove();
+  }
+
+  tvWidget = new TradingView.widget({
+    autosize: true,
+    symbol,
+    interval: "60",
+    timezone: "Europe/Athens",
+    theme: "dark",
+    style: "1",
+    locale: "en",
+    toolbar_bg: "#0f1216",
+    enable_publishing: false,
+    hide_legend: false,
+    container_id: "tradingview_chart"
+  });
+}
+
+(function loadTV() {
+  const s = document.createElement("script");
+  s.src = "https://s3.tradingview.com/tv.js";
+  s.onload = () => loadTradingView("BINANCE:BTCUSDT");
+  document.body.appendChild(s);
+})();
+
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".pair");
+  if (!btn) return;
+
+  document.querySelectorAll(".pair").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+
+  loadTradingView(btn.dataset.symbol);
+});
+
+
+</script>
+<script src="./app.js"></script>
+
+</body>
+</html>
