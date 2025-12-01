@@ -806,3 +806,37 @@ body.light-theme .mobile-menu a {
 @media (min-width: 851px) {
   .mobile-menu { display: none !important; }
 }
+
+
+
+
+.lang-anim {
+  transition: opacity 0.25s ease;
+  opacity: 1;
+}
+
+.lang-anim.hide {
+  opacity: 0;
+}
+
+/* ============================
+   MOBILE LANG BUTTON FIX
+=============================== */
+#mobile-lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 12px !important;   /* μικρότερο ύψος */
+  height: 42px;                   /* σταθερό μικρό ύψος */
+  gap: 6px;                       /* μικρότερο κενό ανάμεσα σε icon & text */
+
+  border-radius: 14px;
+}
+
+/* Μικρότερη εικόνα */
+#mobile-lang-toggle .icon-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}

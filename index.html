@@ -9,7 +9,8 @@
 <link rel="preload" as="image" href="./IMG_5377.jpg">
   <!-- Favicon & logo -->
   <link rel="icon" href="./logo.png" type="image/png" />
-
+<script src="translations.js"></script>
+<script src="i18n.js"></script>
   <style>
 
 /* =========================================
@@ -967,6 +968,29 @@ html, body {
     overflow: -moz-scrollbars-none !important;
 }
 
+
+
+/* ============================
+   MOBILE LANG BUTTON FIX
+=============================== */
+#mobile-lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 12px !important;   /* μικρότερο ύψος */
+  height: 42px;                   /* σταθερό μικρό ύψος */
+  gap: 6px;                       /* μικρότερο κενό ανάμεσα σε icon & text */
+
+  border-radius: 14px;
+}
+
+/* Μικρότερη εικόνα */
+#mobile-lang-toggle .icon-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
 </style>
 
 </head>
@@ -976,37 +1000,46 @@ html, body {
   <header class="site-header">
   <div class="container header-inner">
 
+    <!-- BRAND -->
     <a class="brand" href="#">
       <img id="site-logo" src="./logo.png" alt="CryptoKosmos logo" class="logo" />
       <div class="brand-text">
         <h1>CryptoKosmos</h1>
-        <p class="tagline">Ο παλμός του κόσμου των crypto</p>
+        <!-- tagline με i18n, αλλά ίδιο κείμενο -->
+        <p class="tagline" data-i18n="header_tagline">Ο παλμός του κόσμου των crypto</p>
       </div>
     </a>
 
+    <!-- DESKTOP NAV -->
     <nav class="nav">
-      <a href="#market">Αγορά</a>
-      <a href="#charts">Τάσεις</a>
-      <a href="#guides">Οδηγοί</a>
-      <a href="#glossary">Γλωσσάρι</a>
+      <a href="#market"   data-i18n="nav_market">Αγορά</a>
+      <a href="#charts"   data-i18n="nav_charts">Τάσεις</a>
+      <a href="#guides"   data-i18n="nav_guides">Οδηγοί</a>
+      <a href="#glossary" data-i18n="nav_glossary">Γλωσσάρι</a>
     </nav>
 
     <div class="header-actions">
 
-      <!-- THEME BUTTON -->
+      <!-- THEME BUTTON (μένει όπως ήταν, απλά βάζω data-i18n στο label αν θες να το γυρνάμε μετά) -->
       <button id="theme-toggle" class="pill-btn" type="button">
         <img id="theme-icon" src="./IMG_5300.png" class="icon-img" />
-        <span id="theme-label">Dark</span>
+        <span id="theme-label" data-i18n="theme_dark">Dark</span>
       </button>
 
-      <!-- LOGIN BUTTON -->
+      <!-- LOGIN BUTTON (Greek κείμενο ίδιο: Login) -->
       <button id="auth-btn" class="pill-btn" type="button">
         <img id="auth-icon" src="./IMG_5301.png" class="icon-img" />
-        <span id="auth-label">Login</span>
+        <span id="auth-label" data-i18n="login">Login</span>
+      </button>
+
+     <!-- LANGUAGE BUTTON -->
+      <button id="lang-toggle" class="pill-btn">
+        <img id="lang-icon" class="icon-img lang-anim" src="./IMG_5542.png">
+        <span id="lang-label" class="lang-anim">GR</span>
       </button>
 
       <!-- BURGER BUTTON -->
-      <button id="menu-toggle" class="menu-btn">
+      <button id="menu-toggle" class="menu-btn" type="button">
         <span class="burger-line"></span>
         <span class="burger-line"></span>
         <span class="burger-line"></span>
@@ -1016,18 +1049,34 @@ html, body {
   </div>
 </header>
 
-<!-- MOBILE MENU PANEL -->
 <div id="mobile-menu" class="mobile-menu">
-  <a href="#market">Αγορά</a>
-  <a href="#charts">Τάσεις</a>
-  <a href="#guides">Οδηγοί</a>
-  <a href="#glossary">Γλωσσάρι</a>
+
+  <!-- LINKS -->
+  <a href="#market"   data-i18n="nav_market">Αγορά</a>
+  <a href="#charts"   data-i18n="nav_charts">Τάσεις</a>
+  <a href="#guides"   data-i18n="nav_guides">Οδηγοί</a>
+  <a href="#glossary" data-i18n="nav_glossary">Γλωσσάρι</a>
 
   <hr>
 
-  <button id="mobile-theme-toggle" class="mobile-btn">Αλλαγή Θέματος</button>
-  <button id="mobile-auth-btn" class="mobile-btn">Login</button>
+  <!-- THEME BUTTON -->
+  <button id="mobile-theme-toggle" class="mobile-btn" data-i18n="mobile_theme">
+    Αλλαγή Θέματος
+  </button>
+
+  <!-- LOGIN BUTTON -->
+  <button id="mobile-auth-btn" class="mobile-btn" data-i18n="login">
+    Login
+  </button>
+
+  <!-- LANGUAGE BUTTON -->
+  <button id="mobile-lang-toggle" class="mobile-btn">
+    <img id="mobile-lang-icon" class="icon-img" src="./IMG_5542.png">
+    <span id="mobile-lang-label">GR</span>
+  </button>
+
 </div>
+
 
 <!-- 🔥🔥🔥 ΤΟ ΝΕΟ HERO ΜΕ ΤΟ 3D PANEL 🔥🔥🔥 -->
 <section class="hero">
@@ -1042,12 +1091,14 @@ html, body {
 
     <!-- ΔΕΞΙΑ: Κείμενο -->
     <div class="hero-text">
-      <h2>Καλώς ήρθες στο CryptoKosmos</h2>
-      <p>
+      <h2 data-i18n="hero_title">Καλώς ήρθες στο CryptoKosmos</h2>
+
+      <p data-i18n="hero_line1">
         To CryptoKosmos είναι η πιο απλή και ασφαλής ελληνική πλατφόρμα για να βλέπεις ζωντανές τιμές,
         να καταλαβαίνεις τάσεις και να μπαίνεις στον κόσμο των crypto χωρίς πονοκέφαλο.
       </p>
-      <p>
+
+      <p data-i18n="hero_line2">
         Ζωντανά δεδομένα από Binance & CoinGecko, premium ανάλυση και γλώσσα απλή — για όλους.
       </p>
     </div>
@@ -1056,71 +1107,118 @@ html, body {
 </section>
 
   <!-- MARKET -->
- <section id="market" class="section">
+<section id="market" class="section">
   <div class="container">
-    <h3>Ζωντανές τιμές</h3>
 
-    <!-- ΕΔΩ -->
+    <h3 data-i18n="market_title">Ζωντανές τιμές</h3>
+
     <div id="market-cards" class="scroll-x"></div>
 
-    <p class="muted note">Πηγή τιμών: CoinGecko (ανανεώνεται αυτόματα).</p>
+    <p class="muted note" data-i18n="market_source">
+      Πηγή τιμών: CoinGecko (ανανεώνεται αυτόματα).
+    </p>
+
   </div>
 </section>
 
   <!-- CHARTS -->
-  <section id="charts" class="section alt">
-    <div class="container">
-      <h3>Τάσεις αγοράς</h3>
-      <div class="chart-wrap">
-        <div id="tradingview_chart" style="height:420px;"></div>
-      </div>
-      <div class="pairs">
-        <button data-symbol="BINANCE:BTCUSDT" class="pair active">BTC/USDT</button>
-        <button data-symbol="BINANCE:ETHUSDT" class="pair">ETH/USDT</button>
-        <button data-symbol="BINANCE:SOLUSDT" class="pair">SOL/USDT</button>
-      </div>
+<section id="charts" class="section alt">
+  <div class="container">
+
+    <h3 data-i18n="charts_title">Τάσεις αγοράς</h3>
+
+    <div class="chart-wrap">
+      <div id="tradingview_chart" style="height:420px;"></div>
     </div>
-  </section>
+
+    <div class="pairs">
+
+      <button data-symbol="BINANCE:BTCUSDT" class="pair active">
+        <span data-i18n="pair_btc">BTC/USDT</span>
+      </button>
+
+      <button data-symbol="BINANCE:ETHUSDT" class="pair">
+        <span data-i18n="pair_eth">ETH/USDT</span>
+      </button>
+
+      <button data-symbol="BINANCE:SOLUSDT" class="pair">
+        <span data-i18n="pair_sol">SOL/USDT</span>
+      </button>
+
+    </div>
+  </div>
+</section>
 
   <!-- GUIDES -->
-  <section id="guides" class="section">
+<section id="guides" class="section">
   <div class="container">
-    <h3>Οδηγοί για αρχάριους</h3>
+
+    <h3 data-i18n="guides_title">Οδηγοί για αρχάριους</h3>
+
     <div id="guides-cards" class="cards guides">
-      <article class="card">
-          <h4>Τι είναι το Blockchain</h4>
-          <p>Το “κοινόχρηστο ψηφιακό βιβλίο” που καταγράφει συναλλαγές με ασφάλεια &amp; διαφάνεια.</p>
-          <a href="guides/blockchain.html" class="btn">Διάβασε</a>
-        </article>
-        <article class="card">
-          <h4>Wallets: Custodial vs Non-custodial</h4>
-          <p>Ποιες είναι οι διαφορές και πότε διαλέγω το ένα ή το άλλο. Seed phrase &amp; 2FA.</p>
-         <a class="btn" href="./guides/wallets.html">Διάβασε</a>
-        </article>
-        <article class="card">
-          <h4>Αγορά Solana με ασφάλεια</h4>
-          <p>DCA, alerts, fees, επιλογή ανταλλακτηρίου και πρακτικά tips για αρχή.</p>
-         <a class="btn" href="./guides/solana.html">Διάβασε</a>
-        </article>
-      </div>
+
+     <!-- Blockchain Guide -->
+<article class="card">
+  <h4 data-i18n="guide_blockchain_title">Τι είναι το Blockchain</h4>
+  <p data-i18n="guide_blockchain_desc">
+   Το “κοινόχρηστο ψηφιακό βιβλίο” που καταγράφει συναλλαγές με ασφάλεια &amp; διαφάνεια.
+  </p>
+  <a href="guides/blockchain.html" class="btn" data-i18n="read_more">Διάβασε</a>
+</article>
+
+<!-- Wallets Guide -->
+<article class="card">
+  <h4 data-i18n="guide_wallets_title">Wallets: Custodial vs Non-custodial</h4>
+  <p data-i18n="guide_wallets_desc">
+   Ποιες είναι οι διαφορές και πότε διαλέγω το ένα ή το άλλο. Seed phrase &amp; 2FA.
+  </p>
+  <a href="./guides/wallets.html" class="btn" data-i18n="read_more">Διάβασε</a>
+</article>
+
+<!-- Solana Guide -->
+<article class="card">
+  <h4 data-i18n="guide_solana_title">Αγορά Solana με ασφάλεια</h4>
+  <p data-i18n="guide_solana_desc">
+    DCA, alerts, fees, επιλογή ανταλλακτηρίου και πρακτικά tips για αρχή.
+  </p>
+  <a href="./guides/solana.html" class="btn" data-i18n="read_more">Διάβασε</a>
+</article>
+
     </div>
-  </section>
+
+  </div>
+</section>
 
   <!-- GLOSSARY -->
-  <section id="glossary" class="section alt">
-    <div class="container">
-      <h3>Γλωσσάρι</h3>
-      <input id="glossary-search" class="search" placeholder="Αναζήτηση όρου (π.χ. blockchain, gas, DCA)"/>
-      <div id="glossary-list" class="glossary"></div>
-    </div>
-  </section>
+<section id="glossary" class="section alt">
+  <div class="container">
+
+    <h3 data-i18n="glossary_title">Γλωσσάρι</h3>
+
+    <input
+      id="glossary-search"
+      class="search"
+      data-i18n-placeholder="glossary_placeholder"
+      placeholder="Αναζήτηση όρου (π.χ. blockchain, gas, DCA)"
+    />
+
+    <div id="glossary-list" class="glossary"></div>
+
+  </div>
+</section>
 
   <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> CryptoKosmos — Όλα τα δικαιώματα διατηρούνται.</p>
-      <p class="muted">Disclaimer: Εκπαιδευτικό περιεχόμενο. Δεν αποτελεί επενδυτική συμβουλή.</p>
-    </div>
-  </footer>
+  <div class="container">
+    <p>
+      © <span id="year"></span> CryptoKosmos — 
+      <span data-i18n="footer_rights">Όλα τα δικαιώματα διατηρούνται.</span>
+    </p>
+
+    <p class="muted" data-i18n="footer_disclaimer">
+      Disclaimer: Εκπαιδευτικό περιεχόμενο. Δεν αποτελεί επενδυτική συμβουλή.
+    </p>
+  </div>
+</footer>
 
  <!-- LOGIN MODAL -->
 <div id="login-modal" class="modal hidden" aria-hidden="true">
@@ -1128,44 +1226,73 @@ html, body {
 
   <div class="modal-card">
     <div class="modal-header">
-      <span class="modal-title">Σύνδεση</span>
+      <span class="modal-title" data-i18n="login_title">Σύνδεση</span>
       <button class="modal-close" type="button" id="login-close">×</button>
     </div>
 
     <form id="login-form">
       <div class="modal-body">
-        <label for="login-email">Email</label>
-        <input id="login-email" type="email" required placeholder="you@example.com" />
 
-      
-<label for="login-pass">Password</label>
-<div class="pass-wrap">
-  <input id="login-pass" type="password" required placeholder="••••••••" />
-  <img id="login-pass-toggle" class="pass-eye" src="./IMG_5380.png" />
-</div>
+        <!-- EMAIL -->
+        <label for="login-email" data-i18n="login_email_label">Email</label>
+        <input
+          id="login-email"
+          type="email"
+          required
+          placeholder="you@example.com"
+          data-i18n-placeholder="login_email_placeholder"
+        />
+
+        <!-- PASSWORD -->
+        <label for="login-pass" data-i18n="login_password_label">Password</label>
+        <div class="pass-wrap">
+          <input
+            id="login-pass"
+            type="password"
+            required
+            placeholder="••••••••"
+            data-i18n-placeholder="login_password_placeholder"
+          />
+          <img id="login-pass-toggle" class="pass-eye" src="./IMG_5380.png" />
+        </div>
+
       </div>
 
-      <button class="modal-submit" type="submit">Σύνδεση</button>
+      <!-- SUBMIT BUTTON -->
+      <button class="modal-submit" type="submit" data-i18n="login_submit">
+        Σύνδεση
+      </button>
 
-      <p class="modal-hint">Demo login: δεν στέλνεται τίποτα σε server.</p>
+      <!-- DEMO TEXT -->
+      <p class="modal-hint" data-i18n="login_demo">
+        Demo login: δεν στέλνεται τίποτα σε server.
+      </p>
 
-      <p id="no-account" class="modal-hint" style="color:#ffb3b3; display:none;">
+      <!-- NO ACCOUNT -->
+      <p id="no-account" class="modal-hint" style="color:#ffb3b3; display:none;"
+         data-i18n="login_no_account">
         Δεν έχεις λογαριασμό στο CryptoKosmos.
       </p>
 
-      <button id="signup-btn" type="button" style="
-        display:none;
-        margin-top:10px;
-        width:100%;
-        padding:10px 14px;
-        border:none;
-        border-radius:14px;
-        background:#1e293b;
-        color:white;
-        font-weight:600;
-        cursor:pointer;
-        border:1px solid rgba(255,255,255,0.25);
-      ">
+      <!-- SIGNUP BUTTON -->
+      <button
+        id="signup-btn"
+        type="button"
+        style="
+          display:none;
+          margin-top:10px;
+          width:100%;
+          padding:10px 14px;
+          border:none;
+          border-radius:14px;
+          background:#1e293b;
+          color:white;
+          font-weight:600;
+          cursor:pointer;
+          border:1px solid rgba(255,255,255,0.25);
+        "
+        data-i18n="login_create_account"
+      >
         Δημιουργία λογαριασμού
       </button>
 
@@ -1178,39 +1305,66 @@ html, body {
   <div class="modal-backdrop"></div>
 
   <div class="modal-card">
+
     <div class="modal-header">
-      <h3 class="modal-title">Δημιούργησε λογαριασμό</h3>
+      <h3 class="modal-title" data-i18n="signup_title">Δημιούργησε λογαριασμό</h3>
       <button class="modal-close signup-close">×</button>
     </div>
 
     <div class="modal-body">
-      <label>Email</label>
-      <input id="signup-email" type="email" placeholder="you@example.com">
 
-     
-   <label>Κωδικός</label>
-<div class="pass-wrap">
-  <input id="signup-pass1" type="password" placeholder="••••••••">
-  <img id="signup-pass1-toggle" class="pass-eye" src="./IMG_5380.png">
-</div>
+      <!-- EMAIL -->
+      <label data-i18n="signup_email_label">Email</label>
+      <input
+        id="signup-email"
+        type="email"
+        placeholder="you@example.com"
+        data-i18n-placeholder="signup_email_placeholder"
+      >
 
+      <!-- PASSWORD -->
+      <label data-i18n="signup_password_label">Κωδικός</label>
+      <div class="pass-wrap">
+        <input
+          id="signup-pass1"
+          type="password"
+          placeholder="••••••••"
+          data-i18n-placeholder="signup_password_placeholder"
+        >
+        <img id="signup-pass1-toggle" class="pass-eye" src="./IMG_5380.png">
+      </div>
 
-<label>Επιβεβαίωση κωδικού</label>
-<div class="pass-wrap">
-  <input id="signup-pass2" type="password" placeholder="••••••••">
-  <img id="signup-pass2-toggle" class="pass-eye" src="./IMG_5380.png">
-</div>
+      <!-- CONFIRM PASSWORD -->
+      <label data-i18n="signup_confirm_label">Επιβεβαίωση κωδικού</label>
+      <div class="pass-wrap">
+        <input
+          id="signup-pass2"
+          type="password"
+          placeholder="••••••••"
+          data-i18n-placeholder="signup_confirm_placeholder"
+        >
+        <img id="signup-pass2-toggle" class="pass-eye" src="./IMG_5380.png">
+      </div>
 
-      <p id="signup-error" style="color:#ff6b6b; display:none;">
+      <!-- ERROR -->
+      <p id="signup-error" style="color:#ff6b6b; display:none;"
+         data-i18n="signup_error">
         Οι κωδικοί δεν ταιριάζουν.
       </p>
 
-      <button id="signup-create" class="modal-submit">Δημιουργία λογαριασμού</button>
+      <!-- SUBMIT -->
+      <button id="signup-create" class="modal-submit" data-i18n="signup_create">
+        Δημιουργία λογαριασμού
+      </button>
 
+      <!-- LOGIN LINK -->
       <p class="modal-hint">
-        Έχεις ήδη λογαριασμό;
-        <span id="back-to-login" style="color:#5bb4ff; cursor:pointer;">Σύνδεση</span>
+        <span data-i18n="signup_have_account">Έχεις ήδη λογαριασμό;</span>
+        <span id="back-to-login" style="color:#5bb4ff; cursor:pointer;" data-i18n="signup_login_link">
+          Σύνδεση
+        </span>
       </p>
+
     </div>
 
   </div>
@@ -1221,22 +1375,41 @@ html, body {
   <div class="modal-backdrop"></div>
 
   <div class="modal-card">
+
     <div class="modal-header">
-      <h3 class="modal-title">Επαλήθευση Email</h3>
+      <h3 class="modal-title" data-i18n="verify_title">Επαλήθευση Email</h3>
       <button class="modal-close verify-close">×</button>
     </div>
 
     <div class="modal-body">
-      <p class="muted">Σου στείλαμε έναν 6-ψήφιο κωδικό.</p>
 
-      <label>Κωδικός</label>
-      <input id="verify-code" type="text" placeholder="123456">
+      <!-- INFO TEXT -->
+      <p class="muted" data-i18n="verify_info">
+        Σου στείλαμε έναν 6-ψήφιο κωδικό.
+      </p>
 
-      <p id="verify-error" style="color:#ff6b6b; display:none;">
+      <!-- LABEL -->
+      <label data-i18n="verify_code_label">Κωδικός</label>
+
+      <!-- INPUT -->
+      <input
+        id="verify-code"
+        type="text"
+        placeholder="123456"
+        data-i18n-placeholder="verify_code_placeholder"
+      >
+
+      <!-- ERROR -->
+      <p id="verify-error" style="color:#ff6b6b; display:none;"
+         data-i18n="verify_error">
         Λάθος κωδικός. Προσπάθησε ξανά.
       </p>
 
-      <button id="verify-submit" class="modal-submit">Επιβεβαίωση</button>
+      <!-- SUBMIT BUTTON -->
+      <button id="verify-submit" class="modal-submit" data-i18n="verify_submit">
+        Επιβεβαίωση
+      </button>
+
     </div>
   </div>
 </div>
@@ -1649,41 +1822,38 @@ function startHeroScroll() {
 loadHeroRanking();
 
 
-
 // ========================================
-// Glossary
+// Glossary with full i18n support
 // ========================================
-const TERMS = [
-  {k:"Blockchain", v:"Κοινόχρηστο ψηφιακό βιβλίο συναλλαγών — ασφαλές, διαφανές, αποκεντρωμένο."},
-  {k:"Wallet", v:"Πορτοφόλι crypto: custodial ή non-custodial."},
-  {k:"Seed phrase", v:"12/24 λέξεις ανάκτησης. Μην τη μοιράζεσαι ποτέ."},
-  {k:"Gas/Fees", v:"Κόστη για την εκτέλεση συναλλαγών στο blockchain."},
-  {k:"DCA", v:"Σταδιακές αγορές για μείωση ρίσκου."},
-  {k:"DeFi", v:"Αποκεντρωμένα χρηματοοικονομικά."},
-  {k:"NFT", v:"Μοναδικά ψηφιακά assets."},
-  {k:"SOL", v:"Το νόμισμα του δικτύου Solana."}
-];
-
 const gList   = document.getElementById("glossary-list");
 const gSearch = document.getElementById("glossary-search");
 
-function renderTerms(q) {
-  const query = (q || "").toLowerCase();
+function renderGlossary() {
+  const lang = localStorage.getItem("ck-lang") || "el";
+  const terms = window.TRANSLATIONS[lang].glossary_terms;
+  const query = (gSearch.value || "").toLowerCase();
+
   gList.innerHTML = "";
 
-  TERMS
-    .filter(t => (t.k + " " + t.v).toLowerCase().includes(query))
-    .forEach(t => {
-      const el = document.createElement("div");
-      el.className = "term";
-      el.innerHTML = `<h5>${t.k}</h5><p class="muted">${t.v}</p>`;
-      gList.appendChild(el);
+  Object.keys(terms)
+    .filter(key =>
+      key.toLowerCase().includes(query) ||
+      terms[key].toLowerCase().includes(query)
+    )
+    .forEach(key => {
+      const div = document.createElement("div");
+      div.className = "term";
+      div.innerHTML = `
+        <h5>${key}</h5>
+        <p class="muted">${terms[key]}</p>
+      `;
+      gList.appendChild(div);
     });
 }
 
-renderTerms("");
-gSearch.addEventListener("input", e => renderTerms(e.target.value));
-
+gSearch.addEventListener("input", renderGlossary);
+document.addEventListener("languageChanged", renderGlossary);
+renderGlossary();
 
 
 // ========================================
@@ -1793,8 +1963,13 @@ document.addEventListener("click", e => {
 });
 
 
+
+
+
+
 </script>
 <script src="./app.js"></script>
+<script src="./i18n.js"></script>
 
 </body>
 </html>
