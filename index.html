@@ -993,7 +993,42 @@ html, body {
   height: 20px;
   object-fit: contain;
 }
+
+
+
+
+
+/* Desktop: Lock button widths so they don't move when language changes */
+@media (min-width: 900px) {
+  #theme-toggle {
+    width: 85px; /* αρκετό και για "Αλλαγή Θέματος" αλλά και "Change Theme" */
+    justify-content: center;
+  }
+
+  #auth-btn {
+    width: 85px; /* χωράει Login / Σύνδεση */
+    justify-content: center;
+  }
+
+  #lang-toggle {
+    width: 70px; /* GR / EN + flag icons */
+    justify-content: center;
+  }
+
+  /* All pill buttons consistent height */
+  .pill-btn {
+    height: 34px;
+  }
+}
 </style>
+
+
+
+
+
+
+
+
 
 </head>
 
