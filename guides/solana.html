@@ -3,42 +3,63 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Τι είναι το Blockchain – CryptoKosmos</title>
+  <title>Solana – CryptoKosmos</title>
 
   <!-- GLOBAL STYLES -->
-  <link rel="stylesheet" href="../styles.css">
-</head>
+  <link rel="stylesheet" href="../styles.css" />
 
-<body>
+  <!-- TRANSLATIONS FOR THIS PAGE -->
+  <script src="../translations-solana.js"></script>
+
+  <style>
+    body.article-page {
+      padding: 0;
+    }
+
+    .article-container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    @media (min-width: 900px) {
+      #theme-toggle { width: 85px; justify-content: center; }
+      #auth-btn { width: 85px; justify-content: center; }
+      #lang-toggle { width: 70px; justify-content: center; }
+      .pill-btn { height: 34px; }
+    }
+  </style>
+</head>
+<body class="article-page">
 
 <header class="site-header">
   <div class="container header-inner">
 
     <a class="brand" href="../index.html">
-      <img id="site-logo" src="../logo.png" alt="CryptoKosmos logo" class="logo" />
+      <img id="site-logo" src="../logo.png" class="logo" />
       <div class="brand-text">
         <h1>CryptoKosmos</h1>
-        <p class="tagline">Ο παλμός του κόσμου των crypto</p>
+        <p class="tagline" data-i18n="header_tagline">Ο παλμός του κόσμου των crypto</p>
       </div>
     </a>
 
     <nav class="nav">
-      <a href="../index.html#market">Αγορά</a>
-      <a href="../index.html#charts">Τάσεις</a>
-      <a href="../index.html#guides">Οδηγοί</a>
-      <a href="../index.html#glossary">Γλωσσάρι</a>
+      <a href="../index.html#market" data-i18n="nav_market">Αγορά</a>
+      <a href="../index.html#charts" data-i18n="nav_charts">Τάσεις</a>
+      <a href="../index.html#guides" data-i18n="nav_guides">Οδηγοί</a>
+      <a href="../index.html#glossary" data-i18n="nav_glossary">Γλωσσάρι</a>
     </nav>
 
     <div class="header-actions">
 
       <button id="theme-toggle" class="pill-btn">
         <img id="theme-icon" src="../IMG_5300.png" class="icon-img" />
-        <span id="theme-label">Dark</span>
+        <span id="theme-label" data-i18n="theme_dark">Dark</span>
       </button>
 
       <button id="auth-btn" class="pill-btn">
         <img id="auth-icon" src="../IMG_5301.png" class="icon-img" />
-        <span id="auth-label">Login</span>
+        <span id="auth-label" data-i18n="login">Login</span>
       </button>
 
       <button id="menu-toggle" class="menu-btn">
@@ -47,276 +68,93 @@
         <span class="burger-line"></span>
       </button>
 
+      <button id="lang-toggle" class="pill-btn">
+        <img id="lang-icon" src="../IMG_5542.png" class="icon-img">
+        <span id="lang-label">GR</span>
+      </button>
+
     </div>
   </div>
 </header>
 
 <!-- MOBILE MENU -->
 <div id="mobile-menu" class="mobile-menu">
-  <a href="../index.html#market">Αγορά</a>
-  <a href="../index.html#charts">Τάσεις</a>
-  <a href="../index.html#guides">Οδηγοί</a>
-  <a href="../index.html#glossary">Γλωσσάρι</a>
+  <a href="../index.html#market" data-i18n="nav_market">Αγορά</a>
+  <a href="../index.html#charts" data-i18n="nav_charts">Τάσεις</a>
+  <a href="../index.html#guides" data-i18n="nav_guides">Οδηγοί</a>
+  <a href="../index.html#glossary" data-i18n="nav_glossary">Γλωσσάρι</a>
 
-  <!-- ⭐ ΝΕΟ BUTTON -->
-  <button id="mobile-home-btn" class="mobile-btn">⬅ Αρχική Σελίδα</button>
+  <button id="mobile-home-btn" class="mobile-btn" data-i18n="mobile_home">⬅ Αρχική Σελίδα</button>
+  <button id="mobile-theme-toggle" class="mobile-btn" data-i18n="mobile_theme">Αλλαγή Θέματος</button>
+  <button id="mobile-auth-btn" class="mobile-btn" data-i18n="login">Login</button>
 
-  <button id="mobile-theme-toggle" class="mobile-btn">Αλλαγή Θέματος</button>
-  <button id="mobile-auth-btn" class="mobile-btn">Login</button>
+  <button id="mobile-lang-toggle" class="mobile-btn">
+    <img id="mobile-lang-icon" class="icon-img" src="../IMG_5542.png">
+    <span id="mobile-lang-label">GR</span>
+  </button>
 </div>
 
-<div class="article-container" style="max-width:800px;margin:auto;padding:20px;">
-  
-  
+<!-- ARTICLE CONTENT -->
+<div class="article-container">
 
+  <h2 data-i18n="sol_title">Τι είναι η Solana;</h2>
 
-<h2>Τι είναι το Blockchain;</h2>
+  <p data-i18n="sol_intro">
+    Η Solana είναι ένα από τα ταχύτερα και πιο αποδοτικά blockchain, γνωστό για τις χαμηλές χρεώσεις
+    και την απίστευτη ταχύτητα συναλλαγών.
+  </p>
 
-<p>
-  Το blockchain είναι ένας ψηφιακός, αποκεντρωμένος και διαφανής τρόπος αποθήκευσης δεδομένων. 
-  Δημιουργήθηκε για να επιτρέψει την ασφάλεια, την ακεραιότητα και τη μόνιμη καταγραφή 
-  συναλλαγών χωρίς να υπάρχει κάποια κεντρική αρχή, όπως μια τράπεζα ή ένας οργανισμός.
-</p>
+  <!-- SINGLE IMAGE VERSION -->
+  <img id="article-image"
+       src="./IMG_5581.jpg"
+       data-light-img="./IMG_5581.jpg"
+       data-dark-img="./IMG_5581.jpg"
+       style="width:100%;border-radius:16px;margin:20px 0;">
 
+  <h3 data-i18n="sol_speed_title">Πόσο γρήγορη είναι η Solana;</h3>
+  <p data-i18n="sol_speed_text">
+    Η Solana μπορεί να επεξεργαστεί χιλιάδες συναλλαγές ανά δευτερόλεπτο, χάρη στο μοναδικό της
+    σύστημα Proof-of-History.
+  </p>
 
+  <h3 data-i18n="sol_fees_title">Γιατί είναι τόσο φθηνή;</h3>
+  <p data-i18n="sol_fees_text">
+    Οι χρεώσεις συναλλαγών στην Solana είναι συνήθως κάτω από $0.001, κάνοντάς τη ιδανική για DeFi,
+    NFTs και gaming.
+  </p>
 
-  <img id="article-image" 
-     src="./IMG_5537.png" 
-     alt="Blockchain" 
-     style="width:100%;border-radius:16px;margin:20px 0;">
+  <h3 data-i18n="sol_use_title">Πού χρησιμοποιείται;</h3>
+  <ul>
+    <li data-i18n="sol_use1">NFT marketplaces</li>
+    <li data-i18n="sol_use2">DeFi apps</li>
+    <li data-i18n="sol_use3">On-chain games</li>
+    <li data-i18n="sol_use4">Real-time payments</li>
+  </ul>
 
-<h3>Πώς λειτουργεί το Blockchain;</h3>
-<p>
-  Η λειτουργία του στηρίζεται στην έννοια των “μπλοκ” (blocks). Κάθε μπλοκ περιέχει:
-</p>
-
-<ul>
-  <li><strong>Δεδομένα συναλλαγών</strong> (π.χ. κάποιος στέλνει 1 BTC σε κάποιον άλλον)</li>
-  <li><strong>Χρονική σφραγίδα (timestamp)</strong></li>
-  <li><strong>Ένα μοναδικό κρυπτογραφικό αποτύπωμα (hash)</strong></li>
-  <li><strong>Το hash του προηγούμενου μπλοκ</strong></li>
-</ul>
-
-<p>
-  Όταν το μπλοκ ολοκληρωθεί, “κλειδώνει” και συνδέεται με το επόμενο. Έτσι δημιουργείται 
-  μια αλυσίδα από μπλοκ — η αλυσίδα των μπλοκ ή αλλιώς blockchain.
-</p>
-
-<h3>Βήμα–βήμα: Τι συμβαίνει όταν κάνεις μια συναλλαγή;</h3>
-<ol>
-  <li>Ο χρήστης στέλνει μια συναλλαγή στο δίκτυο.</li>
-  <li>Η συναλλαγή διαμοιράζεται σε χιλιάδες κόμβους (nodes).</li>
-  <li>Οι κόμβοι ελέγχουν αν η συναλλαγή είναι έγκυρη.</li>
-  <li>Αν είναι έγκυρη, προστίθεται σε ένα νέο μπλοκ.</li>
-  <li>Το μπλοκ “σφραγίζεται” με hash.</li>
-  <li>Το νέο μπλοκ μπαίνει στην αλυσίδα και γίνεται μόνιμη καταγραφή.</li>
-</ol>
-
-<h3>Τι είναι Hash;</h3>
-<p>
-  Hash είναι ένας μαθηματικός αλγόριθμος που παίρνει δεδομένα και τα μετατρέπει σε έναν 
-  μοναδικό κωδικό. Αν αλλάξει έστω και ένα bit των δεδομένων, το hash γίνεται εντελώς 
-  διαφορετικό. Αυτό κάνει την αλλοίωση των δεδομένων πρακτικά αδύνατη.
-</p>
-
-<h3>Proof-of-Work (PoW)</h3>
-<p>
-  Στο PoW, όπως στο Bitcoin, οι miners χρησιμοποιούν υπολογιστική ισχύ για να λύσουν 
-  πολύπλοκα μαθηματικά προβλήματα. Όποιος λύσει το πρόβλημα, δημιουργεί το επόμενο μπλοκ 
-  και παίρνει ανταμοιβή.  
-</p>
-<p><strong>Πλεονεκτήματα:</strong> Υψηλή ασφάλεια, ανθεκτικότητα σε επιθέσεις.</p>
-<p><strong>Μειονεκτήματα:</strong> Μεγάλη κατανάλωση ενέργειας, αργό.</p>
-
-<h3>Proof-of-Stake (PoS)</h3>
-<p>
-  Στο PoS, όπως στο Ethereum 2.0 και Solana, οι validators δεν κάνουν mining. Αντί για αυτό,  
-  “κλειδώνουν” (stake) ένα ποσό crypto και επιλέγονται τυχαία για να εγκρίνουν μπλοκ.
-</p>
-<p><strong>Πλεονεκτήματα:</strong> Πολύ χαμηλή κατανάλωση ενέργειας, ταχύτητα.</p>
-<p><strong>Μειονεκτήματα:</strong> Κίνδυνος συγκέντρωσης εξουσίας αν λίγοι έχουν πολύ μεγάλο stake.</p>
-
-<h3>Πού χρησιμοποιείται το Blockchain;</h3>
-<ul>
-  <li>Κρυπτονομίσματα (Bitcoin, Ethereum, Solana)</li>
-  <li>Έξυπνα συμβόλαια (Smart Contracts)</li>
-  <li>Αποκεντρωμένες χρηματοοικονομικές εφαρμογές (DeFi)</li>
-  <li>Ψηφιακή ταυτοποίηση</li>
-  <li>Αλυσίδες προμηθειών (Supply Chain)</li>
-  <li>Ασφαλής αποθήκευση ιατρικών δεδομένων</li>
-  <li>Ψηφιακά πιστοποιητικά</li>
-</ul>
-
-<h3>Πλεονεκτήματα του Blockchain</h3>
-<ul>
-  <li><strong>Αποκέντρωση:</strong> Δεν υπάρχει κεντρικός έλεγχος.</li>
-  <li><strong>Ασφάλεια:</strong> Τα δεδομένα δεν μπορούν να παραποιηθούν.</li>
-  <li><strong>Διαφάνεια:</strong> Όλες οι συναλλαγές είναι ορατές.</li>
-  <li><strong>Ταχύτητα:</strong> Συναλλαγές χωρίς μεσάζοντες.</li>
-  <li><strong>Μόνιμη καταγραφή:</strong> Τίποτα δεν σβήνεται.</li>
-</ul>
-
-<h3>Μειονεκτήματα του Blockchain</h3>
-<ul>
-  <li>Κατανάλωση ενέργειας (κυρίως στα PoW).</li>
-  <li>Μεγάλο κόστος συναλλαγών σε ορισμένα δίκτυα (π.χ. Ethereum παλιά).</li>
-  <li>Δυσκολία κλιμάκωσης σε πολύ μεγάλες ταχύτητες.</li>
-  <li>Πολυπλοκότητα για κάποια συστήματα.</li>
-</ul>
-
-<h3>Παραδείγματα χρήσης στον πραγματικό κόσμο</h3>
-<ul>
-  <li><strong>Bitcoin:</strong> Ψηφιακό χρήμα χωρίς τράπεζες.</li>
-  <li><strong>Ethereum:</strong> Βάση για χιλιάδες εφαρμογές DeFi.</li>
-  <li><strong>Solana:</strong> Υπερ-γρήγορο δίκτυο για NFTs και αποκεντρωμένες εφαρμογές.</li>
-  <li><strong>Chainlink:</strong> Διασύνδεση blockchain με πραγματικά δεδομένα.</li>
-</ul>
-
-<h3>Συμπέρασμα</h3>
-<p>
-  Το blockchain αποτελεί μία από τις σημαντικότερες τεχνολογίες του 21ου αιώνα. 
-  Συνδυάζει ασφάλεια, διαφάνεια και αποκέντρωση, δημιουργώντας έναν νέο τρόπο 
-  καταγραφής και μεταφοράς πληροφοριών. Η τεχνολογία εξελίσσεται γρήγορα και 
-  αναμένεται να επηρεάσει σχεδόν κάθε τομέα της οικονομίας τα επόμενα χρόνια.
-</p>
-
+  <h3 data-i18n="sol_conclusion_title">Συμπέρασμα</h3>
+  <p data-i18n="sol_conclusion">
+    Η Solana εξελίσσεται με ταχύτατους ρυθμούς και θεωρείται ένα από τα πιο υποσχόμενα blockchain
+    του μέλλοντος.
+  </p>
 
 </div>
 
 <footer class="site-footer">
   <div class="container">
-    <p>© <span id="year"></span> CryptoKosmos — Όλα τα δικαιώματα διατηρούνται.</p>
+    <p>© <span id="year"></span> CryptoKosmos — <span data-i18n="footer_rights">Όλα τα δικαιώματα διατηρούνται.</span></p>
   </div>
 </footer>
 
-<!-- ========= LOGIN MODAL ========= -->
-<div id="login-modal" class="modal hidden">
-  <div class="modal-backdrop"></div>
-  <div class="modal-card">
-
-    <div class="modal-header">
-      <span class="modal-title">Σύνδεση</span>
-      <button class="modal-close" id="login-close">×</button>
-    </div>
-
-    <form id="login-form">
-      <div class="modal-body">
-
-        <label>Email</label>
-        <input id="login-email" type="email" required placeholder="you@example.com">
-
-        <label>Password</label>
-        <div class="pass-wrap">
-          <input id="login-pass" type="password" placeholder="••••••••">
-          <img id="login-pass-toggle" class="pass-eye" src="../IMG_5380.png">
-        </div>
-
-      </div>
-
-      <button class="modal-submit" type="submit">Σύνδεση</button>
-
-      <p id="no-account" class="modal-hint" style="color:#ffb3b3; display:none;">
-        Δεν έχεις λογαριασμό στο CryptoKosmos.
-      </p>
-
-      <button id="signup-btn" type="button" style="
-        display:none;
-        margin-top:10px;
-        width:100%;
-        padding:10px 14px;
-        border:none;
-        border-radius:14px;
-        background:#1e293b;
-        color:white;
-        font-weight:600;
-        cursor:pointer;
-        border:1px solid rgba(255,255,255,0.25);
-      ">
-        Δημιουργία λογαριασμού
-      </button>
-
-    </form>
-
-  </div>
-</div>
-
-<!-- ========= SIGNUP MODAL ========= -->
-<div id="signup-modal" class="modal hidden">
-  <div class="modal-backdrop"></div>
-
-  <div class="modal-card">
-    <div class="modal-header">
-      <h3 class="modal-title">Δημιούργησε λογαριασμό</h3>
-      <button class="modal-close signup-close">×</button>
-    </div>
-
-    <div class="modal-body">
-      <label>Email</label>
-      <input id="signup-email" type="email">
-
-      <label>Κωδικός</label>
-      <div class="pass-wrap">
-        <input id="signup-pass1" type="password" placeholder="••••••••">
-        <img id="signup-pass1-toggle" class="pass-eye" src="../IMG_5380.png">
-      </div>
-
-      <label>Επιβεβαίωση κωδικού</label>
-      <div class="pass-wrap">
-        <input id="signup-pass2" type="password" placeholder="••••••••">
-        <img id="signup-pass2-toggle" class="pass-eye" src="../IMG_5380.png">
-      </div>
-
-      <p id="signup-error" style="color:#ff6b6b; display:none;">Οι κωδικοί δεν ταιριάζουν.</p>
-
-      <button id="signup-create" class="modal-submit">Δημιουργία λογαριασμού</button>
-
-      <p class="modal-hint">
-        Έχεις ήδη λογαριασμό;
-        <span id="back-to-login" style="color:#5bb4ff; cursor:pointer;">Σύνδεση</span>
-      </p>
-    </div>
-  </div>
-</div>
-
-<!-- ========= VERIFY MODAL ========= -->
-<div id="verify-modal" class="modal hidden">
-  <div class="modal-backdrop"></div>
-
-  <div class="modal-card">
-    <div class="modal-header">
-      <h3 class="modal-title">Επαλήθευση Email</h3>
-      <button class="modal-close verify-close">×</button>
-    </div>
-
-    <div class="modal-body">
-      <p class="muted">Σου στείλαμε έναν 6-ψήφιο κωδικό.</p>
-
-      <label>Κωδικός</label>
-      <input id="verify-code" type="text" placeholder="123456">
-
-      <p id="verify-error" style="color:#ff6b6b; display:none;">
-        Λάθος κωδικός. Προσπάθησε ξανά.
-      </p>
-
-      <button id="verify-submit" class="modal-submit">Επιβεβαίωση</button>
-    </div>
-  </div>
-</div>
-
-
-<!-- LOAD GLOBAL APP -->
-<script src="../app.js"></script>
-
-<!-- ONLY year updater -->
+<!-- GLOBAL SCRIPTS -->
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
-
-
-document.getElementById("mobile-home-btn")
-?.addEventListener("click", () => {
+document.getElementById("mobile-home-btn")?.addEventListener("click", () => {
   window.location.href = "../index.html";
 });
 </script>
+
+<script src="../app.js" defer></script>
+<script src="../i18n.js"></script>
 
 </body>
 </html>

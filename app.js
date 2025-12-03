@@ -428,73 +428,25 @@ document.querySelector(".verify-close")?.addEventListener("click", closeBurger);
 // ================================
 // ARTICLE IMAGE THEME SWITCH
 // ================================
+
+
 const articleImage = document.getElementById("article-image");
 
 function updateArticleImage() {
     if (!articleImage) return;
 
+    const lightImg = articleImage.dataset.lightImg;
+    const darkImg  = articleImage.dataset.darkImg;
+
     if (document.body.classList.contains("light-theme")) {
-        articleImage.src = "./IMG_5536.png";   // light mode image
+        articleImage.src = lightImg;
     } else {
-        articleImage.src = "./IMG_5537.png";   // dark mode image
+        articleImage.src = darkImg;
     }
 }
 
-// Όποτε αλλάζει το theme
 themeBtn?.addEventListener("click", () => {
     setTimeout(updateArticleImage, 20);
 });
 
-// Σωστό image στο initial load
 updateArticleImage();
-
-
-
-
-
-
-// =========================
-// LANGUAGE SYSTEM
-// =========================
-
-let currentLang = localStorage.getItem("ck-lang") || "gr";
-
-const langBtn   = document.getElementById("lang-toggle");
-const langIcon  = document.getElementById("lang-icon");
-const langLabel = document.getElementById("lang-label");
-
-function applyLanguage(lang) {
-    currentLang = lang;
-    localStorage.setItem("ck-lang", lang);
-
-    // animation fade-out
-    langIcon.classList.add("hide");
-    langLabel.classList.add("hide");
-
-    setTimeout(() => {
-
-        // change text + icon
-        langLabel.textContent = lang === "gr" ? "GR" : "EN";
-        langIcon.src = lang === "gr" ? "./IMG_5542.png" : "./IMG_5543.png";
-
-        // animation fade-in
-        langIcon.classList.remove("hide");
-        langLabel.classList.remove("hide");
-
-        // apply translations
-        document.querySelectorAll("[data-i18n]").forEach(el => {
-            const key = el.dataset.i18n;
-            if (i18n[lang][key]) el.textContent = i18n[lang][key];
-        });
-
-    }, 200);
-}
-
-// toggle button
-langBtn?.addEventListener("click", () => {
-    const newLang = currentLang === "gr" ? "en" : "gr";
-    applyLanguage(newLang);
-});
-
-// αρχική φόρτωση
-applyLanguage(currentLang);
