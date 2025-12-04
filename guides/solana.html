@@ -8,14 +8,13 @@
   <!-- GLOBAL STYLES -->
   <link rel="stylesheet" href="../styles.css" />
 
-  <!-- TRANSLATIONS FOR THIS PAGE -->
+  <!-- PAGE TRANSLATIONS -->
   <script src="../translations-solana.js"></script>
 
   <style>
     body.article-page {
       padding: 0;
     }
-
     .article-container {
       max-width: 800px;
       margin: auto;
@@ -30,6 +29,7 @@
     }
   </style>
 </head>
+
 <body class="article-page">
 
 <header class="site-header">
@@ -69,7 +69,7 @@
       </button>
 
       <button id="lang-toggle" class="pill-btn">
-        <img id="lang-icon" src="../IMG_5542.png" class="icon-img">
+        <img id="lang-icon" class="icon-img" src="../IMG_5542.png">
         <span id="lang-label">GR</span>
       </button>
 
@@ -100,11 +100,10 @@
   <h2 data-i18n="sol_title">Τι είναι η Solana;</h2>
 
   <p data-i18n="sol_intro">
-    Η Solana είναι ένα από τα ταχύτερα και πιο αποδοτικά blockchain, γνωστό για τις χαμηλές χρεώσεις
-    και την απίστευτη ταχύτητα συναλλαγών.
+    Η Solana είναι ένα προηγμένο, υψηλής απόδοσης blockchain που σχεδιάστηκε για εφαρμογές
+    που απαιτούν μεγάλη ταχύτητα, αξιοπιστία και πολύ χαμηλές χρεώσεις.
   </p>
 
-  <!-- SINGLE IMAGE VERSION -->
   <img id="article-image"
        src="./IMG_5581.jpg"
        data-light-img="./IMG_5581.jpg"
@@ -112,45 +111,87 @@
        style="width:100%;border-radius:16px;margin:20px 0;">
 
   <h3 data-i18n="sol_speed_title">Πόσο γρήγορη είναι η Solana;</h3>
+
   <p data-i18n="sol_speed_text">
-    Η Solana μπορεί να επεξεργαστεί χιλιάδες συναλλαγές ανά δευτερόλεπτο, χάρη στο μοναδικό της
-    σύστημα Proof-of-History.
+    Η Solana μπορεί να φτάσει σε θεωρητικές ταχύτητες πάνω από 50.000 συναλλαγές το δευτερόλεπτο,
+    χάρη στο Proof-of-History, ένα σύστημα που οργανώνει τις συναλλαγές με ακριβή χρονοσήμανση.
   </p>
 
   <h3 data-i18n="sol_fees_title">Γιατί είναι τόσο φθηνή;</h3>
+
   <p data-i18n="sol_fees_text">
-    Οι χρεώσεις συναλλαγών στην Solana είναι συνήθως κάτω από $0.001, κάνοντάς τη ιδανική για DeFi,
-    NFTs και gaming.
+    Οι χρεώσεις στη Solana είναι συνήθως κάτω από $0.001, γεγονός που την καθιστά ιδανική για
+    NFTs, gaming, DeFi και εφαρμογές με μεγάλο όγκο συναλλαγών.
   </p>
 
-  <h3 data-i18n="sol_use_title">Πού χρησιμοποιείται;</h3>
+  <h3 data-i18n="sol_tech_title">Τεχνολογία της Solana</h3>
+
+  <p data-i18n="sol_tech_text">Η Solana συνδυάζει αρκετές καινοτομίες:</p>
+
   <ul>
-    <li data-i18n="sol_use1">NFT marketplaces</li>
-    <li data-i18n="sol_use2">DeFi apps</li>
-    <li data-i18n="sol_use3">On-chain games</li>
-    <li data-i18n="sol_use4">Real-time payments</li>
+    <li data-i18n="sol_tech1">Proof-of-History (PoH) — σύστημα χρονοσήμανσης.</li>
+    <li data-i18n="sol_tech2">Tower BFT — γρήγορη συναίνεση.</li>
+    <li data-i18n="sol_tech3">Sealevel — παράλληλη εκτέλεση smart contracts.</li>
+    <li data-i18n="sol_tech4">Gulf Stream — προώθηση συναλλαγών πριν χρειαστούν.</li>
   </ul>
 
+  <h3 data-i18n="sol_use_title">Πού χρησιμοποιείται;</h3>
+
+  <ul>
+    <li data-i18n="sol_use1">NFT marketplaces και μεγάλα collections.</li>
+    <li data-i18n="sol_use2">DeFi εφαρμογές όπως δανεισμός και ανταλλακτήρια.</li>
+    <li data-i18n="sol_use3">On-chain gaming και real-time εφαρμογές.</li>
+    <li data-i18n="sol_use4">Άμεσες πληρωμές με μηδενικά fees.</li>
+    <li data-i18n="sol_use5">Tokenization πραγματικών περιουσιακών στοιχείων.</li>
+    <li data-i18n="sol_use6">Web3 εφαρμογές νέας γενιάς.</li>
+  </ul>
+
+  <h3 data-i18n="sol_pros_title">Πλεονεκτήματα</h3>
+  <ul>
+    <li data-i18n="sol_pro1">Πολύ υψηλές ταχύτητες συναλλαγών.</li>
+    <li data-i18n="sol_pro2">Εξαιρετικά χαμηλές χρεώσεις.</li>
+    <li data-i18n="sol_pro3">Μεγάλη υποστήριξη από developers.</li>
+    <li data-i18n="sol_pro4">Ιδανική για NFTs & gaming.</li>
+    <li data-i18n="sol_pro5">Καινοτόμα αρχιτεκτονική.</li>
+  </ul>
+
+  <h3 data-i18n="sol_cons_title">Μειονεκτήματα</h3>
+  <ul>
+    <li data-i18n="sol_con1">Περιστασιακές διακοπές λειτουργίας.</li>
+    <li data-i18n="sol_con2">Πολύπλοκη τεχνολογία.</li>
+    <li data-i18n="sol_con3">Μερική συγκέντρωση ισχύος σε validators.</li>
+  </ul>
+
+  <h3 data-i18n="sol_future_title">Το μέλλον της Solana</h3>
+
+  <p data-i18n="sol_future_text">
+    Η Solana αναπτύσσεται γρήγορα και θεωρείται ένα από τα πιο υποσχόμενα blockchain. Με συνεχείς
+    αναβαθμίσεις, μεγάλο οικοσύστημα και τεράστια υποστήριξη, αναμένεται να διαδραματίσει
+    σημαντικό ρόλο στο Web3.
+  </p>
+
   <h3 data-i18n="sol_conclusion_title">Συμπέρασμα</h3>
+
   <p data-i18n="sol_conclusion">
-    Η Solana εξελίσσεται με ταχύτατους ρυθμούς και θεωρείται ένα από τα πιο υποσχόμενα blockchain
-    του μέλλοντος.
+    Η Solana προσφέρει ταχύτητα, μικρό κόστος και προηγμένο σχεδιασμό. Παρά τις προκλήσεις,
+    αποτελεί μία από τις πιο δυναμικές και καινοτόμες blockchain πλατφόρμες.
   </p>
 
 </div>
 
 <footer class="site-footer">
   <div class="container">
-    <p>© <span id="year"></span> CryptoKosmos — <span data-i18n="footer_rights">Όλα τα δικαιώματα διατηρούνται.</span></p>
+    <p>© <span id="year"></span> CryptoKosmos — 
+      <span data-i18n="footer_rights">Όλα τα δικαιώματα διατηρούνται.</span>
+    </p>
   </div>
 </footer>
 
-<!-- GLOBAL SCRIPTS -->
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
-document.getElementById("mobile-home-btn")?.addEventListener("click", () => {
-  window.location.href = "../index.html";
-});
+  document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("mobile-home-btn")?.addEventListener("click", () => {
+    window.location.href = "../index.html";
+  });
 </script>
 
 <script src="../app.js" defer></script>

@@ -102,55 +102,137 @@
 
   <h2 data-i18n="wl_title">Τι είναι ένα Crypto Wallet;</h2>
 
-  <p data-i18n="wl_intro">
-    Τα crypto wallets είναι εργαλεία που σου επιτρέπουν να αποθηκεύεις, να στέλνεις και να λαμβάνεις κρυπτονομίσματα.
-    Δεν αποθηκεύουν πραγματικά τα coins· αποθηκεύουν τα κρυπτογραφικά κλειδιά σου.
-  </p>
+<p data-i18n="wl_intro">
+  Ένα crypto wallet (πορτοφόλι κρυπτονομισμάτων) είναι ένα εργαλείο που σου επιτρέπει να 
+  αποθηκεύεις, να στέλνεις και να λαμβάνεις ψηφιακά assets όπως Bitcoin, Ethereum ή Solana.
+  Στην πραγματικότητα, το wallet δεν αποθηκεύει τα ίδια τα νομίσματα αλλά τα κρυπτογραφικά σου 
+  κλειδιά, τα οποία αποδεικνύουν ότι είσαι ο ιδιοκτήτης τους.
+</p>
 
-  <img id="article-image"
+<p data-i18n="wl_keys">
+  Κάθε wallet βασίζεται σε δύο κλειδιά:
+  <br><strong>Private key:</strong> Μυστικό κλειδί που σου δίνει πρόσβαση στα funds.
+  <br><strong>Public key / Address:</strong> Η δημόσια διεύθυνση που δίνεις για να λάβεις χρήματα.
+</p>
+
+<img id="article-image"
      src="./IMG_5577.png"
      data-light-img="./IMG_5576.png"
      data-dark-img="./IMG_5577.png"
      style="width:100%;border-radius:16px;margin:20px 0;">
 
-  <h3 data-i18n="wl_types_title">Τύποι Crypto Wallets</h3>
 
-  <ul>
-    <li data-i18n="wl_type1"><strong>Hot Wallets:</strong> Συνδέονται στο internet — γρήγορα αλλά λιγότερο ασφαλή.</li>
-    <li data-i18n="wl_type2"><strong>Cold Wallets:</strong> Offline συσκευές — η πιο ασφαλής λύση.</li>
-    <li data-i18n="wl_type3"><strong>Custodial Wallets:</strong> Τα κλειδιά τα διαχειρίζεται μια εταιρία.</li>
-    <li data-i18n="wl_type4"><strong>Non-Custodial Wallets:</strong> Εσύ έχεις τον πλήρη έλεγχο.</li>
-  </ul>
+<!-- TYPES OF WALLETS -->
+<h3 data-i18n="wl_types_title">Τύποι Crypto Wallets</h3>
 
-  <h3 data-i18n="wl_seed_title">Τι είναι το Seed Phrase;</h3>
-  <p data-i18n="wl_seed_text">
-    Είναι μια σειρά από 12 ή 24 λέξεις που σου επιτρέπει να ανακτήσεις το πορτοφόλι σου.
-    Αν το χάσεις, χάνεις την πρόσβαση στα crypto. Μην το μοιραστείς ΠΟΤΕ.
-  </p>
+<p data-i18n="wl_types_intro">
+  Δεν είναι όλα τα πορτοφόλια ίδια. Κάθε τύπος έχει διαφορετικό επίπεδο ασφάλειας, ταχύτητας 
+  και ευκολίας χρήσης. Παρακάτω βρίσκονται οι βασικές κατηγορίες:
+</p>
 
-  <h3 data-i18n="wl_security_title">Ασφάλεια στα Wallets</h3>
-  <ul>
-    <li data-i18n="wl_sec1">Μην αποθηκεύεις το seed phrase στο κινητό.</li>
-    <li data-i18n="wl_sec2">Χρησιμοποίησε hardware wallet για μεγάλα ποσά.</li>
-    <li data-i18n="wl_sec3">Πρόσεξε phishing links και ψεύτικες εφαρμογές.</li>
-    <li data-i18n="wl_sec4">Ενεργοποίησε επιβεβαίωση 2FA όπου γίνεται.</li>
-  </ul>
+<ul>
+  <li data-i18n="wl_type1">
+    <strong>Hot Wallets:</strong> Συνδέονται στο internet. Είναι εύκολα και γρήγορα στη χρήση, 
+    ιδανικά για καθημερινές συναλλαγές, αλλά θεωρούνται λιγότερο ασφαλή λόγω online κινδύνων.
+  </li>
+  <li data-i18n="wl_type2">
+    <strong>Cold Wallets:</strong> Offline συσκευές (hardware wallets). Η πιο ασφαλής επιλογή 
+    για μεγάλα ποσά αφού τα private keys δεν εκτίθενται στο διαδίκτυο.
+  </li>
+  <li data-i18n="wl_type3">
+    <strong>Custodial Wallets:</strong> Τα private keys διαχειρίζονται από εταιρία (π.χ. Coinbase). 
+    Βολικά για αρχάριους, αλλά δεν έχεις 100% έλεγχο.
+  </li>
+  <li data-i18n="wl_type4">
+    <strong>Non-Custodial Wallets:</strong> Εσύ έχεις τον πλήρη έλεγχο των κλειδιών. Είναι η πιο 
+    "crypto" φιλοσοφία: Not your keys, not your crypto.
+  </li>
+</ul>
 
-  <h3 data-i18n="wl_examples_title">Δημοφιλή Crypto Wallets</h3>
-  <ul>
-    <li data-i18n="wl_ex1"><strong>Ledger Nano:</strong> Hardware wallet υψηλής ασφάλειας.</li>
-    <li data-i18n="wl_ex2"><strong>Trezor:</strong> Hardware wallet για Bitcoin & altcoins.</li>
-    <li data-i18n="wl_ex3"><strong>MetaMask:</strong> Hot wallet για Ethereum και tokens.</li>
-    <li data-i18n="wl_ex4"><strong>Phantom:</strong> Πορτοφόλι Solana με γρήγορο interface.</li>
-  </ul>
 
-  <h3 data-i18n="wl_conclusion_title">Συμπέρασμα</h3>
-  <p data-i18n="wl_conclusion">
-    Τα crypto wallets είναι απαραίτητα για κάθε επενδυτή. Με σωστή χρήση, προσφέρουν υψηλό
-    επίπεδο ασφάλειας και έλεγχο στα χρήματά σου.
-  </p>
+<!-- SEED PHRASE -->
+<h3 data-i18n="wl_seed_title">Τι είναι το Seed Phrase;</h3>
 
-</div>
+<p data-i18n="wl_seed_text">
+  Το seed phrase είναι μια σειρά από 12 ή 24 λέξεις που δημιουργεί το πορτοφόλι σου κατά την 
+  πρώτη ρύθμιση. Είναι ουσιαστικά το “master key” που επιτρέπει την πλήρη ανάκτηση των funds σου 
+  σε οποιαδήποτε συσκευή.
+</p>
+
+<p data-i18n="wl_seed_warning">
+  Αν κάποιος αποκτήσει το seed phrase σου, μπορεί να αδειάσει ΟΛΟ το πορτοφόλι σου.
+  Μην το αποθηκεύεις ποτέ σε κινητό ή cloud και μην το μοιράζεσαι με κανέναν.
+</p>
+
+
+<!-- SECURITY -->
+<h3 data-i18n="wl_security_title">Ασφάλεια στα Crypto Wallets</h3>
+
+<p data-i18n="wl_security_intro">
+  Η ασφάλεια είναι το πιο σημαντικό κομμάτι όταν διαχειρίζεσαι κρυπτονομίσματα. Παρακάτω είναι 
+  μερικές από τις πιο σημαντικές πρακτικές:
+</p>
+
+<ul>
+  <li data-i18n="wl_sec1">
+    Μην αποθηκεύεις το seed phrase σε κινητό, screenshots, φωτογραφίες ή cloud.
+  </li>
+  <li data-i18n="wl_sec2">
+    Χρησιμοποίησε hardware wallet για μεγάλα ποσά ή μακροχρόνια αποθήκευση.
+  </li>
+  <li data-i18n="wl_sec3">
+    Πρόσεχε phishing links, ψεύτικες ιστοσελίδες και πλαστές εφαρμογές.
+  </li>
+  <li data-i18n="wl_sec4">
+    Ενεργοποίησε 2FA σε εφαρμογές που το υποστηρίζουν.
+  </li>
+  <li data-i18n="wl_sec5">
+    Μην εγκαθιστάς extensions από άγνωστες πηγές — πολλά malware στοχεύουν wallets.
+  </li>
+  <li data-i18n="wl_sec6">
+    Έλεγξε πολλές φορές την διεύθυνση πριν στείλεις crypto — οι συναλλαγές δεν ακυρώνονται.
+  </li>
+</ul>
+
+
+<!-- EXAMPLES -->
+<h3 data-i18n="wl_examples_title">Δημοφιλή Crypto Wallets</h3>
+
+<p data-i18n="wl_examples_intro">
+  Ακολουθούν μερικά από τα πιο γνωστά και αξιόπιστα πορτοφόλια:
+</p>
+
+<ul>
+  <li data-i18n="wl_ex1">
+    <strong>Ledger Nano:</strong> Hardware wallet με κορυφαία ασφάλεια και υποστήριξη 
+    εκατοντάδων νομισμάτων.
+  </li>
+  <li data-i18n="wl_ex2">
+    <strong>Trezor:</strong> Ένα από τα πρώτα hardware wallets, κατάλληλο για Bitcoin και πολλά altcoins.
+  </li>
+  <li data-i18n="wl_ex3">
+    <strong>MetaMask:</strong> Hot wallet για Ethereum, ERC-20 tokens, DeFi και Web3 εφαρμογές.
+  </li>
+  <li data-i18n="wl_ex4">
+    <strong>Phantom:</strong> Το πιο δημοφιλές Solana wallet με γρήγορο και φιλικό interface.
+  </li>
+  <li data-i18n="wl_ex5">
+    <strong>Exodus:</strong> Multichain wallet με ωραίο UI και υποστήριξη desktop/mobile.
+  </li>
+  <li data-i18n="wl_ex6">
+    <strong>Trust Wallet:</strong> Πορτοφόλι της Binance για χιλιάδες tokens και NFTs.
+  </li>
+</ul>
+
+
+<!-- CONCLUSION -->
+<h3 data-i18n="wl_conclusion_title">Συμπέρασμα</h3>
+
+<p data-i18n="wl_conclusion">
+  Τα crypto wallets αποτελούν βασικό εργαλείο για την αποθήκευση και διαχείριση ψηφιακών 
+  περιουσιακών στοιχείων. Με τη σωστή επιλογή πορτοφολιού και τις κατάλληλες πρακτικές 
+  ασφάλειας, μπορείς να έχεις πλήρη έλεγχο και μέγιστη προστασία των κρυπτονομισμάτων σου.
+</p>
 
 <footer class="site-footer">
   <div class="container">
