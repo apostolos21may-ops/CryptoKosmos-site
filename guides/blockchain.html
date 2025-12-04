@@ -221,7 +221,6 @@
   <p data-i18n="bc_conclusion"></p>
 </div>
 
-<!-- ================= FOOTER ================= -->
 <footer class="site-footer">
   <div class="container">
     <p>
@@ -230,6 +229,144 @@
     </p>
   </div>
 </footer>
+
+<div id="login-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <span class="modal-title" data-i18n="login_title">Σύνδεση</span>
+      <button class="modal-close" id="login-close">×</button>
+    </div>
+
+    <form id="login-form">
+      <div class="modal-body">
+
+        <label data-i18n="login_email">Email</label>
+        <input id="login-email" type="email" 
+               data-i18n-placeholder="login_email"
+               placeholder="Email">
+
+        <label data-i18n="login_password">Κωδικός</label>
+        <div class="pass-wrap">
+          <input id="login-pass" type="password"
+                 data-i18n-placeholder="login_password"
+                 placeholder="Password">
+          <img id="login-pass-toggle" class="pass-eye" src="../IMG_5380.png">
+        </div>
+
+      </div>
+
+      <button class="modal-submit" type="submit" data-i18n="login_btn">
+        Σύνδεση
+      </button>
+
+      <p id="no-account"
+         class="modal-hint"
+         style="color:#ffb3b3; display:none;"
+         data-i18n="login_no_account">
+         Δεν έχεις λογαριασμό στο CryptoKosmos.
+      </p>
+
+      <button id="signup-btn" type="button"
+        style="display:none;margin-top:10px;width:100%;padding:10px 14px;border:none;border-radius:14px;
+        background:#1e293b;color:white;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,0.25);"
+        data-i18n="login_create_account">
+        Δημιουργία λογαριασμού
+      </button>
+
+    </form>
+  </div>
+</div>
+
+<div id="signup-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <h3 class="modal-title" data-i18n="signup_title">Δημιούργησε λογαριασμό</h3>
+      <button class="modal-close signup-close">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <label data-i18n="signup_email">Email</label>
+      <input id="signup-email" type="email"
+             data-i18n-placeholder="signup_email"
+             placeholder="Email">
+
+      <label data-i18n="signup_pass1">Κωδικός</label>
+      <div class="pass-wrap">
+        <input id="signup-pass1" type="password"
+               data-i18n-placeholder="signup_pass1"
+               placeholder="Password">
+        <img id="signup-pass1-toggle" class="pass-eye" src="../IMG_5380.png">
+      </div>
+
+      <label data-i18n="signup_pass2">Επιβεβαίωση κωδικού</label>
+      <div class="pass-wrap">
+        <input id="signup-pass2" type="password"
+               data-i18n-placeholder="signup_pass2"
+               placeholder="Confirm Password">
+        <img id="signup-pass2-toggle" class="pass-eye" src="../IMG_5380.png">
+      </div>
+
+      <p id="signup-error"
+         style="color:#ff6b6b; display:none;"
+         data-i18n="signup_error">
+         Οι κωδικοί δεν ταιριάζουν.
+      </p>
+
+      <button id="signup-create" class="modal-submit" data-i18n="signup_btn">
+        Δημιουργία λογαριασμού
+      </button>
+
+      <p class="modal-hint">
+        <span data-i18n="signup_have_account">Έχεις ήδη λογαριασμό;</span>
+        <span id="back-to-login"
+              style="color:#5bb4ff;cursor:pointer;"
+              data-i18n="signup_back">
+          Σύνδεση
+        </span>
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<div id="verify-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <h3 class="modal-title" data-i18n="verify_title">Επαλήθευση Email</h3>
+      <button class="modal-close verify-close">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <p class="muted" data-i18n="verify_subtitle">
+        Σου στείλαμε έναν 6-ψήφιο κωδικό.
+      </p>
+
+      <label data-i18n="verify_code">Κωδικός</label>
+      <input id="verify-code" type="text"
+             data-i18n-placeholder="verify_code"
+             placeholder="Code">
+
+      <p id="verify-error" style="color:#ff6b6b; display:none;"
+         data-i18n="verify_error">
+         Λάθος κωδικός. Προσπάθησε ξανά.
+      </p>
+
+      <button id="verify-submit" class="modal-submit" data-i18n="verify_btn">
+        Επιβεβαίωση
+      </button>
+
+    </div>
+
+  </div>
+</div>
 
 <!-- YEAR -->
 <script>

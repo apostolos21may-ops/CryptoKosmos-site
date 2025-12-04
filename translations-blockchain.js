@@ -1,5 +1,8 @@
 window.TRANSLATIONS = {
   el: {
+    /* =======================
+       BLOCKCHAIN CONTENT
+    ======================= */
     bc_title: "Τι είναι το Blockchain;",
     bc_intro:
       "Το blockchain είναι μια τεχνολογία κατανεμημένης καταγραφής δεδομένων, όπου οι πληροφορίες αποθηκεύονται σε αλυσίδες από μπλοκ που δεν μπορούν να αλλοιωθούν. Αντί τα δεδομένα να βρίσκονται σε έναν κεντρικό διακομιστή, διαμοιράζονται σε χιλιάδες υπολογιστές (κόμβους), δημιουργώντας ένα σύστημα υψηλής ασφάλειας και αξιοπιστίας.",
@@ -36,7 +39,7 @@ window.TRANSLATIONS = {
 
     bc_pos_title: "Proof-of-Stake (PoS)",
     bc_pos_text:
-      "Στο μοντέλο Proof-of-Stake, όπως στα δίκτυα Ethereum και Solana, οι χρήστες κλειδώνουν ένα ποσό κρυπτονομισμάτων (stake) και συμμετέχουν στην επιβεβαίωση μπλοκ. Η επιλογή γίνεται με βάση το stake και άλλους αλγόριθμους. Το PoS είναι πιο γρήγορο και καταναλώνει ελάχιστη ενέργεια.",
+      "Στο μοντέλο Proof-of-Stake, όπως στα δίκτυα Ethereum και Solana, οι χρήστες κλειδώνουν ένα ποσό κρυπτονομισμάτων και συμμετέχουν στην επιβεβαίωση μπλοκ. Το PoS είναι πιο γρήγορο και καταναλώνει ελάχιστη ενέργεια.",
     bc_pos_adv_title: "Πλεονεκτήματα:",
     bc_pos_adv: "Χαμηλή κατανάλωση ενέργειας, υψηλές ταχύτητες συναλλαγών.",
     bc_pos_dis_title: "Μειονεκτήματα:",
@@ -49,74 +52,116 @@ window.TRANSLATIONS = {
     bc_use4: "Ψηφιακή ταυτοποίηση",
     bc_use5: "Αλυσίδες προμηθειών και ιχνηλάτηση",
     bc_use6: "Ασφαλής αποθήκευση κρίσιμων δεδομένων",
-    bc_use7: "Έκδοση ψηφιακών πιστοποιητικών και δικαιωμάτων",
+    bc_use7: "Έκδοση ψηφιακών πιστοποιητικών",
 
     bc_pros_title: "Πλεονεκτήματα",
-    bc_pro1: "Αποκέντρωση και απουσία κεντρικής αρχής.",
+    bc_pro1: "Αποκέντρωση χωρίς κεντρική αρχή.",
     bc_pro2: "Υψηλή ασφάλεια λόγω κρυπτογραφίας.",
     bc_pro3: "Διαφάνεια και δυνατότητα ελέγχου.",
-    bc_pro4: "Ταχύτητα συναλλαγών σε σύγχρονα δίκτυα PoS.",
-    bc_pro5: "Μόνιμη και αμετάβλητη καταγραφή.",
+    bc_pro4: "Ταχύτητα συναλλαγών σε PoS δίκτυα.",
+    bc_pro5: "Αμετάβλητη καταγραφή.",
 
     bc_cons_title: "Μειονεκτήματα",
     bc_con1: "Υψηλή ενεργειακή κατανάλωση σε PoW δίκτυα.",
-    bc_con2: "Μεταβλητό κόστος συναλλαγών σε ορισμένα blockchain.",
-    bc_con3: "Δυσκολία κλιμάκωσης σε παλαιότερα συστήματα.",
-    bc_con4: "Πολυπλοκότητα για αρχάριους χρήστες.",
+    bc_con2: "Μεταβλητές χρεώσεις.",
+    bc_con3: "Δυσκολία κλιμάκωσης σε παλαιά συστήματα.",
+    bc_con4: "Πολυπλοκότητα για νέους χρήστες.",
 
     bc_examples_title: "Παραδείγματα δημοφιλών Blockchain",
-    bc_ex1: "Bitcoin: Το πρώτο blockchain, σχεδιασμένο για ψηφιακό χρήμα.",
-    bc_ex2: "Ethereum: Η βάση των smart contracts και του DeFi.",
-    bc_ex3: "Solana: Υψηλή ταχύτητα και χαμηλά κόστη συναλλαγών.",
+    bc_ex1: "Bitcoin: Το πρώτο blockchain.",
+    bc_ex2: "Ethereum: Η βάση των smart contracts.",
+    bc_ex3: "Solana: Υψηλή ταχύτητα και χαμηλά fees.",
     bc_ex4: "Chainlink: Παροχή εξωτερικών δεδομένων σε smart contracts.",
 
     bc_conclusion_title: "Συμπέρασμα",
     bc_conclusion:
-      "Το blockchain αποτελεί μια από τις σημαντικότερες τεχνολογίες της εποχής μας, εισάγοντας ένα νέο μοντέλο καταγραφής και ανταλλαγής πληροφοριών χωρίς την ανάγκη κεντρικού ελέγχου. Με την ταχεία εξέλιξή του και τη διείσδυση σε πολλούς τομείς, αναμένεται να παίξει καθοριστικό ρόλο στο μέλλον της ψηφιακής οικονομίας και των παγκόσμιων συστημάτων πληροφορίας."
+      "Το blockchain αποτελεί μία από τις σημαντικότερες τεχνολογίες της εποχής μας και αναμένεται να διαδραματίσει καθοριστικό ρόλο στο μέλλον της ψηφιακής οικονομίας.",
+
+
+    /* =======================
+          FOOTER
+    ======================= */
+    footer_rights: "Όλα τα δικαιώματα διατηρούνται.",
+
+
+    /* =======================
+          LOGIN
+    ======================= */
+    login_title: "Σύνδεση",
+    login_email: "Email",
+    login_password: "Κωδικός",
+    login_btn: "Σύνδεση",
+    login_no_account: "Δεν έχεις λογαριασμό στο CryptoKosmos.",
+    login_create_account: "Δημιουργία λογαριασμού",
+
+
+    /* =======================
+          SIGNUP
+    ======================= */
+    signup_title: "Δημιούργησε λογαριασμό",
+    signup_email: "Email",
+    signup_pass1: "Κωδικός",
+    signup_pass2: "Επιβεβαίωση κωδικού",
+    signup_error: "Οι κωδικοί δεν ταιριάζουν.",
+    signup_btn: "Δημιουργία λογαριασμού",
+    signup_back: "Σύνδεση",
+
+
+    /* =======================
+          VERIFY
+    ======================= */
+    verify_title: "Επαλήθευση Email",
+    verify_subtitle: "Σου στείλαμε έναν 6-ψήφιο κωδικό.",
+    verify_code: "Κωδικός",
+    verify_error: "Λάθος κωδικός. Προσπάθησε ξανά.",
+    verify_btn: "Επιβεβαίωση"
   },
 
+  /* ========================================================
+       ENGLISH TRANSLATIONS
+  ======================================================== */
   en: {
     bc_title: "What is Blockchain?",
     bc_intro:
-      "Blockchain is a distributed data-recording technology where information is stored in chains of blocks that cannot be altered. Instead of being stored on a central server, data is shared across thousands of computers (nodes), creating a system with high security and reliability.",
+      "Blockchain is a distributed data-recording technology where information is stored in chains of blocks that cannot be altered. Instead of a central server, data is shared across thousands of computers (nodes), creating a highly secure and reliable system.",
 
     bc_how_title: "How Does Blockchain Work?",
     bc_how_intro:
-      "Blockchain technology is based on the creation of blocks linked together through cryptographic hashes. Each block includes data, its creation timestamp, its own hash, and the hash of the previous block.",
+      "Blockchain is based on blocks linked together with cryptographic hashes. Each block contains data, its timestamp, its own hash, and the hash of the previous block.",
     bc_how_li1: "Transaction data or other types of information",
-    bc_how_li2: "Timestamp of creation",
+    bc_how_li2: "Timestamp",
     bc_how_li3: "Unique cryptographic hash",
-    bc_how_li4: "Previous block hash ensuring continuity",
+    bc_how_li4: "Previous block hash connecting the chain",
     bc_how_outro:
-      "If any element is modified, the hash changes, making tampering immediately detectable. This keeps the blockchain secure and trustworthy.",
+      "If any data is changed, the hash changes, making tampering immediately visible. This keeps the blockchain secure and trustworthy.",
 
     bc_steps_title: "Transaction Flow in Blockchain",
     bc_step1: "The user creates a transaction.",
-    bc_step2: "The transaction is broadcast to the network and enters the mempool.",
+    bc_step2: "The transaction is broadcast and enters the mempool.",
     bc_step3: "Nodes verify its validity.",
     bc_step4: "The transaction is added to a new block.",
-    bc_step5: "The block is confirmed and sealed with a hash.",
-    bc_step6: "It becomes part of the chain and is permanently recorded.",
+    bc_step5: "The block is confirmed and sealed.",
+    bc_step6: "It becomes part of the chain permanently.",
 
     bc_hash_title: "What Is a Hash?",
     bc_hash_text:
-      "A hash is an algorithm that converts data into a unique fixed-length code. Even the smallest change in the data produces a completely different hash, making tampering practically impossible.",
+      "A hash converts data into a unique fixed-length code. Even the smallest change results in a completely different hash.",
 
     bc_pow_title: "Proof-of-Work (PoW)",
     bc_pow_text:
-      "In Proof-of-Work systems, such as Bitcoin, miners use computational power to find a valid hash. The first miner to find it creates the next block and receives a reward. PoW offers strong security but requires significant energy consumption.",
+      "In PoW systems like Bitcoin, miners use computing power to find a valid hash. The first to find it creates the next block and receives a reward.",
     bc_pow_adv_title: "Advantages:",
-    bc_pow_adv: "High security level and resistance to attacks.",
+    bc_pow_adv: "High security and resistance to attacks.",
     bc_pow_dis_title: "Disadvantages:",
-    bc_pow_dis: "High energy consumption and slower transaction speeds.",
+    bc_pow_dis: "High energy consumption and slow speeds.",
 
     bc_pos_title: "Proof-of-Stake (PoS)",
     bc_pos_text:
-      "In Proof-of-Stake systems, such as Ethereum and Solana, users lock a certain amount of cryptocurrency (stake) and participate in block validation. Selection depends on stake size and other algorithms. PoS is more energy-efficient and supports faster transactions.",
+      "In PoS systems, users lock cryptocurrency to participate in block validation. It is faster and energy-efficient.",
     bc_pos_adv_title: "Advantages:",
-    bc_pos_adv: "Low energy consumption, high transaction throughput.",
+    bc_pos_adv: "Low energy use, high transaction throughput.",
     bc_pos_dis_title: "Disadvantages:",
-    bc_pos_dis: "Potential concentration of power among large stakeholders.",
+    bc_pos_dis: "Possible concentration of power.",
 
     bc_uses_title: "Key Uses of Blockchain",
     bc_use1: "Cryptocurrencies and payment systems",
@@ -125,29 +170,57 @@ window.TRANSLATIONS = {
     bc_use4: "Digital identity",
     bc_use5: "Supply chain tracking",
     bc_use6: "Secure storage of critical data",
-    bc_use7: "Issuance of digital certificates and rights",
+    bc_use7: "Digital certificates and rights",
 
     bc_pros_title: "Advantages",
-    bc_pro1: "Decentralization without a central authority.",
-    bc_pro2: "High security enabled by cryptography.",
+    bc_pro1: "Decentralization without central authority.",
+    bc_pro2: "High cryptographic security.",
     bc_pro3: "Transparency and auditability.",
-    bc_pro4: "Fast transactions on modern PoS networks.",
+    bc_pro4: "Fast transactions on PoS networks.",
     bc_pro5: "Permanent and immutable record.",
 
     bc_cons_title: "Disadvantages",
-    bc_con1: "High energy consumption in PoW networks.",
-    bc_con2: "Variable transaction fees on some blockchains.",
-    bc_con3: "Scalability challenges in older systems.",
-    bc_con4: "Complexity for non-expert users.",
+    bc_con1: "High energy use in PoW networks.",
+    bc_con2: "Variable fees.",
+    bc_con3: "Scalability issues in older systems.",
+    bc_con4: "Complexity for beginners.",
 
     bc_examples_title: "Popular Blockchain Examples",
-    bc_ex1: "Bitcoin: The first blockchain, designed for digital money.",
-    bc_ex2: "Ethereum: Foundation of smart contracts and DeFi.",
-    bc_ex3: "Solana: High-speed network with low transaction costs.",
+    bc_ex1: "Bitcoin: The first blockchain.",
+    bc_ex2: "Ethereum: Foundation of smart contracts.",
+    bc_ex3: "Solana: High-speed, low-fee blockchain.",
     bc_ex4: "Chainlink: Provides external data to smart contracts.",
 
     bc_conclusion_title: "Conclusion",
     bc_conclusion:
-      "Blockchain is one of the most significant technologies of our era, introducing a new model of information recording and transfer without centralized control. With its rapid evolution and adoption across many industries, it is expected to play a crucial role in the future of the digital economy and global information systems."
+      "Blockchain is one of the most important technologies of our era, shaping the future of digital finance and information systems.",
+
+
+    /* FOOTER */
+    footer_rights: "All rights reserved.",
+
+    /* LOGIN */
+    login_title: "Login",
+    login_email: "Email",
+    login_password: "Password",
+    login_btn: "Login",
+    login_no_account: "You don't have a CryptoKosmos account.",
+    login_create_account: "Create Account",
+
+    /* SIGNUP */
+    signup_title: "Create an Account",
+    signup_email: "Email",
+    signup_pass1: "Password",
+    signup_pass2: "Confirm Password",
+    signup_error: "Passwords do not match.",
+    signup_btn: "Create Account",
+    signup_back: "Login",
+
+    /* VERIFY */
+    verify_title: "Email Verification",
+    verify_subtitle: "We sent you a 6-digit code.",
+    verify_code: "Code",
+    verify_error: "Incorrect code. Try again.",
+    verify_btn: "Verify"
   }
 };

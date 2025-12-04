@@ -9,29 +9,46 @@
   <link rel="stylesheet" href="../styles.css" />
 
   <!-- PAGE TRANSLATIONS -->
-  <script src="../translations-solana.js"></script>
+
 
   <style>
-    body.article-page {
+     body.article-page {
       padding: 0;
     }
+
     .article-container {
       max-width: 800px;
       margin: auto;
       padding: 20px;
     }
 
+    /* Desktop: lock widths of header buttons */
     @media (min-width: 900px) {
-      #theme-toggle { width: 85px; justify-content: center; }
-      #auth-btn { width: 85px; justify-content: center; }
-      #lang-toggle { width: 70px; justify-content: center; }
-      .pill-btn { height: 34px; }
+      #theme-toggle {
+        width: 85px;
+        justify-content: center;
+      }
+
+      #auth-btn {
+        width: 85px;
+        justify-content: center;
+      }
+
+      #lang-toggle {
+        width: 70px;
+        justify-content: center;
+      }
+
+      .pill-btn {
+        height: 34px;
+      }
     }
   </style>
 </head>
 
 <body class="article-page">
 
+<!-- ================= HEADER ================= -->
 <header class="site-header">
   <div class="container header-inner">
 
@@ -77,14 +94,14 @@
   </div>
 </header>
 
-<!-- MOBILE MENU -->
+<!-- ================= MOBILE MENU ================= -->
 <div id="mobile-menu" class="mobile-menu">
   <a href="../index.html#market" data-i18n="nav_market">Αγορά</a>
   <a href="../index.html#charts" data-i18n="nav_charts">Τάσεις</a>
   <a href="../index.html#guides" data-i18n="nav_guides">Οδηγοί</a>
   <a href="../index.html#glossary" data-i18n="nav_glossary">Γλωσσάρι</a>
 
-  <button id="mobile-home-btn" class="mobile-btn" data-i18n="mobile_home">⬅ Αρχική Σελίδα</button>
+  <button id="mobile-home-btn" class="mobile-btn" data-i18n="mobile_home">Αρχική</button>
   <button id="mobile-theme-toggle" class="mobile-btn" data-i18n="mobile_theme">Αλλαγή Θέματος</button>
   <button id="mobile-auth-btn" class="mobile-btn" data-i18n="login">Login</button>
 
@@ -94,14 +111,13 @@
   </button>
 </div>
 
-<!-- ARTICLE CONTENT -->
+<!-- ================= ARTICLE CONTENT ================= -->
 <div class="article-container">
 
   <h2 data-i18n="sol_title">Τι είναι η Solana;</h2>
 
   <p data-i18n="sol_intro">
-    Η Solana είναι ένα προηγμένο, υψηλής απόδοσης blockchain που σχεδιάστηκε για εφαρμογές
-    που απαιτούν μεγάλη ταχύτητα, αξιοπιστία και πολύ χαμηλές χρεώσεις.
+    Η Solana είναι ένα προηγμένο, υψηλής απόδοσης blockchain που σχεδιάστηκε για εφαρμογές που απαιτούν ταχύτητα, σταθερότητα και χαμηλές χρεώσεις.
   </p>
 
   <img id="article-image"
@@ -111,82 +127,213 @@
        style="width:100%;border-radius:16px;margin:20px 0;">
 
   <h3 data-i18n="sol_speed_title">Πόσο γρήγορη είναι η Solana;</h3>
-
   <p data-i18n="sol_speed_text">
-    Η Solana μπορεί να φτάσει σε θεωρητικές ταχύτητες πάνω από 50.000 συναλλαγές το δευτερόλεπτο,
-    χάρη στο Proof-of-History, ένα σύστημα που οργανώνει τις συναλλαγές με ακριβή χρονοσήμανση.
+    Η Solana μπορεί να ξεπεράσει τις 50.000 συναλλαγές ανά δευτερόλεπτο χάρη στο Proof-of-History.
   </p>
 
   <h3 data-i18n="sol_fees_title">Γιατί είναι τόσο φθηνή;</h3>
-
   <p data-i18n="sol_fees_text">
-    Οι χρεώσεις στη Solana είναι συνήθως κάτω από $0.001, γεγονός που την καθιστά ιδανική για
-    NFTs, gaming, DeFi και εφαρμογές με μεγάλο όγκο συναλλαγών.
+    Οι χρεώσεις είναι σχεδόν πάντα κάτω από $0.001.
   </p>
 
   <h3 data-i18n="sol_tech_title">Τεχνολογία της Solana</h3>
-
-  <p data-i18n="sol_tech_text">Η Solana συνδυάζει αρκετές καινοτομίες:</p>
+  <p data-i18n="sol_tech_text">Η Solana βασίζεται σε καινοτόμες τεχνολογίες:</p>
 
   <ul>
-    <li data-i18n="sol_tech1">Proof-of-History (PoH) — σύστημα χρονοσήμανσης.</li>
-    <li data-i18n="sol_tech2">Tower BFT — γρήγορη συναίνεση.</li>
-    <li data-i18n="sol_tech3">Sealevel — παράλληλη εκτέλεση smart contracts.</li>
-    <li data-i18n="sol_tech4">Gulf Stream — προώθηση συναλλαγών πριν χρειαστούν.</li>
+    <li data-i18n="sol_tech1">Proof-of-History</li>
+    <li data-i18n="sol_tech2">Tower BFT</li>
+    <li data-i18n="sol_tech3">Sealevel (parallel smart contracts)</li>
+    <li data-i18n="sol_tech4">Gulf Stream</li>
   </ul>
 
   <h3 data-i18n="sol_use_title">Πού χρησιμοποιείται;</h3>
-
   <ul>
-    <li data-i18n="sol_use1">NFT marketplaces και μεγάλα collections.</li>
-    <li data-i18n="sol_use2">DeFi εφαρμογές όπως δανεισμός και ανταλλακτήρια.</li>
-    <li data-i18n="sol_use3">On-chain gaming και real-time εφαρμογές.</li>
-    <li data-i18n="sol_use4">Άμεσες πληρωμές με μηδενικά fees.</li>
-    <li data-i18n="sol_use5">Tokenization πραγματικών περιουσιακών στοιχείων.</li>
-    <li data-i18n="sol_use6">Web3 εφαρμογές νέας γενιάς.</li>
+    <li data-i18n="sol_use1">NFT marketplaces</li>
+    <li data-i18n="sol_use2">DeFi</li>
+    <li data-i18n="sol_use3">On-chain gaming</li>
+    <li data-i18n="sol_use4">Real-time payments</li>
+    <li data-i18n="sol_use5">Tokenization</li>
+    <li data-i18n="sol_use6">Web3 εφαρμογές</li>
   </ul>
 
   <h3 data-i18n="sol_pros_title">Πλεονεκτήματα</h3>
   <ul>
-    <li data-i18n="sol_pro1">Πολύ υψηλές ταχύτητες συναλλαγών.</li>
-    <li data-i18n="sol_pro2">Εξαιρετικά χαμηλές χρεώσεις.</li>
-    <li data-i18n="sol_pro3">Μεγάλη υποστήριξη από developers.</li>
-    <li data-i18n="sol_pro4">Ιδανική για NFTs & gaming.</li>
-    <li data-i18n="sol_pro5">Καινοτόμα αρχιτεκτονική.</li>
+    <li data-i18n="sol_pro1">Υψηλές ταχύτητες</li>
+    <li data-i18n="sol_pro2">Χαμηλές χρεώσεις</li>
+    <li data-i18n="sol_pro3">Μεγάλη υποστήριξη</li>
+    <li data-i18n="sol_pro4">Ιδανική για NFTs</li>
+    <li data-i18n="sol_pro5">Σταθερή ανάπτυξη</li>
   </ul>
 
   <h3 data-i18n="sol_cons_title">Μειονεκτήματα</h3>
   <ul>
-    <li data-i18n="sol_con1">Περιστασιακές διακοπές λειτουργίας.</li>
-    <li data-i18n="sol_con2">Πολύπλοκη τεχνολογία.</li>
-    <li data-i18n="sol_con3">Μερική συγκέντρωση ισχύος σε validators.</li>
+    <li data-i18n="sol_con1">Πιθανές διακοπές λειτουργίας</li>
+    <li data-i18n="sol_con2">Πολύπλοκη τεχνολογία</li>
+    <li data-i18n="sol_con3">Συγκέντρωση ισχύος</li>
   </ul>
 
   <h3 data-i18n="sol_future_title">Το μέλλον της Solana</h3>
-
   <p data-i18n="sol_future_text">
-    Η Solana αναπτύσσεται γρήγορα και θεωρείται ένα από τα πιο υποσχόμενα blockchain. Με συνεχείς
-    αναβαθμίσεις, μεγάλο οικοσύστημα και τεράστια υποστήριξη, αναμένεται να διαδραματίσει
-    σημαντικό ρόλο στο Web3.
+    Η Solana εξελίσσεται συνεχώς και αναμένεται να παίξει σημαντικό ρόλο στο Web3.
   </p>
 
   <h3 data-i18n="sol_conclusion_title">Συμπέρασμα</h3>
-
   <p data-i18n="sol_conclusion">
-    Η Solana προσφέρει ταχύτητα, μικρό κόστος και προηγμένο σχεδιασμό. Παρά τις προκλήσεις,
-    αποτελεί μία από τις πιο δυναμικές και καινοτόμες blockchain πλατφόρμες.
+    Μία από τις πιο δυναμικές blockchain πλατφόρμες με εντυπωσιακές επιδόσεις.
   </p>
 
 </div>
 
+<!-- ================= FOOTER ================= -->
 <footer class="site-footer">
   <div class="container">
-    <p>© <span id="year"></span> CryptoKosmos — 
+    <p>
+      © <span id="year"></span> CryptoKosmos —
       <span data-i18n="footer_rights">Όλα τα δικαιώματα διατηρούνται.</span>
     </p>
   </div>
 </footer>
 
+<!-- ================= LOGIN MODAL ================= -->
+<div id="login-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <span class="modal-title" data-i18n="login_title">Σύνδεση</span>
+      <button class="modal-close" id="login-close">×</button>
+    </div>
+
+    <form id="login-form">
+      <div class="modal-body">
+
+        <label data-i18n="login_email">Email</label>
+        <input id="login-email" type="email"
+               data-i18n-placeholder="login_email"
+               placeholder="Email">
+
+        <label data-i18n="login_password">Κωδικός</label>
+        <div class="pass-wrap">
+          <input id="login-pass" type="password"
+                 data-i18n-placeholder="login_password"
+                 placeholder="Password">
+          <img id="login-pass-toggle" class="pass-eye" src="../IMG_5380.png">
+        </div>
+
+      </div>
+
+      <button class="modal-submit" type="submit" data-i18n="login_btn">
+        Σύνδεση
+      </button>
+
+      <p id="no-account" class="modal-hint" style="color:#ffb3b3; display:none;"
+         data-i18n="login_no_account">
+        Δεν έχεις λογαριασμό στο CryptoKosmos.
+      </p>
+
+      <button id="signup-btn" type="button"
+        style="display:none;margin-top:10px;width:100%;padding:10px 14px;border:none;border-radius:14px;background:#1e293b;color:white;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,0.25);"
+        data-i18n="login_create_account">
+        Δημιουργία λογαριασμού
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<!-- ================= SIGNUP MODAL ================= -->
+<div id="signup-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 class="modal-title" data-i18n="signup_title">Δημιούργησε λογαριασμό</h3>
+      <button class="modal-close signup-close">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <label data-i18n="signup_email">Email</label>
+      <input id="signup-email" type="email"
+             data-i18n-placeholder="signup_email"
+             placeholder="Email">
+
+      <label data-i18n="signup_pass1">Κωδικός</label>
+      <div class="pass-wrap">
+        <input id="signup-pass1" type="password"
+               data-i18n-placeholder="signup_pass1"
+               placeholder="Password">
+        <img id="signup-pass1-toggle" class="pass-eye" src="../IMG_5380.png">
+      </div>
+
+      <label data-i18n="signup_pass2">Επιβεβαίωση κωδικού</label>
+      <div class="pass-wrap">
+        <input id="signup-pass2" type="password"
+               data-i18n-placeholder="signup_pass2"
+               placeholder="Confirm Password">
+        <img id="signup-pass2-toggle" class="pass-eye" src="../IMG_5380.png">
+      </div>
+
+      <p id="signup-error" style="color:#ff6b6b; display:none;"
+         data-i18n="signup_error">
+         Οι κωδικοί δεν ταιριάζουν.
+      </p>
+
+      <button id="signup-create" class="modal-submit"
+              data-i18n="signup_btn">
+        Δημιουργία λογαριασμού
+      </button>
+
+      <p class="modal-hint">
+        <span data-i18n="signup_have_account">Έχεις ήδη λογαριασμό;</span>
+        <span id="back-to-login"
+              style="color:#5bb4ff;cursor:pointer;"
+              data-i18n="signup_back">
+          Σύνδεση
+        </span>
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================= VERIFY MODAL ================= -->
+<div id="verify-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 class="modal-title" data-i18n="verify_title">Επαλήθευση Email</h3>
+      <button class="modal-close verify-close">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <p class="muted" data-i18n="verify_subtitle">
+        Σου στείλαμε έναν 6-ψήφιο κωδικό.
+      </p>
+
+      <label data-i18n="verify_code">Κωδικός</label>
+      <input id="verify-code" type="text"
+             data-i18n-placeholder="verify_code"
+             placeholder="Code">
+
+      <p id="verify-error" style="color:#ff6b6b; display:none;"
+         data-i18n="verify_error">
+         Λάθος κωδικός. Προσπάθησε ξανά.
+      </p>
+
+      <button id="verify-submit" class="modal-submit"
+              data-i18n="verify_btn">
+        Επιβεβαίωση
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================= SCRIPTS ================= -->
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
   document.getElementById("mobile-home-btn")?.addEventListener("click", () => {
@@ -194,8 +341,9 @@
   });
 </script>
 
-<script src="../app.js" defer></script>
+<script src="../translations-solana.js"></script>
 <script src="../i18n.js"></script>
+<script src="../app.js" defer></script>
 
 </body>
 </html>
