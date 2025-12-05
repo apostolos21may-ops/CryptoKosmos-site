@@ -13,6 +13,7 @@
   <link rel="icon" href="./logo.png" type="image/png" />
 <script src="translations.js"></script>
 <script src="i18n.js"></script>
+<script type="module" src="../firebase-auth.js"></script>
   <style>
 
 /* =========================================
@@ -1020,6 +1021,17 @@ html, body {
     height: 34px;
   }
 }
+
+
+
+
+
+
+
+#auth-icon {
+  width: 20px;
+  height: 20px;
+}
 </style>
 
 
@@ -2000,11 +2012,27 @@ document.addEventListener("click", e => {
 });
 
 
-
-
-
-
 </script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } 
+    from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAs7yvFB-RMbjJuR524q7EzjGLcySBnMjs",
+    authDomain: "sailscan-8009c.firebaseapp.com",
+    projectId: "sailscan-8009c",
+    storageBucket: "sailscan-8009c.firebasestorage.app",
+    messagingSenderId: "42113365066",
+    appId: "1:42113365066:web:e17cd04862068b7eb362b3",
+    measurementId: "G-KSSKV0ERNV"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+</script>
+
 <script src="./app.js"></script>
 <script src="./i18n.js"></script>
 
